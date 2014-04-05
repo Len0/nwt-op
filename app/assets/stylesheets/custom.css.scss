@@ -22,8 +22,12 @@
 }
 
 .image-size {
-  max-width: 120px;
+  max-width: 100px;
   min-width: 120px;
   max-height: 100px;
-  
+}
+.imageClip{
+width:100px;
+height:100px;
+overflow:hidden;
 }
