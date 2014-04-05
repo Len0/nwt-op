@@ -1,33 +1,28 @@
 <div class="container">
 
-  <!-- Main hero unit for a primary marketing message or call to action -->
-  <div class="hero-unit">
-<h1>Korisnici</h1>
-<br>
-<div class="table-responsive">
-<table >
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+	<!-- Main hero unit for a primary marketing message or call to action -->
+	<div class="hero-unit">
+		<h1>Korisnici</h1>
+		<br>
+		<div class="">
+			<ul class="thumbnails">
+					<% @users.each do |user| %>
+						<li class="span5">
+							<div class="col-xs-3 col-md-2">
+								<div class="thumbnail"> <%= image_tag(user.avatar_url ,size: "120x120") if user.avatar? %> </div>
+								<div class="caption">
+        							<h5><%= user.name %></h5>
+        						</div>
+        						<%= link_to 'Edit', edit_user_path(user), class: "btn btn-sm btn-primary" %>
+								<%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
+							</div>
 
-  <tbody class="table table-condensed">
-    <% @users.each do |user| %>
-      <tr>
-      	<td><%= image_tag(user.avatar_url) if user.avatar? %></td>
-        <td><%= user.name %></td>
-        <td><%= link_to 'Edit', edit_user_path(user), class: "btn btn-sm btn-primary" %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-</div>
-<br>
+					<% end %>
 
-<%= link_to 'New User', new_user_path, class: "btn btn-success" %>
-</div>
+		</li>
+		</ul>
+		<br>
+	</div>	
+		<%= link_to 'New User', new_user_path, class: "btn btn-success", 'data-no-turbolink' => true %>
+
 </div>

@@ -12,6 +12,8 @@ gem 'bootstrap-sass', '~> 2.3.1'
 gem 'recaptcha', :require => 'recaptcha/rails'
 
 gem 'carrierwave'
+#gem 'rmagick'
+
 
 gem 'wash_out'
 # Use Uglifier as compressor for JavaScript assets
