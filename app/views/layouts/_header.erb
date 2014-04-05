@@ -26,15 +26,22 @@
 					</button>
 					<%= link_to ( t "nav.register"), new_user_path, :class => "btn", 'data-no-turbolink' => true %>
 					<%= link_to (t "nav.forgotten_pass"), pwd_recovery_path, :class => "btn", 'data-no-turbolink' => true %>
-
+					</form>
 					<% else %>
 					<form class="navbar-form pull-right" action="/user/logout" class="formclass" method="get">
-						<strong><%= session[:user_name] %></strong>
-						<button type="submit" class="btn">
+						
+						<div class="navbar-inner">
+							<p class="nav navbar-text"><%= session[:user_name] %> </p>
+							
+							<button type="submit" class="btn">
 							Odjava
-						</button>
-
+							</button>
+							</div>
+						
+						
+					</form>
 						<% end %>
+					
 						<div class="btn-group">
 							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 								<%= I18n.locale.upcase %> <span class="caret"></span>
@@ -48,8 +55,9 @@
 								</li>
 							</ul>
 						</div>
-					</form>
-
+					
+					
+				
 			</div><!--/.nav-collapse -->
 		</div>
 	</div>
