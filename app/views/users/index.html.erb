@@ -20,8 +20,11 @@
 								<div class="caption">
         							<h5><%= user.name %></h5>
         						</div>
-        						<%= link_to 'Edit', edit_user_path(user), class: "btn btn-sm btn-primary" %>
-								<%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
+        						<div class="thumbnail"> 
+        						<%= link_to content_tag(:i,nil, :class=>"fa fa-pencil-square-o"), edit_user_path(user), class: "btn btn-sm btn-primary" %>
+								<%= link_to content_tag(:i,nil, :class=>"fa fa-trash-o"), user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
+								<%= link_to content_tag(:i,nil, :class=>"fa fa-ban"), user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
+								</div>
 							</div>
 
 					<% end %>

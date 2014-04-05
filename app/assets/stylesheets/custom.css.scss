@@ -31,3 +31,17 @@ width:100px;
 height:100px;
 overflow:hidden;
 }
+.btn-primary:visited{
+  color:white;
+}
+.btn-danger:visited{
+  color:white;
+}
+.thumbnails li{
+  background-color:#DDDDDD;
+  padding-bottom:5px;
+  padding-left:3px;
+  padding-right:3px;
+  border:2px solid white;
+  border-radius: 10px;
+}
