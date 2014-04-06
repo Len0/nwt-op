@@ -267,7 +267,7 @@ bs:
     logged_in_successfully: Uspješno ste ulogovani.
     logged_out_successfully: Uspješno ste odlogovani.
     does_not_exist: Korisnik ne postoji.
-    invalid_login_params: Pogrešan username ili password.
+    invalid_login_params: Pogrešni korisnicki podaci ili nalog nije aktiviran.
     succesfully_created: Korisnik uspješno kreiran.
     succesfully_updated: Korisnik je uspješno ažuriran.
     invalid_fields: Neka polja su neispravna.

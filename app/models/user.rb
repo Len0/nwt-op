@@ -51,8 +51,14 @@ class User < ActiveRecord::Base
     if user = User.where(:username => username).first
       logger.debug "Username postoji #{user.username}"
       if user.hashed_password == encrypt_password(password, user.salt)
-        logger.debug "Password dobar"
-        user
+        if user.is_activated?
+          logger.debug "Password dobar"
+          user
+        else
+        logger.debug "Nalog nije aktiviran"
+        return nil
+        end
+
       end
     end
   end

@@ -33,7 +33,7 @@ en:
       logged_in_successfully: You have successfully logged in.
       logged_out_successfully: You have successfully logged out.
       does_not_exist: User does not exist.
-      invalid_login_params: Invalid username or password.
+      invalid_login_params: Invalid user credentials or deactivated account.
       succesfully_created: User was successfully created.
       succesfully_updated: User was successfully updated.
       invalid_fields: Some fields are invalid.

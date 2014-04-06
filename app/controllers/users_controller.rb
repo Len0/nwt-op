@@ -18,8 +18,17 @@ class UsersController < ApplicationController
   end
 
   def login
-
-    if @user = User.authenticate(params[:username], params[:password])
+    @user = User.authenticate(params[:username], params[:password])
+    if @user.nil?
+      respond_to do |format|
+        format.json {
+          render :json => {:error => "true", :message => (t "user.does_not_exist")}
+        }
+        format.html {
+          redirect_to root_path, :notice  => (t "user.invalid_login_params")
+        }
+        end
+      else
       session[:user_id] = @user.id
       session[:user_name] = @user.username
       session[:user_type] = @user.user_type.user_type
@@ -30,17 +39,9 @@ class UsersController < ApplicationController
         format.html {
           redirect_to root_path, :notice => (t "user.logged_in_successfully")
         }
+        end
+
       end
-    else
-      respond_to do |format|
-        format.json {
-          render :json => {:error => "true", :message => (t "user.does_not_exist")}
-        }
-        format.html {
-          redirect_to root_path, :alert => (t "user.invalid_login_params")
-        }
-      end
-    end
   end
 
   def logout
