@@ -1,0 +1,41 @@
+	<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="nav-collapse collapse">
+
+					<div class="navbar-inner">
+						<i class="navbar-text pull-left">Pretraga&nbsp;&nbsp;&nbsp;</i>
+						<form class="navbar-form navbar-left" role="search">
+
+							<input ng-model="searchText.name" class="form-control" type="text" placeholder="Ime i prezime"/>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<div ng-controller="UserSearchController">
+			<ul class="thumbnails">
+
+				<li class="span2" ng-repeat="user in users | filter:searchText">
+					<div class="col-xs-3 col-md-6">
+						<div class="thumbnail">
+							<img class="imageClip" ng-src="{{user.avatar.url}}" width="120" height="120"/>
+						</div>
+						<div class="caption">
+							<h5>{{user.name}}</h5>
+						</div>
+						<div class="thumbnail">
+
+							<a href='/users/{{user.id}}/edit' class="btn btn-sm btn-primary"><center class="fa fa-pencil-square-o"></center></a>
+							<a href='/users/{{user.id}}' class="btn btn-sm btn-danger" rel="nofollow" data-method="delete" data-confirm="Are you sure?"><center class="fa fa-trash-o"></center></a>
+						</div>
+					</div>
+
+				</li>
+			</ul>
+
+		</div>
+
+
+

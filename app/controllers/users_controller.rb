@@ -62,7 +62,12 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
-
+  
+  
+  def indexSearch
+    @users = User.all
+  end
+  
   # GET /users/1
   # GET /users/1.json
   def show
@@ -144,7 +149,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url }
+      format.html { redirect_to request.referer }
       format.json { head :no_content }
     end
   end

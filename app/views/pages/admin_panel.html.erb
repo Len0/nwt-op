@@ -7,15 +7,15 @@
 
     <div class="well leftmenu" >
       <ul class="nav nav-pills nav-stacked">
-        <li <% if (params[:menu] == 'dashboard')%>  class="active" <% end %> ><%= link_to 'Dashboard', admin_panel_path('dashboard') %></a></li>
-        <li <% if (params[:menu] == 'users')%>  class="active" <% end %> ><%= link_to (t "user.users"), admin_panel_path('users') %></li>
-        <li <% if (params[:menu] == 'ads')%>  class="active" <% end %> ><%= link_to (t "ad.ads"), admin_panel_path('ads') %></li>
+        <li <% if (params[:menu] == 'dashboard')%>  class="active" <% end %> ><%= link_to 'Dashboard', admin_panel_path('dashboard'), 'data-no-turbolink' => true %></a></li>
+        <li <% if (params[:menu] == 'users')%>  class="active" <% end %> ><%= link_to (t "user.users"), admin_panel_path('users'), 'data-no-turbolink' => true %></li>
+        <li <% if (params[:menu] == 'ads')%>  class="active" <% end %> ><%= link_to (t "ad.ads"), admin_panel_path('ads'), 'data-no-turbolink' => true %></li>
       </ul>
     </div>
 
     <div class="well rightcontent" >
       <%= if (params[:menu] == 'users')
-            render :partial => 'users/usersThumbs' end %>
+            render :partial => 'users/indexSearch' end %>
     </div>
 
 
