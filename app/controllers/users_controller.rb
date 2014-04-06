@@ -22,8 +22,8 @@ class UsersController < ApplicationController
     if @user = User.authenticate(params[:username], params[:password])
       session[:user_id] = @user.id
       session[:user_name] = @user.username
-      session[:user_type] = @user.user_type
-      logger.debug "Proslo dalje"
+      session[:user_type] = @user.user_type.user_type
+      logger.debug @user.user_type
       respond_to do |format|
         format.json {
         }
@@ -46,6 +46,7 @@ class UsersController < ApplicationController
   def logout
     session[:user_id] = nil
     session[:user_name] = nil
+    session[:user_type] = nil
 
     respond_to do |format|
       format.json {
