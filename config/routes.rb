@@ -1,5 +1,10 @@
 NWTMarketinghub::Application.routes.draw do
-  root :controller => 'home_page', :action => :index
+  root :controller => 'pages', :action => :home
+
+
+  # Pages routes
+  get 'admin_panel/:menu', :controller => 'pages', :action => :admin_panel, as: 'admin_panel'
+
 
   get 'ad/create', to: 'ad#create'
   get 'ad/update', to: 'ad#update'

@@ -27,6 +27,7 @@ en:
   user:
       username: Username
       password: Password
+      users: Users
       not_logged_in: You are not logged in.
       does_not_have_permission: You do not have permision for that action.
       logged_in_successfully: You have successfully logged in.
@@ -40,3 +41,6 @@ en:
   password_recovery:
       successfully_created: 'Password recovery token was successfully created.'
       successfully_updated: 'Password recovery token was successfully updated.'
+
+  ad:
+      ads: Ads

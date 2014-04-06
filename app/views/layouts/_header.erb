@@ -16,6 +16,11 @@
 					<li>
 						<a href="#help"><%= t "nav.help" %></a>
 					</li>
+                    <% if session[:user_type] == UserType.first.user_type %>
+                    <li>
+                        <%= link_to "Admin Panel", admin_panel_path('dashboard') %>
+                    </li>
+                    <% end %>
 				</ul>
 				<% if session[:user_id] == nil %>
 				<form accept-charset="UTF-8" class="navbar-form pull-right" action="/user/login" class="formclass" method="post">

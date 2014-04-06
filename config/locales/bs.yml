@@ -261,6 +261,7 @@ bs:
   user:
     username: Korisničko ime
     password: Lozinka
+    users: Korisnici
     not_logged_in: Niste ulogovani
     does_not_have_permission: Nemate pravo na ovu akciju.
     logged_in_successfully: Uspješno ste ulogovani.
@@ -274,3 +275,6 @@ bs:
   password_recovery:
     successfully_created: 'Token za povrat passworda uspješno kreiran.'
     successfully_updated: 'Token za povrat passworda uspješno ažuriran.'
+
+  ad:
+    ads: Reklame

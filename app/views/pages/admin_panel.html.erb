@@ -1,0 +1,28 @@
+<div class="container">
+
+  <!-- Main hero unit for a primary marketing message or call to action -->
+  <div class="hero-unit">
+    <h3>Admin Panel</h3>
+
+
+    <div class="well leftmenu" >
+      <ul class="nav nav-pills nav-stacked">
+        <li <% if (params[:menu] == 'dashboard')%>  class="active" <% end %> ><%= link_to 'Dashboard', admin_panel_path('dashboard') %></a></li>
+        <li <% if (params[:menu] == 'users')%>  class="active" <% end %> ><%= link_to (t "user.users"), admin_panel_path('users') %></li>
+        <li <% if (params[:menu] == 'ads')%>  class="active" <% end %> ><%= link_to (t "ad.ads"), admin_panel_path('ads') %></li>
+      </ul>
+    </div>
+
+    <div class="well rightcontent" >
+      <%= if (params[:menu] == 'users')
+            render :partial => 'users/usersThumbs' end %>
+    </div>
+
+
+    <div class="clear"/>
+
+    <p id="notice"><%= notice %></p>
+  </div>
+ </div>
+
+

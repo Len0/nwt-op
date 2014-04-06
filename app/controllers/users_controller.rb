@@ -22,6 +22,7 @@ class UsersController < ApplicationController
     if @user = User.authenticate(params[:username], params[:password])
       session[:user_id] = @user.id
       session[:user_name] = @user.username
+      session[:user_type] = @user.user_type
       logger.debug "Proslo dalje"
       respond_to do |format|
         format.json {
