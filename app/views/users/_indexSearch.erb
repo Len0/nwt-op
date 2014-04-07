@@ -29,6 +29,13 @@
 
 							<a href='/users/{{user.id}}/edit' class="btn btn-sm btn-primary"><center class="fa fa-pencil-square-o"></center></a>
 							<a href='/users/{{user.id}}' class="btn btn-sm btn-danger" rel="nofollow" data-method="delete" data-confirm="Are you sure?"><center class="fa fa-trash-o"></center></a>
+
+
+                            <a href='/user/ban?user_id={{user.id}}' id="#banButton" class="btn btn-sm btn-danger" rel="nofollow" data-method="post" data-confirm="Are you sure?"><center class="fa fa-ban"></center></a>
+                            <a href='/user/unban?user_id={{user.id}}' id="#unbanButton" class="btn btn-sm btn-primary" style="display: none" rel="nofollow" data-method="post" data-confirm="Are you sure?"><center class="fa fa-ban"></center></a>
+
+
+
 						</div>
 					</div>
 
