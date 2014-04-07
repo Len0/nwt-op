@@ -48,15 +48,15 @@
 						<% end %>
 					
 						<div class="btn-group">
-							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"  data-no-turbolink="true">
 								<%= I18n.locale.upcase %> <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
 								<li>
-									<a href="?locale=bs#">BS</a>
+									<a href="?locale=bs#" data-no-turbolink="true">BS</a>
 								</li>
 								<li>
-									<a href="?locale=en#">EN</a>
+									<a href="?locale=en#" data-no-turbolink="true">EN</a>
 								</li>
 							</ul>
 						</div>
