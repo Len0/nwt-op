@@ -22,70 +22,144 @@
 			
 			<%= if (params[:menu] == 'users')
       			render :partial => 'users/indexSearch' end %>
+
+
+
 			<% if (params[:menu] == 'dashboard') %>
 			<div class="media">
-			<small><span class="label label-default">Graf koliko je korisnika registrovano na dati datum:</span></small>
-			<br>
-			<canvas id="myChart"  height="250">
-				Your browser does not support the HTML5 canvas tag.
-			</canvas>
-			<script>var txx =<%= raw User.select("date(created_at) as c_date, count(id) as c_num").group("date(created_at)").to_json%>
-				var labdata = [];
-				var datdata = [];
+                <small><span class="label label-default">Graf koliko je korisnika registrovano na dati datum:</span></small>
+                <br>
+                <canvas id="myChart"  height="250">
+                  <%= t "dashboard.browser_canvas_support" %>
+                </canvas>
+                <script>var txx =<%= raw User.select("date(created_at) as c_date, count(id) as c_num").group("date(created_at)").to_json%>
+                    var labdata = [];
+                    var datdata = [];
 
-				for (var i = 0; i < txx.length; i++) {
-					labdata[i] = txx[i].c_date;
-					datdata[i] = txx[i].c_num;
-				}
-				
+                    for (var i = 0; i < txx.length; i++) {
+                        labdata[i] = txx[i].c_date;
+                        datdata[i] = txx[i].c_num;
+                    }
 
-				var data = {
-					labels : labdata,
-					datasets : [{
-						fillColor : "rgba(220,220,220,0.5)",
-						strokeColor : "rgba(220,220,220,1)",
-						pointColor : "rgba(220,220,220,1)",
-						pointStrokeColor : "#ff",
-						data : datdata
-					}]
-				};
 
-			var ctx = document.getElementById("myChart").getContext("2d");
-			var myNewChart = new Chart(ctx).Line(data);
+                    var data = {
+                        labels : labdata,
+                        datasets : [{
+                            fillColor : "rgba(220,220,220,0.5)",
+                            strokeColor : "rgba(220,220,220,1)",
+                            pointColor : "rgba(220,220,220,1)",
+                            pointStrokeColor : "#ff",
+                            data : datdata
+                        }]
+                    };
 
-			</script>
-			<small><span class="label label-default">Graf koliko je korisnika registrovano po danu u sedmici:</span></small>
-			<br>
-			<canvas id="myChart2"  height="250">
-				Your browser does not support the HTML5 canvas tag.
-			</canvas>
-			<script>
-				var txx =<%= raw User.select("dayname(date(created_at)) as c_date, count(id) as c_num").group("dayname(date(created_at))").to_json%>
-				var labdata = [];
-				var datdata = [];
+                var ctx = document.getElementById("myChart").getContext("2d");
+                var myNewChart = new Chart(ctx).Line(data);
+                </script>
 
-				for (var i = 0; i < txx.length; i++) {
-					labdata[i] = txx[i].c_date;
-					datdata[i] = txx[i].c_num;
-				}
-				
 
-				var data = {
-					labels : labdata,
-					datasets : [{
-						fillColor : "rgba(220,220,220,0.5)",
-						strokeColor : "rgba(220,220,220,1)",
-						pointColor : "rgba(220,220,220,1)",
-						pointStrokeColor : "#ff",
-						data : datdata
-					}]
-				};
 
-			var ctx = document.getElementById("myChart2").getContext("2d");
-			var myNewChart = new Chart(ctx).Line(data);
+                <small><span class="label label-default">Graf koliko je korisnika registrovano po danu u sedmici:</span></small>
+                <br>
+                <canvas id="myChart2"  height="250">
+                  <%= t "dashboard.browser_canvas_support" %>
+                </canvas>
+                <script>
+                    var txx =<%= raw User.select("dayname(date(created_at)) as c_date, count(id) as c_num").group("dayname(date(created_at))").to_json%>
+                    var labdata = [];
+                    var datdata = [];
 
-			</script>
-			</div>
+                    for (var i = 0; i < txx.length; i++) {
+                        labdata[i] = txx[i].c_date;
+                        datdata[i] = txx[i].c_num;
+                    }
+
+
+                    var data = {
+                        labels : labdata,
+                        datasets : [{
+                            fillColor : "rgba(220,220,220,0.5)",
+                            strokeColor : "rgba(220,220,220,1)",
+                            pointColor : "rgba(220,220,220,1)",
+                            pointStrokeColor : "#ff",
+                            data : datdata
+                        }]
+                    };
+
+                    var ctx = document.getElementById("myChart2").getContext("2d");
+                    var myNewChart = new Chart(ctx).Line(data);
+
+                </script>
+
+
+
+
+                <br>
+                <small><span class="label label-default"><%= t "dashboard.logins_count_per_day" %></span></small>
+                <br>
+                <canvas id="myChart3"  height="250">
+                <%= t "dashboard.browser_canvas_support" %>
+                </canvas>
+                <script>
+                    <% logs = Log.where("tag = ?", "login").select("date(created_at) as c_date, count(id) as c_num")  %>
+                    var txx =<%= raw logs.group_by { |l| l.created_at.beginning_of_month }.to_json%>
+                    var labdata = [];
+                    var datdata = [];
+
+                    for (var i = 0; i < txx.length; i++) {
+                    labdata[i] = txx[i].c_date;
+                    datdata[i] = txx[i].c_num;
+                    }
+
+
+                    var data = {
+                    labels : labdata,
+                    datasets : [{
+                      fillColor : "rgba(220,220,220,0.5)",
+                      strokeColor : "rgba(220,220,220,1)",
+                      pointColor : "rgba(220,220,220,1)",
+                      pointStrokeColor : "#ff",
+                      data : datdata
+                    }]
+                    };
+
+                    var ctx = document.getElementById("myChart3").getContext("2d");
+                    var myNewChart = new Chart(ctx).Line(data);
+                </script>
+
+
+                <br>
+                <small><span class="label label-default"><%= t "dashboard.logins_count_per_day" %></span></small>
+                <br>
+                <canvas id="myChart4"  height="250">
+                    <%= t "dashboard.browser_canvas_support" %>
+                </canvas>
+                <script>
+                    var txx =<%= raw Log.where("tag = ?", "login").select("date(created_at) as c_date, count(id) as c_num").group("c_date").to_json%>
+                    var labdata = [];
+                    var datdata = [];
+
+                    for (var i = 0; i < txx.length; i++) {
+                      labdata[i] = txx[i].c_date;
+                      datdata[i] = txx[i].c_num;
+                    }
+
+
+                    var data = {
+                      labels : labdata,
+                      datasets : [{
+                          fillColor : "rgba(220,220,220,0.5)",
+                          strokeColor : "rgba(220,220,220,1)",
+                          pointColor : "rgba(220,220,220,1)",
+                          pointStrokeColor : "#ff",
+                          data : datdata
+                      }]
+                    };
+
+                    var ctx = document.getElementById("myChart4").getContext("2d");
+                    var myNewChart = new Chart(ctx).Line(data);
+                </script>
+	        </div>
 			<%end%>
 
 		</div>

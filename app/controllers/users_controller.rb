@@ -85,6 +85,12 @@ class UsersController < ApplicationController
       session[:user_name] = @user.username
       session[:user_type] = @user.user_type.user_type
 
+      # Spasi u log
+      log = Log.new()
+      log.description = "User " + @user.name + " logged in."
+      log.tag = "login"
+      log.save
+
       logger.debug @user.user_type
       respond_to do |format|
         format.json {

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140407145950) do
+ActiveRecord::Schema.define(version: 20140407175539) do
 
   create_table "ad_boughts", force: true do |t|
     t.datetime "date_start"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20140407145950) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "tag"
   end
 
   create_table "password_recovery_tokens", force: true do |t|
