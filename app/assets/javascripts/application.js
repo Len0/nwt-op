@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require app
+//= require Chart.min
 //= require ui-bootstrap-tpls-0.10.0.min
 //= require_tree .
 //= require_tree ./angular

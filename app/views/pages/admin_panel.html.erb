@@ -1,28 +1,99 @@
 <div class="container">
 
-  <!-- Main hero unit for a primary marketing message or call to action -->
-  <div class="hero-unit">
-    <h3>Admin Panel</h3>
+	<!-- Main hero unit for a primary marketing message or call to action -->
+	<div class="hero-unit">
+		<h3>Admin Panel</h3>
 
+		<div class="well leftmenu" >
+			<ul class="nav nav-pills nav-stacked">
+				<li <% if (params[:menu] == 'dashboard')%>  class="active" <% end %> >
+					<%= link_to 'Dashboard', admin_panel_path('dashboard'), 'data-no-turbolink' => true %></a>
+				</li>
+				<li <% if (params[:menu] == 'users')%>  class="active" <% end %> >
+					<%= link_to (t "user.users"), admin_panel_path('users'), 'data-no-turbolink' => true %>
+				</li>
+				<li <% if (params[:menu] == 'ads')%>  class="active" <% end %> >
+					<%= link_to (t "ad.ads"), admin_panel_path('ads'), 'data-no-turbolink' => true %>
+				</li>
+			</ul>
+		</div>
 
-    <div class="well leftmenu" >
-      <ul class="nav nav-pills nav-stacked">
-        <li <% if (params[:menu] == 'dashboard')%>  class="active" <% end %> ><%= link_to 'Dashboard', admin_panel_path('dashboard'), 'data-no-turbolink' => true %></a></li>
-        <li <% if (params[:menu] == 'users')%>  class="active" <% end %> ><%= link_to (t "user.users"), admin_panel_path('users'), 'data-no-turbolink' => true %></li>
-        <li <% if (params[:menu] == 'ads')%>  class="active" <% end %> ><%= link_to (t "ad.ads"), admin_panel_path('ads'), 'data-no-turbolink' => true %></li>
-      </ul>
-    </div>
+		<div class="well rightcontent" >
+			
+			<%= if (params[:menu] == 'users')
+      			render :partial => 'users/indexSearch' end %>
+			<% if (params[:menu] == 'dashboard') %>
+			<div class="media">
+			<small><span class="label label-default">Graf koliko je korisnika registrovano na dati datum:</span></small>
+			<br>
+			<canvas id="myChart"  height="250">
+				Your browser does not support the HTML5 canvas tag.
+			</canvas>
+			<script>var txx =<%= raw User.select("date(created_at) as c_date, count(id) as c_num").group("date(created_at)").to_json%>
+				var labdata = [];
+				var datdata = [];
 
-    <div class="well rightcontent" >
-      <%= if (params[:menu] == 'users')
-            render :partial => 'users/indexSearch' end %>
-    </div>
+				for (var i = 0; i < txx.length; i++) {
+					labdata[i] = txx[i].c_date;
+					datdata[i] = txx[i].c_num;
+				}
+				
 
+				var data = {
+					labels : labdata,
+					datasets : [{
+						fillColor : "rgba(220,220,220,0.5)",
+						strokeColor : "rgba(220,220,220,1)",
+						pointColor : "rgba(220,220,220,1)",
+						pointStrokeColor : "#ff",
+						data : datdata
+					}]
+				};
 
-    <div class="clear"/>
+			var ctx = document.getElementById("myChart").getContext("2d");
+			var myNewChart = new Chart(ctx).Line(data);
 
-    <p id="notice"><%= notice %></p>
-  </div>
- </div>
+			</script>
+			<small><span class="label label-default">Graf koliko je korisnika registrovano po danu u sedmici:</span></small>
+			<br>
+			<canvas id="myChart2"  height="250">
+				Your browser does not support the HTML5 canvas tag.
+			</canvas>
+			<script>
+				var txx =<%= raw User.select("dayname(date(created_at)) as c_date, count(id) as c_num").group("dayname(date(created_at))").to_json%>
+				var labdata = [];
+				var datdata = [];
 
+				for (var i = 0; i < txx.length; i++) {
+					labdata[i] = txx[i].c_date;
+					datdata[i] = txx[i].c_num;
+				}
+				
 
+				var data = {
+					labels : labdata,
+					datasets : [{
+						fillColor : "rgba(220,220,220,0.5)",
+						strokeColor : "rgba(220,220,220,1)",
+						pointColor : "rgba(220,220,220,1)",
+						pointStrokeColor : "#ff",
+						data : datdata
+					}]
+				};
+
+			var ctx = document.getElementById("myChart2").getContext("2d");
+			var myNewChart = new Chart(ctx).Line(data);
+
+			</script>
+			</div>
+			<%end%>
+
+		</div>
+
+		<div class="clear"></div>
+
+		<p id="notice">
+			<%= notice %>
+		</p>
+	</div>
+</div>
