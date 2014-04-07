@@ -46,7 +46,7 @@ en:
       ads: Ads
 
   dashboard:
-      number_of_users_per_type: Number of users per specific type
+      ratio_of_users_per_type: Ratio of users per specific type
       logins_count_per_day: Number of logins per day
       logins_count_per_month: Number of logins per month
       browser_canvas_support: Your browser does not support the HTML5 canvas tag
