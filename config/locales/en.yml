@@ -46,6 +46,7 @@ en:
       ads: Ads
 
   dashboard:
+      ratio_of_activated_users: Ratio of activated user accounts
       ratio_of_users_per_type: Ratio of users per specific type
       logins_count_per_day: Number of logins per day
       logins_count_per_month: Number of logins per month

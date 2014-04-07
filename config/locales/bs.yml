@@ -280,6 +280,7 @@ bs:
     ads: Reklame
 
   dashboard:
+    ratio_of_activated_users: Omjer broja aktiviranih korisnika
     ratio_of_users_per_type: Omjer broja korisnika po tipovima
     logins_count_per_day: Broj logina po danu
     logins_count_per_month: Broj logina po mjesecu

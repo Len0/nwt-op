@@ -159,7 +159,7 @@
                     var myNewChart = new Chart(ctx).Line(data);
                 </script>
 	        </div>
-			<%end%>
+
           <div>
             <small><span class="label label-default"><%= t "dashboard.ratio_of_users_per_type" %></span></small>
             <br>
@@ -196,6 +196,38 @@
 
             </script>
           </div>
+
+            <div>
+              <small><span class="label label-default"><%= t "dashboard.ratio_of_users_per_type" %></span></small>
+              <br>
+              <ul style="list-style-type: square">
+                <li style="color: #12f7b2 ">Aktivirnih</li>
+                <li style="color: #ea0dc5 ">Neaktiviranih</li>
+              </ul>
+              <canvas id="myChart6"  height="250">
+                Your browser does not support the HTML5 canvas tag.
+              </canvas>
+
+              <script>var txx =<%= raw User.group(:is_activated).count.to_json%>
+              var admin, klijent, ogalasivac = 0;
+              aktiviranih = txx.true;
+              neaktiviranih = txx.false;
+              var data = [
+                  {
+                      value: aktiviranih,
+                      color:"#12f7b2"
+                  },
+                  {
+                      value : neaktiviranih,
+                      color : "#ea0dc5"
+                  }
+              ]
+              var ctx = document.getElementById("myChart6").getContext("2d");
+              var myNewChart = new Chart(ctx).Pie(data);
+
+              </script>
+            </div>
+        <%end%>g
 		</div>
 
 		<div class="clear"></div>
