@@ -22,9 +22,7 @@
                     </li>
                     <% end %>
 				</ul>
-
-
-              <% if session[:user_id] == nil %>
+				<% if session[:user_id] == nil %>
 				<form accept-charset="UTF-8" class="navbar-form pull-right" action="/user/login" class="formclass" method="post">
 					<input class="span2" type="text" name="username" placeholder="<%= t "user.username" %>">
 					<input class="span2" type="password" name="password" placeholder="<%= t "user.password" %>">
@@ -47,21 +45,21 @@
 						
 						
 					</form>
-                    <% end %>
-
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            <%= I18n.locale.upcase %> <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="?locale=bs#">BS</a>
-                            </li>
-                            <li>
-                                <a href="?locale=en#">EN</a>
-                            </li>
-                        </ul>
-                    </div>
+						<% end %>
+					
+						<div class="btn-group">
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"  data-no-turbolink="true">
+								<%= I18n.locale.upcase %> <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li>
+									<a href="?locale=bs#" data-no-turbolink="true">BS</a>
+								</li>
+								<li>
+									<a href="?locale=en#" data-no-turbolink="true">EN</a>
+								</li>
+							</ul>
+						</div>
 					
 					
 				
