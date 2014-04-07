@@ -16,9 +16,18 @@
           <div class="thumbnail">
             <%= link_to content_tag(:i,nil, :class=>"fa fa-pencil-square-o"), edit_user_path(user), class: "btn btn-sm btn-primary" %>
             <%= link_to content_tag(:i,nil, :class=>"fa fa-trash-o"), user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
-            <%= link_to content_tag(:i,nil, :class=>"fa fa-ban"), user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
+            <%=
+                if  !user.is_banned or user.is_banned.nil?
+                 button_to 'Ban', {controller: "users", action: "ban", :user_id => user.id}, method: :post, class: "btn btn-sm btn-danger"
+                else
+                 button_to 'Unban', {controller: "users", action: "unban", :user_id => user.id}, method: :post, class: "btn btn-sm btn-danger"
+                end
+                %>
+
           </div>
+
         </div>
+
 
   <% end %>
 

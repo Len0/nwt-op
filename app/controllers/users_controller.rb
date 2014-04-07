@@ -2,6 +2,68 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
   before_filter :is_logged, :except => [:login, :new, :create, :activation]
 
+  def ban
+    admin = User.where(id: session[:user_id]).first
+    if (!params.has_key?(:user_id))
+      render :json => {error:true, message:'Nije prosljedjen ID korisnika'}
+    else
+      user_to_ban = User.where(id: params[:user_id]).first
+      if user_to_ban.nil?
+        logger.debug("Administrator #{admin.username} pokusao banovati nepostojeceg korisnika sa id #{params[:user_id]}.")
+        render :json => {error:true, message:"Korisnik sa id = #{params[:user_id]} ne postoji."}
+      elsif user_to_ban.id == admin.id
+        logger.debug("LOL! Administrator #{admin.username} pokusao banovati samog sebe!!!!!!!!1111")
+        render :json => {error:true, message:'Ne mozete banovati sami sebe.'}
+      else
+        if user_to_ban.is_banned?
+          logger.debug("Administrator #{admin.username} pokusao banovati vec banovanog korisnika sa id #{params[:user_id]} (username= #{user_to_ban.username})")
+          render :json => {error:true, message:"Korisnik #{user_to_ban.username} je vec banovan."}
+        else
+          user_to_ban.is_banned=true
+          if user_to_ban.valid?
+            user_to_ban.save
+            logger.debug("Administrator #{admin.username} banovao korisnika sa id #{params[:user_id]} (username= #{user_to_ban.username})")
+            render :json => {error:false, message:"Korisnik #{user_to_ban.username} uspjesno banovan."}
+          else
+            logger.debug("Administrator #{admin.username} pokusao banovati korisnika sa id #{params[:user_id]} (username= #{user_to_ban.username}) ali je nesto poslo po zlu.")
+            render :json => {error:true, message:"Neka greska prilikom banovanja korisnika #{user_to_ban.username} "}
+          end
+        end
+      end
+    end
+  end
+
+  def unban
+    # this action shall be run only after the require_admin filter!
+    admin = User.where(id: session[:user_id]).first
+
+    if (!params.has_key?(:user_id))
+      render :json => {success:false, message:'Nije primljen ID korisnika kojeg treba banovati.'}
+    else
+      user_to_unban = User.where(id: params[:user_id]).first
+      if user_to_unban.nil?
+        logger.debug("Administrator #{admin.username} pokusao odbanovati nepostojeceg korisnika sa id #{params[:user_id]}.")
+        render :json => {success:false, message:"Korisnik sa id = #{params[:user_id]} ne postoji."}
+
+      else
+        if !user_to_unban.is_banned?
+          logger.debug("Administrator #{admin.username} pokusao odbanovati korisnika koji nije banovan. Korisnik ima id #{params[:user_id]} i username= #{user_to_unban.username})")
+          render :json => {success:false, message:"Korisnik #{params[:user_id]} nije banovan pa ga se ne moze ni odbanovati!"}
+        else
+          user_to_unban.is_banned=false
+          if user_to_unban.valid?
+            user_to_unban.save
+            logger.debug("Administrator #{admin.username} odbanovao korisnika sa id #{params[:user_id]} (username= #{user_to_unban.username})")
+            render :json => {success:true, message:"Korisnik #{user_to_unban.username} uspjesno odbanovan."}
+          else
+            logger.debug("Administrator #{admin.username} pokusao odbanovati korisnika sa id #{params[:user_id]} (username= #{user_to_unban.username}) ali je nesto poslo po zlu.")
+            render :json => {success:false, message:"Neka greska prilikom odbanovanja korisnika #{user_to_unban.username}"}
+          end
+        end
+      end
+    end
+  end
+
   def activation
     act_hash = params[:act_hash]
     user = User.where(hashed_password: act_hash ).first
@@ -28,10 +90,11 @@ class UsersController < ApplicationController
           redirect_to root_path, :notice  => (t "user.invalid_login_params")
         }
         end
-      else
+    else
       session[:user_id] = @user.id
       session[:user_name] = @user.username
       session[:user_type] = @user.user_type.user_type
+
       logger.debug @user.user_type
       respond_to do |format|
         format.json {
@@ -108,6 +171,7 @@ class UsersController < ApplicationController
     if verify_recaptcha
       @user = User.new(user_params)
       @user.is_activated = 0
+      @user.is_banned = 0
 
 
       respond_to do |format|
