@@ -160,7 +160,42 @@
                 </script>
 	        </div>
 			<%end%>
+          <div>
+            <small><span class="label label-default"><%= t "dashboard.number_of_users_per_type" %></span></small>
+            <br>
+            <ul style="list-style-type: square">
+              <li style="color: #F7464A ">Administrator</li>
+              <li style="color: #36ea30 ">Klijent</li>
+              <li style="color: #4d53d4 ">Oglasivac</li>
+            </ul>
+            <canvas id="myChart5"  height="250">
+              Your browser does not support the HTML5 canvas tag.
+            </canvas>
 
+            <script>var txx =<%= raw User.group(:user_type_id).count.to_json%>
+            var admin, klijent, ogalasivac = 0;
+            admin = txx[1];
+            klijent = txx[2];
+            oglasivac = txx[3];
+            var data = [
+                {
+                    value: admin,
+                    color:"#F7464A"
+                },
+                {
+                    value : klijent,
+                    color : "#36ea30"
+                },
+                {
+                    value : oglasivac,
+                    color : "#4d53d4"
+                }
+            ]
+            var ctx = document.getElementById("myChart5").getContext("2d");
+            var myNewChart = new Chart(ctx).Doughnut(data);
+
+            </script>
+          </div>
 		</div>
 
 		<div class="clear"></div>

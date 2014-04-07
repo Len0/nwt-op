@@ -280,6 +280,7 @@ bs:
     ads: Reklame
 
   dashboard:
+    number_of_users_per_type: Broj korisnika po tipovima
     logins_count_per_day: Broj logina po danu
     logins_count_per_month: Broj logina po mjesecu
     browser_canvas_support: Vaš pretraživač ne podržava HTML5 canvas tag
