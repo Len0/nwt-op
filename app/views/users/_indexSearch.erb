@@ -23,17 +23,17 @@
 							<img class="imageClip" ng-src="{{user.avatar.url}}" width="120" height="120"/>
 						</div>
 						<div class="caption">
-							<h5>{{user.name}}</h5>
+							<h5 id="idKorisnik">{{user.name}}</h5>
 						</div>
 						<div class="thumbnail">
-
+							
 							<a href='/users/{{user.id}}/edit' class="btn btn-sm btn-primary"><center class="fa fa-pencil-square-o"></center></a>
 							<a href='/users/{{user.id}}' class="btn btn-sm btn-danger" rel="nofollow" data-method="delete" data-confirm="Are you sure?"><center class="fa fa-trash-o"></center></a>
-
-
-                            <a href='/user/ban?user_id={{user.id}}' id="#banButton" class="btn btn-sm btn-danger" rel="nofollow" data-method="post" data-confirm="Are you sure?"><center class="fa fa-ban"></center></a>
-                            <a href='/user/unban?user_id={{user.id}}' id="#unbanButton" class="btn btn-sm btn-primary" style="display: none" rel="nofollow" data-method="post" data-confirm="Are you sure?"><center class="fa fa-ban"></center></a>
-
+							
+                            <a href='/user/ban?user_id={{user.id}}' id="#banButton" class="btn btn-sm btn-danger" ng-show="!user.is_banned" rel="nofollow" data-method="post" data-confirm="Are you sure?"><center class="fa fa-ban"></center></a>
+                          
+                            <a href='/user/unban?user_id={{user.id}}' id="#unbanButton" class="btn btn-sm btn-primary" ng-show="user.is_banned" rel="nofollow" data-method="post" data-confirm="Are you sure?"><center class="fa fa-ban"></center></a>
+							
 
 
 						</div>
