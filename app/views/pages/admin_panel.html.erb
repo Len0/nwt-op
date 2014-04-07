@@ -101,8 +101,7 @@
                 <%= t "dashboard.browser_canvas_support" %>
                 </canvas>
                 <script>
-                    <% logs = Log.where("tag = ?", "login").select("date(created_at) as c_date, count(id) as c_num")  %>
-                    var txx =<%= raw logs.group_by { |l| l.created_at.beginning_of_month }.to_json%>
+                    var txx =<%= raw Log.where("tag = ?", "login").select("date(created_at) as c_date, count(id) as c_num").group("date(created_at)").to_json%>
                     var labdata = [];
                     var datdata = [];
 
