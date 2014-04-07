@@ -101,7 +101,7 @@
                 <%= t "dashboard.browser_canvas_support" %>
                 </canvas>
                 <script>
-                    var txx =<%= raw Log.where("tag = ?", "login").select("date(created_at) as c_date, count(id) as c_num").group("date(created_at)").to_json%>
+                    var txx =<%= raw Log.where("tag = ?", "login").select("monthname(created_at) as c_date, count(id) as c_num").group("date(created_at)").to_json%>
                     var labdata = [];
                     var datdata = [];
 
@@ -128,7 +128,7 @@
 
 
                 <br>
-                <small><span class="label label-default"><%= t "dashboard.logins_count_per_day" %></span></small>
+                <small><span class="label label-default"><%= t "dashboard.logins_count_per_month" %></span></small>
                 <br>
                 <canvas id="myChart4"  height="250">
                     <%= t "dashboard.browser_canvas_support" %>
