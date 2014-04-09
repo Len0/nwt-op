@@ -27,7 +27,7 @@
 
 			<% if (params[:menu] == 'dashboard') %>
 			<div class="media">
-                <small><span class="label label-default">Graf koliko je korisnika registrovano na dati datum:</span></small>
+                <small><span class="label label-default"><%= t "dashboard.registrated_users_per_date" %></span></small>
                 <br>
                 <canvas id="myChart"  height="250">
                   <%= t "dashboard.browser_canvas_support" %>
@@ -58,8 +58,8 @@
                 </script>
 
 
-
-                <small><span class="label label-default">Graf koliko je korisnika registrovano po danu u sedmici:</span></small>
+				<br>
+                <small><span class="label label-default"><%= t "dashboard.registrated_users_per_day" %></span></small>
                 <br>
                 <canvas id="myChart2"  height="250">
                   <%= t "dashboard.browser_canvas_support" %>

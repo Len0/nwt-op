@@ -280,6 +280,8 @@ bs:
     ads: Reklame
 
   dashboard:
+    registrated_users_per_date: Graf koliko je korisnika registrovano na dati datum
+    registrated_users_per_day: Graf koliko je korisnika registrovano po danu u sedmici
     ratio_of_activated_users: Omjer broja aktiviranih korisnika
     ratio_of_users_per_type: Omjer broja korisnika po tipovima
     logins_count_per_day: Broj logina po danu
