@@ -1,15 +1,48 @@
-<div class="container">
 
-  <!-- Main hero unit for a primary marketing message or call to action -->
-  <div class="hero-unit">
-    <p id="notice"><%= notice %></p>
-    <%= image_tag(@user.avatar_url) if @user.avatar? %>
-    <br>
-    <p><b><%=@user.name%></b></p>
-    <p><b><%=@user.username%></b></p>
-    <p><b><%=@user.contact%></b></p>
-    <p><b><%=@user.description%></b></p>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
-      </div>
-    </div>
+<div class="container">
+	<%= form_for @user, class: "form well" do |f| %>
+	<!-- Main hero unit for a primary marketing message or call to action -->
+	<div class="hero-unit">
+		<p id="notice">
+			<%= notice %>
+		</p>
+		<div class ="thumbnail">
+			<%=
+                if @user.avatar?
+                  image_tag(@user.avatar_url ,size: "240x240")
+                else
+                  image_tag('/bluebells_darker.jpg' ,size: "240x240")
+                end%> 
+		</div>
+		<br>
+		<div class="container">
+		<div class="panel  panel-info">
+			<div class="panel-heading">
+				<h3 class="panel-title"><%= @user.name%></h3>
+			</div>
+			<div class="panel-body">
+				<p>
+					<%= f.label :username %>
+					<b class="label label-default"><%= @user.username%></b>
+				</p>
+				<p>
+					<%= f.label :email %>
+					<b class="label label-default"><%= @user.email%></b>
+				</p>
+				<p>
+					<%= f.label :contact %>
+					<b class="label label-default"><%= @user.contact%><br></b>
+				</p>
+				<p>
+					<%= f.label :description %>
+					<b class="label label-default"><%= @user.description%><br></b>
+				</p>
+			</div>
+		</div>
+		</div>
+
+		<%= link_to 'Edit', edit_user_path(@user),'data-no-turbolink' => true %> |
+		<%= link_to 'Back', request.referer,'data-no-turbolink' => true %>
+	</div>
+	<%end%>
+</div>

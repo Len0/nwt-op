@@ -36,7 +36,7 @@
 					<form class="navbar-form pull-right" action="/user/logout" class="formclass" method="get">
 						
 						<div class="navbar-inner">
-							<p class="nav navbar-text"><%= session[:user_name] %> </p>
+							<p class="nav navbar-text"><%= link_to (session[:user_name]), edit_user_path(User.find(session[:user_id])),'data-no-turbolink' => true  %> </p>
 							
 							<button type="submit" class="btn">
 							Odjava

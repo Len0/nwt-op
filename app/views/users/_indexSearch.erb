@@ -19,9 +19,11 @@
 
 				<li class="span2" ng-repeat="user in users | filter:searchText">
 					<div class="col-xs-3 col-md-6">
+						<a href='/users/{{user.id}}'>
 						<div class="thumbnail">
 							<img class="imageClip" ng-src="{{user.avatar.url}}" width="120" height="120"/>
 						</div>
+						</a>
 						<div class="caption">
 							<h5 id="idKorisnik">{{user.name}}</h5>
 						</div>

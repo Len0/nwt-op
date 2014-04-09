@@ -1,48 +1,94 @@
-<%= form_for(@user) do |f| %>
-    <% if @user.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="row-fluid">
+	<%= form_for @user, class: "form well" do |f| %>
+	<% if @user.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-          <ul>
-            <% @user.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-    
-    <%= f.file_field :avatar %>
-    <%= f.hidden_field :avatar_cache %>
-    <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </div>
-    <div class="field">
-      <%= f.label :username %>
-      <%= f.text_field :username %>
-    </div>
-    <div class="field">
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-    </div>
-    <div class="field">
-      <%= f.label :password_confirmation%>
-      <%= f.password_field :password_confirmation%>
-    </div>
-    <div class="field">
-      <%= f.label :contact %>
-      <%= f.text_area :contact %>
-    </div>
-    <div class="field">
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-    </div>
-    <div class="field">
-      <%= f.label :description %>
-      <%= f.text_area :description %>
-    </div>
-    <%= recaptcha_tags %>
-    <div class="actions">
-      <%= f.submit "Kreiraj korisnika", class:"btn" %>
-    </div>
-<% end %>
+		<ul>
+			<% @user.errors.full_messages.each do |msg| %>
+			<li>
+				<%= msg %>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+
+	<div class="control-group span12">
+		<div class="control-group span2">
+		</div>
+		<div class="control-group span2">
+		<div class="thumbnail">
+		<%= image_tag(f.object.avatar || @user.avatar_url  ,size: "120x120", id: "slika") if @user %>
+		</div>
+		</div>
+		<div class="control-group span8">
+		</div>
+	</div>
+	<div class="control-group span12">
+		<div class="control-group span2">
+		</div>
+		<div class="control-group span2">
+		<%= f.file_field :avatar, id: "slikaInput", style: "display: block; margin-left: auto; margin-right: auto",class:"label label-default"%>
+		</div>
+		<script>
+			function readURL(input) {
+				if (input.files && input.files[0]) {
+					var reader = new FileReader();
+
+					reader.onload = function(e) {
+						$('#slika').attr('src', e.target.result);
+					}
+
+					reader.readAsDataURL(input.files[0]);
+				}
+			}
+
+
+			$("#slikaInput").change(function() {
+				readURL(this);
+			});
+		</script>
+		<%= f.hidden_field :avatar_cache %>
+	</div>
+	<div class="control-group span4">
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+		
+		<%= f.label :username %>
+		<%= f.text_field :username %>
+
+		<%= f.label :password %>
+		<%= f.password_field :password %>
+
+		<%= f.label :password_confirmation%>
+		<%= f.password_field :password_confirmation%>
+
+	</div>
+	<div class="control-group span4">
+		<%= f.label :contact %>
+		<%= f.text_area :contact %>
+
+		<%= f.label :email %>
+		<%= f.text_field :email %>
+
+		<%= f.label :description %>
+		<%= f.text_area :description %>
+
+	</div>
+
+	<div class="control-group span8">
+		<div class="captcha">
+		<%= recaptcha_tags %>
+		</div>
+
+	</div>
+	
+	<div class="control-group span8">
+		<div class="actions">
+			<%= f.submit "Kreiraj korisnika", class:"btn pull-right", id:"IDKorisnikDugme" %>
+		</div>
+	</div>
+
+	<% end %>
+</div>
