@@ -65,7 +65,7 @@
                   <%= t "dashboard.browser_canvas_support" %>
                 </canvas>
                 <script>
-                    var txx =<%= raw User.select("data_part('day name',created_at) as c_date, count(id) as c_num").group("data_part('day name',created_at)").to_json%>
+                    var txx =<%= raw User.select("date_part('Day',created_at) as c_date, count(id) as c_num").group("date_part('Day',created_at)").to_json%>
                     var labdata = [];
                     var datdata = [];
 
@@ -134,7 +134,7 @@
                     <%= t "dashboard.browser_canvas_support" %>
                 </canvas>
                 <script>
-                    var txx =<%= raw Log.where("tag = ?", "login").select("monthname(created_at) as c_date, count(id) as c_num").group("c_date").to_json%>
+                    var txx =<%= raw Log.where("tag = ?", "login").select("date_part('Month',created_at) as c_date, count(id) as c_num").group("c_date").to_json%>
                     var labdata = [];
                     var datdata = [];
 
