@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html  ng-app="NWTMarketinghub"> 
+<html  ng-app="App"> 
 <head>
   <title>NWTMarketinghub</title>
-      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
-  	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js"></script>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "Chart", "data-turbolinks-track" => true %>
+  <!--    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+  	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js"></script>-->
+  <%= javascript_include_tag "application", controller_name%>
+  <%= stylesheet_link_tag    "application", media: "all"%>
+  <%= javascript_include_tag "Chart"%>
   <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->

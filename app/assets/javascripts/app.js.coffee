@@ -1,1 +1,1 @@
-window.App = angular.module('NWTMarketinghub', ['ngResource']);
+window.App = angular.module('App', ['ngResource']);
