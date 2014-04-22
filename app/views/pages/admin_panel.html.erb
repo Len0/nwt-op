@@ -65,7 +65,7 @@
                   <%= t "dashboard.browser_canvas_support" %>
                 </canvas>
                 <script>
-                    var txx =<%= raw User.select("dayname(date(created_at)) as c_date, count(id) as c_num").group("dayname(date(created_at))").to_json%>
+                    var txx =<%= raw User.select("data_part('day name',created_at) as c_date, count(id) as c_num").group("data_part('day name',created_at)").to_json%>
                     var labdata = [];
                     var datdata = [];
 
