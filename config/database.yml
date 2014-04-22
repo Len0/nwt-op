@@ -30,12 +30,3 @@ test:
   username: root
   password: root
   host: localhost
-
-production:
-  adapter: mysql2
-  encoding: utf8
-  database: NWT-marketingHub_production
-  pool: 5
-  username: root
-  password: root
-  host: localhost
