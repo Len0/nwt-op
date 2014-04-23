@@ -29,8 +29,17 @@
 					<button type="submit" class="btn">
 						<%= t "nav.login" %>
 					</button>
-					<%= link_to ( t "nav.register"), new_user_path, :class => "btn", 'data-no-turbolink' => true %>
-					<%= link_to (t "nav.forgotten_pass"), pwd_recovery_path, :class => "btn", 'data-no-turbolink' => true %>
+					
+					
+						<div class="row">
+							<div class="span1"><%= link_to ( t "nav.register"), new_user_path,  'data-no-turbolink' => true, :style => "color:Gainsboro;" %></div>
+							<div class="span3"><%= link_to (t "nav.forgotten_pass"), pwd_recovery_path, 'data-no-turbolink' => true, :style => "color:Gainsboro;" %></div>
+							
+						</div>
+					
+					
+					
+					
 					</form>
 					<% else %>
 					<form class="navbar-form pull-right" action="/user/logout" class="formclass" method="get">
