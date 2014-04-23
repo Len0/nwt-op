@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140407175539) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "ad_boughts", force: true do |t|
     t.datetime "date_start"
     t.integer  "duration"
@@ -26,7 +29,7 @@ ActiveRecord::Schema.define(version: 20140407175539) do
     t.string   "title"
     t.string   "subtitle"
     t.text     "description"
-    t.decimal  "price",        precision: 10, scale: 0
+    t.decimal  "price"
     t.string   "unit"
     t.datetime "date_start"
     t.datetime "date_end"

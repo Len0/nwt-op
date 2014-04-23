@@ -170,6 +170,8 @@ class UsersController < ApplicationController
       @user.is_banned = 0
 
 
+
+
       respond_to do |format|
         if @user.save
           UserMailer.activate_account(@user).deliver
@@ -223,6 +225,6 @@ class UsersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:username, :email, :name,:password,:password_confirmation, :contact, :description,:avatar)
+    params.require(:user).permit(:username, :email, :name,:password,:password_confirmation, :contact, :description,:avatar, :user_type_id)
   end
 end 
