@@ -9,18 +9,29 @@
 			<a class="brand" href="#">mHub</a>
 			<div class="nav-collapse collapse">
 				<ul class="nav">
-					<!-- <li class="active"><a href="#"><%= t "nav.feed" %></a></li> -->
+					<li class="active"><a href="#"><%= t "nav.feed" %></a></li>
 					<li>
 						<a href="#"><%= t "nav.search" %></a>
 					</li>
 					<li>
 						<a href="#help"><%= t "nav.help" %></a>
 					</li>
-                    <% if session[:user_type] == UserType.first.user_type %>
-                    <li>
-                        <%= link_to "Admin Panel", admin_panel_path('dashboard') %>
-                    </li>
-                    <% end %>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown"  data-no-turbolink="true">
+							<%= I18n.locale.upcase %> <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" role="menu">
+							<li>
+								<a href="/?locale=bs" data-no-turbolink="true">BS</a>
+								<a href="/?locale=en" data-no-turbolink="true">EN</a>
+							</li>
+						</ul>
+					</li>
+					<% if session[:user_type] == UserType.first.user_type %>
+					<li>
+						<%= link_to "Admin Panel", admin_panel_path('dashboard') %>
+					</li>
+					<% end %>
 				</ul>
 				<% if session[:user_id] == nil %>
 				<form accept-charset="UTF-8" class="navbar-form pull-right" action="/user/login" class="formclass" method="post">
@@ -29,49 +40,34 @@
 					<button type="submit" class="btn">
 						<%= t "nav.login" %>
 					</button>
-					
-					
-						<div class="row">
-							<div class="span1"><%= link_to ( t "nav.register"), new_user_path,  'data-no-turbolink' => true, :style => "color:Gainsboro;" %></div>
-							<div class="span3"><%= link_to (t "nav.forgotten_pass"), pwd_recovery_path, 'data-no-turbolink' => true, :style => "color:Gainsboro;" %></div>
-							
+
+					<div class="row">
+						<div class="span1">
+							<%= link_to ( t "nav.register"), new_user_path,  'data-no-turbolink' => true, :style => "color:Gainsboro;" %>
 						</div>
-					
-					
-					
-					
-					</form>
-					<% else %>
-					<form class="navbar-form pull-right" action="/user/logout" class="formclass" method="get">
-						
-						<div class="navbar-inner">
-							<p class="nav navbar-text"><%= link_to (session[:user_name]), edit_user_path(User.find(session[:user_id])),'data-no-turbolink' => true  %> </p>
-							
-							<button type="submit" class="btn">
+						<div class="span3">
+							<%= link_to (t "nav.forgotten_pass"), pwd_recovery_path, 'data-no-turbolink' => true, :style => "color:Gainsboro;" %>
+						</div>
+
+					</div>
+
+				</form>
+				<% else %>
+				<form class="navbar-form pull-right" action="/user/logout" class="formclass" method="get">
+
+					<div class="navbar-inner">
+						<p class="nav navbar-text">
+							<%= link_to (session[:user_name]), edit_user_path(User.find(session[:user_id])),'data-no-turbolink' => true  %>
+						</p>
+
+						<button type="submit" class="btn">
 							Odjava
-							</button>
-							</div>
-						
-						
-					</form>
-						<% end %>
-					
-						<div class="btn-group">
-							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"  data-no-turbolink="true">
-								<%= I18n.locale.upcase %> <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu" role="menu">
-								<li>
-									<a href="?locale=bs#" data-no-turbolink="true">BS</a>
-								</li>
-								<li>
-									<a href="?locale=en#" data-no-turbolink="true">EN</a>
-								</li>
-							</ul>
-						</div>
-					
-					
-				
+						</button>
+					</div>
+
+				</form>
+				<% end %>
+
 			</div><!--/.nav-collapse -->
 		</div>
 	</div>

@@ -1,1 +1,1 @@
-window.App = angular.module('App', ['ngResource']);
+window.App = angular.module('App', ['ui.bootstrap','ngResource']);
