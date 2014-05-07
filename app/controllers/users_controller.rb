@@ -71,6 +71,8 @@ class UsersController < ApplicationController
 
   def login
     @user = User.authenticate(params[:username], params[:password])
+    logger.debug "USERNAME:  "
+    logger.debug params[:username]
     if @user.nil?
       respond_to do |format|
         format.json {
@@ -94,6 +96,7 @@ class UsersController < ApplicationController
       logger.debug @user.user_type
       respond_to do |format|
         format.json {
+          render :json => {:error => "false", :message => (t "user.does_not_exist")}
         }
         format.html {
           redirect_to root_path, :notice => (t "user.logged_in_successfully")
