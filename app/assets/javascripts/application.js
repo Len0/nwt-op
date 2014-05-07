@@ -15,6 +15,7 @@
 //= require bootstrap
 //= require angular
 //= require angular-resource
+//= require angular-route
 //= require turbolinks
 //= require Chart.min
 //= require app

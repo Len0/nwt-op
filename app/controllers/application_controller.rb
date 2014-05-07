@@ -4,7 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery except: :login
   
   before_filter :set_locale
-
+ def index
+   
+ end
  def set_locale
     if (params[:locale])
       session[:locale] = params[:locale]
