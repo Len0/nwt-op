@@ -54,19 +54,17 @@
 
 				</form>
 				<% else %>
-				<form class="navbar-form pull-right" action="/user/logout" class="formclass" method="get">
+				<div class="navbar-form pull-right" >
 
 					<div class="navbar-inner">
 						<p class="nav navbar-text">
 							<%= link_to (session[:user_name]), edit_user_path(User.find(session[:user_id])),'data-no-turbolink' => true  %>
 						</p>
+                      <button class="btn" ng-click="userLogout()" data-no-turbolink="true">Odjava</button>
 
-						<button type="submit" class="btn">
-							Odjava
-						</button>
 					</div>
 
-				</form>
+				</div>
 				<% end %>
 
 			</div><!--/.nav-collapse -->

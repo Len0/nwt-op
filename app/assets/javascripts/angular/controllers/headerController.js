@@ -4,4 +4,10 @@ App.controller ('headerController', ['$scope','$http', function($scope,$http){
         		location.reload(true);
         	});
         };
+        $scope.userLogout = function(){
+            $http.get('user/logout').success(function(){
+                location.reload(true);
+            })
+
+        };
 }]);
