@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-inverse navbar-fixed-top"  ng-controller="headerController">
 	<div class="navbar-inner">
 		<div class="container">
 			<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -22,8 +22,9 @@
 						</a>
 						<ul class="dropdown-menu" role="menu">
 							<li>
-								<a href="?locale=bs" data-no-turbolink="true">BS</a>
-								<a href="?locale=en" data-no-turbolink="true">EN</a>
+								<a href="#" ng-click="loadLok('/?locale=bs')" data-no-turbolink="true">BS</a>
+								<a href="#" ng-click="loadLok('/?locale=en')" data-no-turbolink="true">EN</a>
+								<a href="/users"> KK </a>
 							</li>
 						</ul>
 					</li>

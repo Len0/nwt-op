@@ -1,7 +1,5 @@
 NWTMarketinghub::Application.routes.draw do
   #root :controller => 'pages', :action => :home
-  root 'application#index'
-
   # Pages routes
   get 'admin_panel/:menu', :controller => 'pages', :action => :admin_panel, as: 'admin_panel'
   get 'indexSearch', :controller => 'users', :action => :indexSearch, as: 'indexSearch'
@@ -63,9 +61,10 @@ NWTMarketinghub::Application.routes.draw do
   get 'subscription/list/(:id)', to: 'subscription#list'
   get 'subscription/delete/(:id)', to: 'subscription#delete'
 
-
-
   wash_out :rumbas
+  #match "/*path" => redirect("/?goto=%{path}"), via: [:get]
+  root 'application#index'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
