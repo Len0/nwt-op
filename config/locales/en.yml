@@ -24,7 +24,8 @@ en:
 
   nav:
     forgotten_pass: Forgot password?
-    marketer: Marketer
+    marketer: Marketers
+    client: Clients
   user:
       username: Username
       password: Password

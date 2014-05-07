@@ -251,7 +251,8 @@ bs:
 
   nav:
     feed: Feedovi
-    marketer: Oglašivač
+    marketer: Oglašivači
+    client: Klijenti
     help: Pomoć
     login: Prijava
     register: Registracija

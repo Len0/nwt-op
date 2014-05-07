@@ -3,6 +3,9 @@ window.App = angular.module('App', ['ngRoute','ui.bootstrap','ngResource'])
 {
   $routeProvider.
     when('/marketer',{
-      templateUrl: 'partials/marketer.html'
+    	templateUrl: 'partials/marketer.html'
+    }).
+    when('/client',{
+    	templateUrl: 'partials/client.html'
     }).otherwise({ redirectTo: '/marketer' });
 }]);
