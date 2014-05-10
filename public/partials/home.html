@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="hero-unit">
+        <div class="page-header">
+            <h2>Marketing HUB <small>Mjesto za Vaš oglas</small></h2>
+        </div>
+
+        <form name="searchAdsForm">
+            <div class="input-append">
+                <input type="text" ng-model="searchText" class="form-control" name="search" id="search" placeholder="Pretraga oglasa" style="width: 750px;" required />
+                <button ng-click="searchAds(searchText)" class="btn btn-default" ng-disabled="searchAdsForm.$invalid">Traži</button>
+            </div>
+        </form>
+
+    </div>
+</div>

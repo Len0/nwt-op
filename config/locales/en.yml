@@ -53,3 +53,7 @@ en:
       logins_count_per_day: Number of logins per day
       logins_count_per_month: Number of logins per month
       browser_canvas_support: Your browser does not support the HTML5 canvas tag
+
+  home:
+    searchAds: Search Ads
+    searchMarketers: Search Marketers
