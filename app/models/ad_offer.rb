@@ -15,7 +15,7 @@ class AdOffer < ActiveRecord::Base
   validates :views_count, numericality: { only_integer: true }
   validates :max_duration, numericality: { only_integer: true }
 
-  validates :title, :price, :unit, :date_start, :date_end, :is_hidden, :max_duration, presence: true
+  validates :title, :price, :unit, :date_start, :date_end, :visibility, :max_duration, presence: true
 
   # ===== VALIDACIJE =====
 
