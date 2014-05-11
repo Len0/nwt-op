@@ -1,6 +1,7 @@
 App.controller('createAdOfferController', ['$scope', '$filter', 'AdOffer',
 function($scope, $filter, AdOffer) {
 	$scope.ad = {};
+	$scope.poruka='';
 	$scope.ad_types = ['TV', 'Radio', 'Bilbord', 'Web', 'Novine'];
 	$scope.today = function() {
 		$scope.ad.date_start = new Date();
@@ -53,7 +54,10 @@ function($scope, $filter, AdOffer) {
 			max_duration : $filter('number')($scope.ad.max_duration, 0)
 
 		};
-		AdOffer.get(data);
+		var odgovor=AdOffer.get(data,function(){
+			$scope.poruka=JSON.stringify(odgovor.errors);
+		});
+
 	};
 
 }]);

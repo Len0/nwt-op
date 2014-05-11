@@ -22,7 +22,7 @@ class AdController < ApplicationController
     
 
 
-        msg = { :status => "ok", :message => "Success!", :html => newAd.errors.messages}
+        msg = { :errors => newAd.errors.messages}
         render :json => msg
       }
     end
