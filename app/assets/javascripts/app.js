@@ -11,6 +11,10 @@ window.App = angular.module('App', ['ngRoute','ui.bootstrap','ngResource'])
     when('/searchAds/:searchText',{
         templateUrl: 'partials/searchAds.html',
         controller: 'searchAdsController'
+    }).
+    when('/createAdOffer',{
+    	templateUrl: 'partials/unosAdOffer.html',
+    	controller: 'createAdOfferController'
     }).otherwise({
         redirectTo: '/home',
         templateUrl: 'partials/home.html',

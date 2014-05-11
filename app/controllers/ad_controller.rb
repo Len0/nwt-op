@@ -1,10 +1,12 @@
 class AdController < ApplicationController
   before_filter :is_logged
-
+  before_action :is_oglasivac, only: [:create]
   def create
-    newAd = AdOffer.create
-    newAd.user_id = 1 # POPRAVITI  da radi kada se user loginuje
-    newAd.ad_type_id = params[:ad_type_id]
+        respond_to do |format|
+      format.json {
+    newAd = AdOffer.new
+    newAd.user_id = session[:user_id] 
+    newAd.ad_type_id = params[:ad_type_id] # POPRAVITI  da radi kada se user loginuje
 
     newAd.title = params[:title]
     newAd.subtitle = params[:subtitle]
@@ -13,14 +15,14 @@ class AdController < ApplicationController
     newAd.unit = params[:unit]
     newAd.date_start = DateTime.strptime(params[:date_start], "%d.%m.%Y %H:%M")
     newAd.date_end = DateTime.strptime(params[:date_end], "%d.%m.%Y %H:%M")
-    newAd.is_hidden = params[:is_hidden]
+    newAd.visibility = params[:visibility]
     newAd.views_count = 0
     newAd.max_duration = params[:max_duration]
     newAd.save
+    
 
-    respond_to do |format|
-      format.json {
-        msg = { :status => "ok", :message => "Success!", :html => newAd }
+
+        msg = { :status => "ok", :message => "Success!", :html => newAd.errors.messages}
         render :json => msg
       }
     end
@@ -94,4 +96,5 @@ class AdController < ApplicationController
       }
     end
   end
+  
 end
