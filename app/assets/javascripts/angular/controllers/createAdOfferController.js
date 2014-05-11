@@ -1,7 +1,9 @@
-App.controller('createAdOfferController', ['$scope', '$filter', 'AdOffer',
-function($scope, $filter, AdOffer) {
+App.controller('createAdOfferController', ['$scope', '$filter', 'AdOffer','AdTypes',
+function($scope, $filter, AdOffer,AdTypes) {
 	$scope.ad = {};
+	$scope.tipovi = AdTypes.query();
 	$scope.poruka='';
+	$scope.uspjesno=0;
 	$scope.ad_types = ['TV', 'Radio', 'Bilbord', 'Web', 'Novine'];
 	$scope.today = function() {
 		$scope.ad.date_start = new Date();
@@ -50,11 +52,16 @@ function($scope, $filter, AdOffer) {
 			date_start : $filter('date')($scope.ad.date_start, 'dd.MM.yyyy HH:mm'),
 			date_end : $filter('date')($scope.ad.date_end, 'dd.MM.yyyy HH:mm'),
 			visibility : $scope.ad.visibility,
-			ad_type_id : 1,
-			max_duration : $filter('number')($scope.ad.max_duration, 0)
+			ad_type_id : $scope.ad.ad_type,
+			max_duration : $filter('number')($scope.ad.max_duration||0, 0)
 
 		};
 		var odgovor=AdOffer.get(data,function(){
+			$scope.poruka=JSON.stringify(odgovor.errors);
+			if($scope.poruka=="{}"){
+				$scope.uspjesno=1;
+				$scope.poruka='';
+			}else
 			$scope.poruka=JSON.stringify(odgovor.errors);
 		});
 

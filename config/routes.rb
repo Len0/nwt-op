@@ -8,6 +8,8 @@ NWTMarketinghub::Application.routes.draw do
   get 'ad/update', to: 'ad#update'
   get 'ad/delete', to: 'ad#delete'
   get 'ad/buy', to: 'ad#buy'
+  get 'ad/create_type', to: 'ad#create_type'
+  get 'ad/all_types', to: 'ad#all_types'
 
   get 'search/users', :to => 'search#users'
   get 'search/ads', :to => 'search#ads'
