@@ -35,6 +35,7 @@
 					<% end %>
 				</ul>
 				<% if session[:user_id] == nil %>
+                  <div ng-show={{visibility}}>
 				<form accept-charset="UTF-8" class="navbar-form pull-right"  class="formclass" method="post">
 					<input class="span2" type="text" name="username" ng-model="user.username" placeholder="<%= t "user.username" %>">
 
@@ -46,7 +47,8 @@
 
 					<div class="row">
 						<div class="span1">
-							<%= link_to ( t "nav.register"), new_user_path,  'data-no-turbolink' => true, :style => "color:Gainsboro;" %>
+                          <a href="/#/register">Register</a>
+
 						</div>
 						<div class="span3">
 							<%= link_to (t "nav.forgotten_pass"), pwd_recovery_path, 'data-no-turbolink' => true, :style => "color:Gainsboro;" %>
@@ -55,8 +57,9 @@
 					</div>
 
 				</form>
+                  </div>
 				<% else %>
-				<div class="navbar-form pull-right" >
+				<div class="navbar-form pull-right" ng-show={{visibility}} >
 
 					<div class="navbar-inner">
 						<p class="nav navbar-text">

@@ -14,7 +14,11 @@ window.App = angular.module('App', ['ngRoute','ui.bootstrap','ngResource'])
     }).
     when('/createAdOffer',{
     	templateUrl: 'partials/unosAdOffer.html',
-    	controller: 'createAdOfferController'
+    	controller: 'userRegistrationController'
+    }).
+    when('/register',{
+          templateUrl: 'partials/userRegister.html',
+          controller: 'createAdOfferController'
     }).otherwise({
         redirectTo: '/home',
         templateUrl: 'partials/home.html',
