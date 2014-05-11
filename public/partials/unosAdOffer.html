@@ -6,25 +6,25 @@
 			<div class="control-group">
 				<label class="control-label" for="naslov"> Naslov:</label>
 				<div class="controls">
-					<input type="text" id="naslov" ng-model="ad.title"/>
+					<input type="text" id="naslov" ng-model="ad.title" required=""/>
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="naslov"> Podlaslov:</label>
 				<div class="controls">
-					<input type="text" id="podnaslov" ng-model="ad.subtitle"/>
+					<input type="text" id="podnaslov" ng-model="ad.subtitle" required=""/>
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="opis">Opis:</label>
 				<div class="controls">
-					<textarea id="opis" ng-model="ad.description"></textarea>
+					<textarea id="opis" ng-model="ad.description" required></textarea>
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="cijena">Cijena:</label>
 				<div class="controls">
-					<input id="cijena" type="text" ng-model="ad.price" />
+					<input id="cijena" type="number" ng-model="ad.price" required=""/>
 
 				</div>
 				<label class="control-label" for="jedinica">po:</label>
@@ -80,7 +80,7 @@
 
 				<label class="control-label" for="trajanje">Trajanje:</label>
 				<div class="controls">
-					<input id="vidljivost" type="text" ng-model="ad.max_duration" placeholder="maksimalno trajanje u sekundama"/>
+					<input id="vidljivost" type="number" ng-model="ad.max_duration" placeholder="maksimalno trajanje u sekundama"/>
 				</div>
 			</div>
 			{{poruka}}
@@ -91,6 +91,7 @@
 					</button>
 				</div>
 			</div>
+			<div ng-show="uspjesno==1">Uspješno ste dodali novu reklamu!</div>
 		</form>
 	</div>
 </div>
