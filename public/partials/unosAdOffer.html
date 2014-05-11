@@ -71,12 +71,12 @@
 			<div class="control-group">
 				<label class="control-label" for="tip">Tip reklame:</label>
 				<div class="controls">
-					<select id="tip" ng-model="ad.ad_type" ng-options="type for type in ad_types">
+					<select id="tip" ng-model="ad.ad_type" ng-options="type.id as type.ad_type for type in tipovi">
 
 					</select>
 				</div>
 			</div>
-			<div class="control-group" ng-show="ad.ad_type=='TV' || ad.ad_type=='Radio'">
+			<div class="control-group" ng-show="ad.ad_type==1 || ad.ad_type==2">
 
 				<label class="control-label" for="trajanje">Trajanje:</label>
 				<div class="controls">
