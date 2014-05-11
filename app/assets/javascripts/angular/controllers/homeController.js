@@ -2,9 +2,9 @@
 
 App.controller ('homeController', ['$scope', '$location', function($scope, $location){
 
-    $scope.searchAds = function(searchText) {
+    $scope.searchAds = function(search) {
         console.log("Search Ads Clicked");
-        $location.url("/searchAds/" + searchText);
+        $location.url("/searchAds/" + search.text);
 
         $scope.searchText = "";
     }

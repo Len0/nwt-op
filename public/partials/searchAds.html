@@ -3,8 +3,19 @@
         <form name="searchAdsForm">
             <div class="input-append">
                 <input type="text" ng-model="searchText" class="form-control" name="search" id="search" placeholder="Pretraga oglasa" style="width: 750px;" required value="{{searchText}}" />
-                <button ng-click="searchAds(searchText)" class="btn btn-default" ng-disabled="searchAdsForm.$invalid">Traži</button>
+                <button ng-click="searchAds()" class="btn btn-default" ng-disabled="searchAdsForm.$invalid">Traži</button>
             </div>
         </form>
+        <div class="list-group">
+            <a href="#" class="list-group-item" ng-repeat="ad in ads">
+                <h4 class="list-group-item-heading">
+                    {{ad.title}}
+                </h4>
+                <p class="list-group-item-text">
+                    {{ad.subtitle}}
+                </p>
+                <hr />
+            </a>
+        </div>
     </div>
 </div>

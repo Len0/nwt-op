@@ -22,14 +22,14 @@ class AdOffer < ActiveRecord::Base
   def self.search(keyword, type, price)
     query = ""
     if keyword
-      query = "title LIKE '%#{keyword}%' OR subtitle LIKE '%#{keyword}%'"
+      query = "(title LIKE '%#{keyword}%' OR subtitle LIKE '%#{keyword}%')"
     end
 
     if type
       if query.length == 0
         query += "ad_type_id = #{type}"
       else
-        query += " OR ad_type_id = #{type}"
+        query += " AND ad_type_id = #{type}"
       end
     end
 
@@ -37,7 +37,7 @@ class AdOffer < ActiveRecord::Base
       if query.length == 0
         query += "price <= #{price}"
       else
-        query += " OR price <= #{price}"
+        query += " AND price <= #{price}"
       end
     end
     if query.length > 0
