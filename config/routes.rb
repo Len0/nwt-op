@@ -14,7 +14,8 @@ NWTMarketinghub::Application.routes.draw do
   get 'search/users', :to => 'search#users'
   get 'search/ads', :to => 'search#ads'
 
-
+  get 'usluga/all', to: 'usluga#all'
+  post 'usluga/create', to: 'usluga#create'
   get 'ads/index'
 
   resources :users

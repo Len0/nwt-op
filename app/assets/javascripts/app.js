@@ -19,6 +19,10 @@ window.App = angular.module('App', ['ngRoute','ui.bootstrap','ngResource'])
     when('/register',{
           templateUrl: 'partials/userRegister.html',
           controller: 'userRegistrationController'
+    }).
+    when('/cjenovnik',{
+    	templateUrl: 'partials/userUsluga.html',
+    	controller: 'userUslugaController'
     }).otherwise({
         redirectTo: '/home',
         templateUrl: 'partials/home.html',

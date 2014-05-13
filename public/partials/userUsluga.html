@@ -1,0 +1,47 @@
+<div class="container">
+	<div class="hero-unit">
+		<h1>Cjenovnik</h1>
+		<br>
+		<table class="table table-condensed">
+		<tr>
+			<th>Naziv usluge</th>
+			<th>Kratak opis</th>
+			<th>Cijena</th>
+		</tr>
+		<tr ng-repeat="uslugaX in uslugas">
+			<td>{{uslugaX.name}}</td>
+			<td>{{uslugaX.description}}</td>
+			<td>{{uslugaX.price}}</td>
+		</tr>
+		</table>
+
+		<form class="form-control">
+			<div class="control-group">
+				<label class="control-label" for="name"> Naziv:</label>
+				<div class="controls">
+					<input type="text" id="name" ng-model="usluga.name" required=""/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="description"> Opis:</label>
+				<div class="controls">
+					<input type="text" id="description" ng-model="usluga.description" required=""/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="price">Cijena:</label>
+				<div class="controls">
+					<input type="number" id="price" ng-model="usluga.price">
+					</textarea>
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls">
+					<button class="btn-primary" ng-click="posalji()">
+						Unesi
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

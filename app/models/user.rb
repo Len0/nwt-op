@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :discussions
   has_many :reviews
   has_many :logs
+  has_many :uslugas
   belongs_to :user_type
 
 
