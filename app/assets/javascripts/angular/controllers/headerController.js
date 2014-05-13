@@ -1,5 +1,5 @@
 App.controller ('headerController', ['$scope','$http', function($scope,$http){
-        $scope.visibility = 1;
+        $("#logoutForm").hide();
         $scope.loadLok = function(lok){
         	$http.get(lok).success(function(){
         		location.reload(true);
@@ -12,20 +12,21 @@ App.controller ('headerController', ['$scope','$http', function($scope,$http){
 
         };
             $scope.userLogin = function(user){
-                $scope.visibility = 0;
-                $http({
 
-                    url: '/user/login',
+                $http({
+                    url: '/user/login.json',
                     method: "POST",
                     data: $.param($scope.user) ,
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function (data, status, headers, config) {
+                        $("#loginForm").hide();
+                        $("#logoutForm").show(1000);
 
-                        $scope.data = data;
+                        $scope.data =  data;
+                        $scope.userLog = data.user;
 
                     }).error(function (data, status, headers, config) {
-
-                        $scope.status = status;
+                         $scope.status = status;
                     });
 
             };
