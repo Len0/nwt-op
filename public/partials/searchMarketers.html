@@ -3,7 +3,7 @@
         <h5>Pronađeno: {{numberFound}}</h5>
         <hr />
         <div class="list-group">
-            <a href="#" class="list-group-item" ng-repeat="marketer in marketers">
+            <a href="#/oglasivac/{{marketer.id}}" class="list-group-item" ng-repeat="marketer in marketers">
                 <h4 class="list-group-item-heading">
                     {{marketer.name}}
                 </h4>

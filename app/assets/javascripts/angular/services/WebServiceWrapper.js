@@ -43,6 +43,29 @@ App.factory('webServiceWrapper', function ($resource, $http) {
                 error (function (data, status, headers, config) {
                 console.log("Error: " + data);
             });
+        },
+
+
+        getUser: function (id, callback) {
+            console.log("getUser Call to WebService. ID: " + id);
+            $http({method: 'GET', url: 'user/get/' + id}).
+                success(function (data, status, headers, config) {
+                    callback(data);
+                }).
+                error (function (data, status, headers, config) {
+                console.log("Error: " + data);
+            });
+        },
+
+        getAd: function(id, callback) {
+            console.log("getAd Call to WebService. ID: " + id);
+            $http({method: 'GET', url: 'ad/get/' + id}).
+                success(function (data, status, headers, config) {
+                    callback(data);
+                }).
+                error (function (data, status, headers, config) {
+                console.log("Error: " + data);
+            });
         }
 
     };

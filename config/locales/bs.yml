@@ -274,11 +274,12 @@ bs:
     invalid_fields: Neka polja su neispravna.
 
   password_recovery:
-    successfully_created: 'Token za povrat passworda uspješno kreiran.'
-    successfully_updated: 'Token za povrat passworda uspješno ažuriran.'
+    successfully_created: Token za povrat passworda uspješno kreiran.
+    successfully_updated: Token za povrat passworda uspješno ažuriran.
 
   ad:
     ads: Reklame
+    doesnt_exist: Reklama ne postoji
 
   dashboard:
     registrated_users_per_date: Graf koliko je korisnika registrovano na dati datum

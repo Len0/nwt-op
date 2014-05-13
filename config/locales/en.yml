@@ -41,11 +41,12 @@ en:
       invalid_fields: Some fields are invalid.
 
   password_recovery:
-      successfully_created: 'Password recovery token was successfully created.'
-      successfully_updated: 'Password recovery token was successfully updated.'
+      successfully_created: Password recovery token was successfully created.
+      successfully_updated: Password recovery token was successfully updated.
 
   ad:
       ads: Ads
+      doesnt_exist: Ad doesn't exist
 
   dashboard:
       ratio_of_activated_users: Ratio of activated user accounts
