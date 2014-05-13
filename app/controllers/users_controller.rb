@@ -96,7 +96,7 @@ class UsersController < ApplicationController
       logger.debug @user.user_type
       respond_to do |format|
         format.json {
-          render :json => {:error => "false", :message => (t "user.logged_in_successfully")}
+          render :json => {:error => "false", :message => (t "user.logged_in_successfully"), :user => @user}
         }
         format.html {
           redirect_to root_path, :notice => (t "user.logged_in_successfully")
