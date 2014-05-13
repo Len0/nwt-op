@@ -43,6 +43,16 @@ class User < ActiveRecord::Base
     where("name LIKE ?", "%#{query}%")
   end
 
+
+  def self.getMarketers(name)
+    query = "user_type_id=3"
+    if name
+      query += " AND upper(name) LIKE upper('%#{name}%')"
+    end
+
+    User.where query
+  end
+
   def User.encrypt_password(password, salt)
     Digest::SHA2.hexdigest(password + "emir" + salt)
   end
@@ -63,6 +73,8 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+
 
   private
 

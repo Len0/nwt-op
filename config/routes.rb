@@ -5,6 +5,7 @@ NWTMarketinghub::Application.routes.draw do
   get 'indexSearch', :controller => 'users', :action => :indexSearch, as: 'indexSearch'
 
   get 'ad/create', to: 'ad#create'
+  get 'ad/get/(:id)', to: 'ad#get'
   get 'ad/update', to: 'ad#update'
   get 'ad/delete', to: 'ad#delete'
   get 'ad/buy', to: 'ad#buy'
@@ -13,6 +14,7 @@ NWTMarketinghub::Application.routes.draw do
 
   get 'search/users', :to => 'search#users'
   get 'search/ads', :to => 'search#ads'
+  get 'search/marketers', :to => 'search#marketers'
 
   get 'usluga/all', to: 'usluga#all'
   post 'usluga/create', to: 'usluga#create'

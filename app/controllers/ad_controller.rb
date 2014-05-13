@@ -117,4 +117,17 @@ class AdController < ApplicationController
 
   end
 
+  def get
+    ad = AdOffer.where(id: params[:id]).first
+    respond_to do |format|
+      format.json {
+        if ad.nil?
+          render :json => {:error => "true", :message => (t "ad.doesnt_exist")}
+        else
+          render :json => ad
+        end
+      }
+    end
+  end
+
 end

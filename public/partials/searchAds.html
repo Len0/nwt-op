@@ -6,8 +6,10 @@
                 <button ng-click="searchAds()" class="btn btn-default" ng-disabled="searchAdsForm.$invalid">Traži</button>
             </div>
         </form>
+        <h5>Pronađeno: {{numberFound}}</h5>
+        <hr />
         <div class="list-group">
-            <a href="#" class="list-group-item" ng-repeat="ad in ads">
+            <a href="#/oglas/{{ad.id}}" class="list-group-item" ng-repeat="ad in ads">
                 <h4 class="list-group-item-heading">
                     {{ad.title}}
                 </h4>

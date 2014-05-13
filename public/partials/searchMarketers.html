@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="hero-unit">
+        <h5>Pronađeno: {{numberFound}}</h5>
+        <hr />
+        <div class="list-group">
+            <a href="#/oglasivac/{{marketer.id}}" class="list-group-item" ng-repeat="marketer in marketers">
+                <h4 class="list-group-item-heading">
+                    {{marketer.name}}
+                </h4>
+                <p class="list-group-item-text">
+                    {{marketer.email}}
+                </p>
+                <hr />
+            </a>
+        </div>
+    </div>
+</div>
