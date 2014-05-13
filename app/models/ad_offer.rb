@@ -22,7 +22,7 @@ class AdOffer < ActiveRecord::Base
   def self.search(keyword, type, price)
     query = ""
     if keyword
-      query = "(title LIKE '%#{keyword}%' OR subtitle LIKE '%#{keyword}%')"
+      query = "(upper(title) LIKE upper('%#{keyword}%') OR upper(subtitle) LIKE upper('%#{keyword}%'))"
     end
 
     if type
@@ -42,6 +42,8 @@ class AdOffer < ActiveRecord::Base
     end
     if query.length > 0
       ads = AdOffer.where query
+    else
+      ads = AdOffer.all
     end
     ads
   end

@@ -10,6 +10,19 @@ class SearchController < ApplicationController
     end
   end
 
+
+  def marketers
+    respond_to do |format|
+      format.json {
+        if params[:name]
+          users = User.getMarketers params[:name]
+          render :json => users
+        end
+      }
+    end
+  end
+
+
   def ads
     respond_to do |format|
       format.json {

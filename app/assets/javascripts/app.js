@@ -8,9 +8,13 @@ window.App = angular.module('App', ['ngRoute','ui.bootstrap','ngResource'])
     when('/client',{
         templateUrl: 'partials/client.html'
     }).
-    when('/searchAds/:searchText',{
+    when('/searchAds/:text/:price/:type',{
         templateUrl: 'partials/searchAds.html',
         controller: 'searchAdsController'
+    }).
+    when('/searchMarketers/:name',{
+        templateUrl: 'partials/searchMarketers.html',
+        controller: 'searchMarketersController'
     }).
     when('/createAdOffer',{
     	templateUrl: 'partials/unosAdOffer.html',

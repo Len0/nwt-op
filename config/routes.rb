@@ -13,6 +13,7 @@ NWTMarketinghub::Application.routes.draw do
 
   get 'search/users', :to => 'search#users'
   get 'search/ads', :to => 'search#ads'
+  get 'search/marketers', :to => 'search#marketers'
 
 
   get 'ads/index'
