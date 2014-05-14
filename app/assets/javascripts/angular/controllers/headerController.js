@@ -1,6 +1,17 @@
 App.controller ('headerController', ['$scope','$http','$cookieStore', function($scope,$http, $cookieStore){
+    $scope.currentUser = function(){
+        $http.get('/user/current.json').success(function (data, status, headers, config) {
+            $scope.data2 =  data;
+            $scope.userType = data.userType;
+            $scope.userName = data.username;
+        }).error(function (data, status, headers, config) {
+                $scope.data2 = status;
+            });
 
+        return $scope.userName;
+    };
         $scope.updateInfo = function(){
+        $scope.currentUser();
         $scope.loggedIn = $cookieStore.get('loggedin');
 
         if ($scope.loggedIn == "true") {
@@ -11,6 +22,7 @@ App.controller ('headerController', ['$scope','$http','$cookieStore', function($
         }};
 
         $scope.updateInfo();
+
 
         $scope.loadLok = function(lok){
         	$http.get(lok).success(function(){
@@ -24,17 +36,6 @@ App.controller ('headerController', ['$scope','$http','$cookieStore', function($
                 location.reload(true);
             }); };
 
-        $scope.currentUser = function(){
-            $http.get('/user/current.json').success(function (data, status, headers, config) {
-                    $scope.data2 =  data;
-                    $scope.userType = data.userType;
-                    $scope.userName = data.username;
-                }).error(function (data, status, headers, config) {
-                    $scope.data2 = status;
-                });
-
-
-            };
 
             $scope.userLogin = function(user){
 
@@ -44,17 +45,20 @@ App.controller ('headerController', ['$scope','$http','$cookieStore', function($
                     data: $.param($scope.user) ,
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function (data, status, headers, config) {
-                        $("#loginForm").hide;
-                        $("#logoutForm").show(500);
-                        $cookieStore.put('loggedin',"true");
-                        $scope.currentUser();
-                        $scope.updateInfo();
                         $scope.data =  data;
-                        $scope.userLog = data.user;
+                        if(data.error == "false"){
+                            $("#loginForm").hide;
+                            $("#logoutForm").show(500);
+                            $cookieStore.put('loggedin',"true")
+                            $scope.updateInfo();
+                            if(data.type == 1){
+                                $scope.adminLog = "true";
+                            } else
+                            {
+                                $scope.adminLog = "false";
+                            }
 
-
-
-                    }).error(function (data, status, headers, config) {
+                        }}).error(function (data, status, headers, config) {
                          $scope.status = status;
                     });
 
