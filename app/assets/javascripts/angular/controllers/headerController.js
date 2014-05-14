@@ -58,7 +58,10 @@ App.controller ('headerController', ['$scope','$http','$cookieStore', function($
                                 $scope.adminLog = "false";
                             }
 
-                        }}).error(function (data, status, headers, config) {
+                        } else{
+                            $scope.userCredsError = "true";
+                        }
+                    }).error(function (data, status, headers, config) {
                          $scope.status = status;
                     });
 

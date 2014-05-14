@@ -52,6 +52,8 @@
 						</button>
 
                   <div class="row">
+                    <p style="color: red" ng-show="userCredsError">Pogresni pristupni podaci!</p>
+
                     <div class="span1">
                       <%= link_to ( t "nav.register"), new_user_path,  'data-no-turbolink' => true, :style => "color:Gainsboro;" %>
 							</div>
