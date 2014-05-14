@@ -16,7 +16,7 @@ window.App = angular.module('App', ['ngRoute','ui.bootstrap','ngResource'])
         templateUrl: 'partials/searchMarketers.html',
         controller: 'searchMarketersController'
     }).
-    when('/oglas/:if',{
+    when('/oglas/:id',{
         templateUrl: 'partials/pregledOglasa.html',
         controller: 'viewAdController'
     }).

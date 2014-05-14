@@ -118,7 +118,7 @@ class AdController < ApplicationController
   end
 
   def get
-    ad = AdOffer.where(id: params[:id]).first
+    ad = AdOffer.find(params[:id])
     respond_to do |format|
       format.json {
         if ad.nil?

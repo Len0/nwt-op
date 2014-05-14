@@ -1,6 +1,6 @@
 'use strict';
 
-App.factory('webServiceWrapper', function ($resource, $http) {
+App.factory('webServiceWrapper', function ($resource, $http, $filter) {
     return {
         searchAds: function (searchText, price, type, callback) {
             console.log("searchAds Call to WebService");
@@ -48,7 +48,7 @@ App.factory('webServiceWrapper', function ($resource, $http) {
 
         getUser: function (id, callback) {
             console.log("getUser Call to WebService. ID: " + id);
-            $http({method: 'GET', url: 'user/get/' + id}).
+            $http({method: 'GET', url: 'user/get/' + id + '.json'}).
                 success(function (data, status, headers, config) {
                     callback(data);
                 }).
@@ -59,7 +59,18 @@ App.factory('webServiceWrapper', function ($resource, $http) {
 
         getAd: function(id, callback) {
             console.log("getAd Call to WebService. ID: " + id);
-            $http({method: 'GET', url: 'ad/get/' + id}).
+            $http({method: 'GET', url: 'ad/get/' + id + '.json'}).
+                success(function (data, status, headers, config) {
+                    callback(data);
+                }).
+                error (function (data, status, headers, config) {
+                console.log("Error: " + data);
+            });
+        },
+
+        buyAd: function(adID, units, dateStart, callback) {
+            console.log("buyAd Call to WebService. ID: " + adID);
+            $http({method: 'GET', url: 'ad/buy.json?ad_offer_id=' + adID + '&duration=' + units + '&date_start=' + $filter('date')(dateStart, 'dd.MM.yyyy HH:mm')}).
                 success(function (data, status, headers, config) {
                     callback(data);
                 }).

@@ -8,4 +8,8 @@ App.controller ('viewMarketerController', ['$scope', '$routeParams', 'webService
         $scope.marketer = data;
         console.log($scope.marketer);
     });
+
+
+    $scope.buyAd = function(id) {
+    }
 }]);
