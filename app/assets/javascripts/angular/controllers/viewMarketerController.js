@@ -9,7 +9,4 @@ App.controller ('viewMarketerController', ['$scope', '$routeParams', 'webService
         console.log($scope.marketer);
     });
 
-
-    $scope.buyAd = function(id) {
-    }
 }]);
