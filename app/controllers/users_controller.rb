@@ -96,7 +96,7 @@ class UsersController < ApplicationController
       logger.debug @user.user_type
       respond_to do |format|
         format.json {
-          render :json => {:error => "false", :message => (t "user.logged_in_successfully"), :user => @user}
+          render :json => {:error => "false", :message => (t "user.logged_in_successfully")}
         }
         format.html {
           redirect_to root_path, :notice => (t "user.logged_in_successfully")
@@ -124,6 +124,14 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+  end
+
+  def current
+    respond_to do |format|
+      format.json {
+        render :json => {:username => session[:user_name], :userType => session[:user_type]}
+      }
+     end
   end
   
   

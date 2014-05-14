@@ -1,4 +1,4 @@
-window.App = angular.module('App', ['ngRoute','ui.bootstrap','ngResource'])
+window.App = angular.module('App', ['ngRoute','ui.bootstrap','ngResource', 'ngCookies'])
 .config(['$routeProvider', function($routeProvider)
 {
   $routeProvider.
