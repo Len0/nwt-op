@@ -51,6 +51,7 @@ NWTMarketinghub::Application.routes.draw do
   get 'user/get/(:id)', to: 'users#get'
   get 'user/logout', to: 'users#logout'
   get 'user/activate/:act_hash', to: 'users#activation', :as => :activation
+  get 'user/current', to: 'users#current'
 
   post 'user/ban', to: 'users#ban', :as => :user_ban
   post 'user/unban', to: 'users#unban', :as => :user_unban
