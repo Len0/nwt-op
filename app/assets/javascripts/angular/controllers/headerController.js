@@ -1,12 +1,16 @@
 App.controller ('headerController', ['$scope','$http','$cookieStore', function($scope,$http, $cookieStore){
-        $("#logoutForm").hide();
+
+        $scope.updateInfo = function(){
         $scope.loggedIn = $cookieStore.get('loggedin');
+
         if ($scope.loggedIn == "true") {
-            $scope.loggedOut = "";
+            $scope.loggedOut = "false";
         }
         else {
             $scope.loggedOut = "true";
-        }
+        }};
+
+        $scope.updateInfo();
 
         $scope.loadLok = function(lok){
         	$http.get(lok).success(function(){
@@ -16,6 +20,7 @@ App.controller ('headerController', ['$scope','$http','$cookieStore', function($
         $scope.userLogout = function(){
             $http.get('/user/logout').success(function(){
                 $cookieStore.put('loggedin', "false");
+                $scope.updateInfo();
                 location.reload(true);
             }); };
 
@@ -39,7 +44,11 @@ App.controller ('headerController', ['$scope','$http','$cookieStore', function($
                     data: $.param($scope.user) ,
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function (data, status, headers, config) {
+                        $("#loginForm").hide;
+                        $("#logoutForm").show(500);
                         $cookieStore.put('loggedin',"true");
+                        $scope.currentUser();
+                        $scope.updateInfo();
                         $scope.data =  data;
                         $scope.userLog = data.user;
 
