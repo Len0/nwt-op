@@ -1,6 +1,6 @@
 'use strict';
 
-App.factory('webServiceWrapper', function ($resource, $http, $filter) {
+App.factory('webServiceWrapper','$resource','$http','$filter', function ($resource, $http, $filter) {
     return {
         searchAds: function (searchText, price, type, callback) {
             console.log("searchAds Call to WebService");
