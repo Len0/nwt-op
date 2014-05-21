@@ -1,4 +1,4 @@
-window.App = angular.module('App', ['ngRoute','ui.bootstrap','ngResource', 'ngCookies'])
+window.App = angular.module('App', ['angularFileUpload','ngRoute','ui.bootstrap','ngResource', 'ngCookies'])
 .config(['$routeProvider', function($routeProvider)
 {
   $routeProvider.
@@ -35,6 +35,10 @@ window.App = angular.module('App', ['ngRoute','ui.bootstrap','ngResource', 'ngCo
     when('/cjenovnik',{
     	templateUrl: 'partials/userUsluga.html',
     	controller: 'userUslugaController'
+    }).
+    when('/upload',{
+    	templateUrl: 'partials/fileUpload.html',
+    	controller: 'uploadController'
     }).otherwise({
         redirectTo: '/home',
         templateUrl: 'partials/home.html',

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513132559) do
+ActiveRecord::Schema.define(version: 20140521142732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,12 @@ ActiveRecord::Schema.define(version: 20140513132559) do
     t.text     "content"
     t.integer  "ad_offer_id"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "file_media", force: true do |t|
+    t.string   "lokacija"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

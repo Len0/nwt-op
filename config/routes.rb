@@ -1,4 +1,5 @@
 NWTMarketinghub::Application.routes.draw do
+  get "file_media/create"
   #root :controller => 'pages', :action => :home
   # Pages routes
   get 'admin_panel/:menu', :controller => 'pages', :action => :admin_panel, as: 'admin_panel'
@@ -19,7 +20,8 @@ NWTMarketinghub::Application.routes.draw do
   get 'usluga/all', to: 'usluga#all'
   post 'usluga/create', to: 'usluga#create'
   get 'ads/index'
-
+  
+  post 'filemedia/create', to: 'file_media#create'
   resources :users
   resources :password_recovery_tokens
 
