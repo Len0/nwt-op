@@ -12,11 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require angular-file-upload-shim.min
 //= require angular
 //= require angular-resource
 //= require angular-route
-//= require angular-file-upload.min
 //= require turbolinks
 //= require Chart.min
 //= require app
