@@ -188,11 +188,6 @@ class UsersController < ApplicationController
           format.json { render json: @user.errors, status: :unprocessable_entity }
         end
       end
-    else
-      respond_to do |format|
-        format.html { redirect_to new_user_path, notice: (t user.invalid_fields) }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
   end
   
   def edit

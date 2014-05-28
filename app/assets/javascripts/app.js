@@ -39,7 +39,11 @@ window.App = angular.module('App', ['angularFileUpload','ngRoute','ui.bootstrap'
     when('/upload',{
     	templateUrl: 'partials/fileUpload.html',
     	controller: 'uploadController'
-    }).otherwise({
+    }).
+      when('/search',{
+          templateUrl: 'partials/home.html',
+          controller: 'homeController'
+      }).otherwise({
         redirectTo: '/client'
         //,
         //templateUrl: 'partials/home.html',
