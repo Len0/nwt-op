@@ -77,6 +77,21 @@ App.factory('webServiceWrapper',['$resource','$http','$filter', function ($resou
                 error (function (data, status, headers, config) {
                 console.log("Error: " + data);
             });
+        },
+
+        registerUser: function(user, callback){
+            alert("##Kreiranje korisnika##");
+
+            $http({
+                url: '/user/create.json',
+                method: "POST",
+                data: $.param($scope.user) ,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function (data, status, headers, config) {
+                    $scope.data =  data;
+                }).error(function (data, status, headers, config) {
+                    $scope.status = status;
+                });
         }
 
     };

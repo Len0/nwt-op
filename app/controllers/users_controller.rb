@@ -175,14 +175,9 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
    def create
-    if verify_recaptcha
       @user = User.new(user_params)
       @user.is_activated = 0
       @user.is_banned = 0
-
-
-
-
       respond_to do |format|
         if @user.save
           UserMailer.activate_account(@user).deliver
@@ -198,7 +193,6 @@ class UsersController < ApplicationController
         format.html { redirect_to new_user_path, notice: (t user.invalid_fields) }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
-    end
   end
   
   def edit

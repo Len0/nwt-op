@@ -39,6 +39,7 @@ en:
       succesfully_created: User was successfully created.
       succesfully_updated: User was successfully updated.
       invalid_fields: Some fields are invalid.
+      register: Register
 
   password_recovery:
       successfully_created: Password recovery token was successfully created.

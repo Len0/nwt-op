@@ -1,15 +1,14 @@
 'use strict';
 
 App.controller ('userRegistrationController', ['$scope', '$http', '$location', function($scope, $http, $location){
-    $scope.register = function(user){
-
+    $scope.registerUser = function(user){
        $http({
-        url: '/user/create',
+        url: '/user/create.json',
         method: "POST",
-        data: $.param($scope.user) ,
+        data: $.param($scope.newUser) ,
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
     }).success(function (data, status, headers, config) {
-            $scope.data =  data;
+               alert("kurac");
         }).error(function (data, status, headers, config) {
             $scope.status = status;
         });

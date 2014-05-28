@@ -55,7 +55,7 @@
                     <p style="color: red" ng-show="userCredsError">Pogresni pristupni podaci!</p>
 
                     <div class="span1">
-                      <%= link_to ( t "nav.register"), new_user_path,  'data-no-turbolink' => true, :style => "color:Gainsboro;" %>
+                      <a href="/#/register"><%= t "user.register" %></a>
 							</div>
 							<div class="span3">
 								<%= link_to (t "nav.forgotten_pass"), pwd_recovery_path, 'data-no-turbolink' => true, :style => "color:Gainsboro;" %>

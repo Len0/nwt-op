@@ -272,6 +272,7 @@ bs:
     succesfully_created: Korisnik uspješno kreiran.
     succesfully_updated: Korisnik je uspješno ažuriran.
     invalid_fields: Neka polja su neispravna.
+    register: Registracija
 
   password_recovery:
     successfully_created: Token za povrat passworda uspješno kreiran.
