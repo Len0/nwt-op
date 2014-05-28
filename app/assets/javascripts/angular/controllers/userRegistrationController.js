@@ -9,7 +9,7 @@ App.controller ('userRegistrationController', ['$scope', '$http', '$location', f
         data: $.param(confuser) ,
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
     }).success(function (data, status, headers, config) {
-               alert("kurac");
+               $scope.data = data;
         }).error(function (data, status, headers, config) {
             $scope.status = status;
         });
