@@ -66,10 +66,25 @@ overflow:hidden;
 }
 .btn-inverse{
   background-image: linear-gradient(to bottom, #3E423A, #6C6E58);
-  color: #F4F7D9;
+  color: #F4F4F4;
   border: none;
 }
 .hero-unit{
   background-color: #F4F7D9;
 }
+.banner{
+  position:relative
+}
 
+.next{
+  background-image: linear-gradient(to bottom, #FEFEFE, #FFFFFF);
+    color: #3E423A;
+    font: 36px Verdana;
+    left: 390px;
+    position: absolute;
+    text-decoration: underline;
+    top: 200px;
+}
+.next:hover{
+  color: #6C6E58;
+}
