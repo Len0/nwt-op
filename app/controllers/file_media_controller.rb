@@ -13,6 +13,15 @@ class FileMediaController < ApplicationController
       }
     end
   end
+  
+  def all
+    respond_to do |format|
+    format.json{
+      files = FileMedia.all
+      render :json=>files
+    }
+  end
+  end
   private
 
   def media_params
