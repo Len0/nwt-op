@@ -40,8 +40,9 @@ window.App = angular.module('App', ['angularFileUpload','ngRoute','ui.bootstrap'
     	templateUrl: 'partials/fileUpload.html',
     	controller: 'uploadController'
     }).otherwise({
-        redirectTo: '/home',
-        templateUrl: 'partials/home.html',
-        controller: 'homeController'
+        redirectTo: '/client'
+        //,
+        //templateUrl: 'partials/home.html',
+        //controller: 'homeController'
     });
 }]);
