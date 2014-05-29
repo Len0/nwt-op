@@ -32,11 +32,11 @@ Discussion.create([{content: "Extra!", ad_offer_id: 1, user_id: 6},
                    {content: "Daj dzaba", ad_offer_id: 3, user_id: 6}
                   ])
 
-Review.create([{content: "Extra!", rating: 3, ad_offer_id: 1, user_id: 1},
-                   {content: "Super!", rating: 3, ad_offer_id: 1, user_id: 2},
-                   {content: "Ovo je dobro", rating: 3, ad_offer_id: 2, user_id: 3},
-                   {content: "Ovo ne navalja nista", rating: 3, ad_offer_id: 2, user_id: 4},
-                   {content: "Daj dzaba", rating: 3, ad_offer_id: 3, user_id: 5}
+Review.create([{content: "Extra!", rating: 3, user_id: 1},
+                   {content: "Super!", rating: 3, user_id: 2},
+                   {content: "Ovo je dobro", rating: 3,user_id: 3},
+                   {content: "Ovo ne navalja nista", rating: 3, user_id: 4},
+                   {content: "Daj dzaba", rating: 3, user_id: 5}
                   ])
 
 AdBought.create([{date_start: Date.today.to_s, duration: 30, ad_offer_id: 1, user_id: 1},
