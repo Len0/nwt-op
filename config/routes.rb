@@ -1,5 +1,5 @@
 NWTMarketinghub::Application.routes.draw do
-  get "file_media/create"
+  #get "file_media/create"
   #root :controller => 'pages', :action => :home
   # Pages routes
   get 'admin_panel/:menu', :controller => 'pages', :action => :admin_panel, as: 'admin_panel'
@@ -12,7 +12,8 @@ NWTMarketinghub::Application.routes.draw do
   get 'ad/buy', to: 'ad#buy'
   get 'ad/create_type', to: 'ad#create_type'
   get 'ad/all_types', to: 'ad#all_types'
-
+  get 'ads/all', to: 'ad#all'
+  get 'ad/getadtype', to: 'ad#getadtype'
   get 'search/users', :to => 'search#users'
   get 'search/ads', :to => 'search#ads'
   get 'search/marketers', :to => 'search#marketers'
@@ -20,7 +21,7 @@ NWTMarketinghub::Application.routes.draw do
   get 'usluga/all', to: 'usluga#all'
   post 'usluga/create', to: 'usluga#create'
   get 'ads/index'
-  
+
   post 'filemedia/create', to: 'file_media#create'
   get 'filemedia/all', to: 'file_media#all'
   

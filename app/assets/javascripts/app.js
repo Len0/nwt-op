@@ -6,7 +6,8 @@ window.App = angular.module('App', ['angularFileUpload','ngRoute','ui.bootstrap'
         templateUrl: 'partials/marketer.html'
     }).
     when('/client',{
-        templateUrl: 'partials/client.html'
+        templateUrl: 'partials/client.html',
+        controller: 'clientController'
     }).
     when('/searchAds/:text/:price/:type',{
         templateUrl: 'partials/searchAds.html',
