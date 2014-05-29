@@ -2,9 +2,9 @@ App.controller('clientController',['$scope','AdAll','AdTypes',function($scope,Ad
 	$scope.ads={};
 	$scope.korak=0;
 	$scope.ads=AdAll.query();
-	$scope.dalje=function(){
-		$scope.korak++;
-	};
+	$scope.ads.$promise.then(function (result) {
+    	$scope.ads = result;
+	});
 	$scope.tipovi={};
 	$scope.tipovi=AdTypes.query(function(data){
 		for(var i = 0; i < $scope.ads.length; i++){
@@ -13,5 +13,9 @@ App.controller('clientController',['$scope','AdAll','AdTypes',function($scope,Ad
 			}
 		}
 	});
+	
+	$scope.dalje=function(){
+		$scope.korak++;
+	};
 
 }]);
