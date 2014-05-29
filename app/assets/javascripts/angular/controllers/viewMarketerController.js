@@ -9,4 +9,11 @@ App.controller ('viewMarketerController', ['$scope', '$routeParams', 'webService
         console.log($scope.marketer);
     });
 
+    $scope.ludomRadovanje = function(newReviewItem,marketer, current){
+
+
+
+    };
+
+
 }]);
