@@ -1,20 +1,58 @@
-<div style="min-height: 100%;margin-top: 20%;  position:relative;">
+<div style="min-height: 100%;margin-top: 100px;  position:relative;">
 	<div ng-show="korak==0">
 		<img class="banner" src="mhub.png" />
 		<button class="btn-inverse next" ng-click="dalje()">
 			Dalje
 		</button>
 	</div>
-	<div ng-show="korak==1">
-		<div class="row">
-			<div class="span3" ng-repeat="adX in ads">
-				<a href="#" class="thumbnail">
-					<h4>{{adX.title}}</h4>
-					<strong>{{adX.subtitle}}</strong><br>
-					<small>{{adX.ad_type}}</small>
-				</a>
-			</div>
-		</div>
-	</div>
+
+
+
+    <div ng-show="korak==1">
+        <h2>Odaberite tip reklame</h2>
+        <div class="row">
+            <div class="span4" ng-repeat="tip in tipovi">
+                <div ng-click="tipClick(tip)">
+                    <button class="btn btn-default span4" ng-show="tip != odabraniTip">{{tip.ad_type}}</button>
+                    <button class="btn btn-primary span4" ng-show="tip == odabraniTip">{{tip.ad_type}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="korak==2">
+        <h2>Drugi korak</h2>
+
+    </div>
+
+
+
+
+
+
+
+
+    <div ng-show="korak>0" style="margin: 20px 0;">
+        <button class="btn btn-default" ng-click="nazad()">
+            Nazad
+        </button>
+        <button class="btn btn-success" ng-click="dalje()" ng-show="korak<brKoraka">
+            Dalje
+        </button>
+    </div>
+
+
+    <div ng-show="korak==10">
+        <div class="row">
+            <div class="span3" ng-repeat="adX in ads">
+                <div ng-click="tipClick()" class="active thumbnail">
+                    <h4>{{adX.title}}</h4>
+                    <strong>{{adX.subtitle}}</strong><br>
+                    <small>{{adX.ad_type}}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </div>
