@@ -21,8 +21,17 @@
     </div>
 
     <div ng-show="korak==2">
-        <h2>Drugi korak</h2>
-
+        <h2>Reklame</h2>
+        <div class="row">
+            <div class="span4" ng-repeat="adX in ads">
+                <div class="thumbnail">
+                    <input type="checkbox" style="float: right;" ng-checked="isSelected(adX)" ng-click="updateSelection($event, adX)">
+                    <h4>{{adX.title}}</h4>
+                    <strong>{{adX.subtitle}}</strong><br>
+                    <small>{{adX.ad_type}}</small>
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -42,17 +51,6 @@
     </div>
 
 
-    <div ng-show="korak==10">
-        <div class="row">
-            <div class="span3" ng-repeat="adX in ads">
-                <div ng-click="tipClick()" class="active thumbnail">
-                    <h4>{{adX.title}}</h4>
-                    <strong>{{adX.subtitle}}</strong><br>
-                    <small>{{adX.ad_type}}</small>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 </div>
