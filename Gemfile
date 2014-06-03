@@ -14,8 +14,9 @@ gem 'bootstrap-sass', '~> 2.3.1'
 gem 'font-awesome-rails'
 gem 'bootstrap-glyphicons'
 gem 'recaptcha', :require => 'recaptcha/rails'
-
+gem 'carrierwave-dropbox'
 gem 'carrierwave'
+gem 'fog'
 #gem 'rmagick'
 
 

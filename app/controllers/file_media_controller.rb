@@ -4,6 +4,7 @@ class FileMediaController < ApplicationController
       format.json {
         
         @file_media = FileMedia.new(:lokacija=>params[:file])
+        logger.debug @file_media
         if @file_media.save
           render :json=>@file_media.errors.messages
         else
