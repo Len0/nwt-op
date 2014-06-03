@@ -9,11 +9,16 @@ App.controller ('viewMarketerController', ['$scope', '$routeParams', 'webService
         console.log($scope.marketer);
     });
 
-    $scope.ludomRadovanje = function(newReviewItem,marketer, current){
-
-
-
+    $scope.postReview = function(newReviewItem, marketer, loggedUser){
+        var newReview = {"review":{
+                        "rating":5,
+                        "user_id": marketer,
+                        "poster_id": loggedUser,
+                        "content": newReviewItem
+                        }};
+            webServiceWrapper.sendReview(newReview);
     };
+
 
 
 }]);

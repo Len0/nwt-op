@@ -30,6 +30,19 @@ App.factory('webServiceWrapper',['$resource','$http','$filter', function ($resou
                 });
         },
 
+        sendReview: function(newReview){
+            $http({
+                url: '/review/add.json',
+                method: "POST",
+                data: $.param(newReview),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function (data, status, headers, config) {
+
+                }).error(function (data, status, headers, config) {
+
+                });
+        },
+
         searchMarketers: function (name, callback) {
             console.log("searchMarketers Call to WebService");
             var querry = '/search/marketers.json';
