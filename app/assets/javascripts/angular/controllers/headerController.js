@@ -4,7 +4,7 @@ App.controller ('headerController', ['$scope','$http','$cookieStore', function($
             $scope.data2 =  data;
             $scope.userType = data.userType;
             $scope.userName = data.username;
-
+            $scope.userID = data.userID;
 
         }).error(function (data, status, headers, config) {
                 $scope.data2 = status;

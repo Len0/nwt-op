@@ -129,7 +129,7 @@ class UsersController < ApplicationController
   def current
     respond_to do |format|
       format.json {
-        render :json => {:username => session[:user_name], :userType => session[:user_type]}
+        render :json => {:username => session[:user_name], :userType => session[:user_type], :userID => session[:user_id]}
       }
      end
   end

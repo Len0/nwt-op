@@ -9,12 +9,13 @@
         <h5>Username: {{marketer.username}}</h5>
         <p>Email: {{marketer.email}} </p>
         <p>{{marketer.description}} </p>
-
+        <p>{{marketer.id}}</p>
+        {{userID}}
         <a class="btn" data-no-turbolink="true" ng-show={{loggedIn}} ng-init="formVisibility=0" ng-click="formVisibility = !formVisibility" >Review<a>
         <div ng-show="formVisibility">
             <form>
                 <textarea ng-model="newReview" placeholder="Review text" ></textarea> <br/>
-                <a class="btn" ng-click="ludomRadovanje(newReview, marketer.id, user_id)">Submit</a>
+                <a class="btn" ng-click="postReview(newReview, marketer.id, userID)">Submit</a>
 
 
             </form>
