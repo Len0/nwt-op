@@ -43,6 +43,7 @@ NWTMarketinghub::Application.routes.draw do
   post 'discussion/delete', to: 'discussion#delete'
   get 'discussion/getall', to: 'discussion#getall'
   get 'discussion/get', to: 'discussion#get'
+  get 'discussion/getAd/(:id)', to: 'discussion#getAdQuestions'
   
   post 'attachment/add', to: 'attachment#add'
   post 'attachment/update', to: 'attachment#update'

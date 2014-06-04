@@ -1,5 +1,6 @@
 App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrapper',function($scope,AdAll,AdTypes, webServiceWrapper){
 	$scope.ads={};
+    $scope.currentActiveDiscussion=0;
 	$scope.korak=0;
     $scope.brKoraka = 3;
 	$scope.ads=AdAll.query();
@@ -16,6 +17,29 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
         $scope.tipovi = data;
 	});
 
+    $scope.postQuestion = function(user, ad, text){
+        var newQuestion = {"discussion":{
+            "content":text,
+            "user_id": user,
+            "ad_offer_id": ad
+        }};
+        webServiceWrapper.sendQuestion(newQuestion);
+        $scope.refreshQuestions(ad, 1);
+    };
+
+    $scope.refreshQuestions = function(currentAdID, isAsk){
+        if($scope.currentActiveDiscussion == currentAdID && isAsk == 0){
+            $scope.currentActiveDiscussion = 0;
+        }
+        else{
+            $scope.currentActiveDiscussion = currentAdID;
+        }
+
+        webServiceWrapper.getQuestions(currentAdID, function(data){
+            $scope.adQuestions = data;
+            console.log($scope.adQuestions);
+        }) ;
+    };
 
 
 	$scope.priceSlider = {

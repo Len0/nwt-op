@@ -27,14 +27,16 @@
         <div class="list-group">
             <div class="list-group-item" ng-repeat="adX in ads">
                 <input type="checkbox" style="float: right;" ng-checked="isSelected(adX)" ng-click="updateSelection($event, adX)" ng-model="adX.checked"/>
+
                 <h4 class="list-group-item-heading">
                     {{adX.title}}
                 </h4>
                 <p class="list-group-item-text">
                     {{adX.subtitle}}
                 </p>
+
                 <p>Date start: {{adX.date_start | date:'dd.MM.yyyy hh:mm'}}; end: {{adX.date_end | date:'dd.MM.yyyy hh:mm'}}</p>
-                <p>Duration left: {{adX.max_duration}} {{adX.unit}}</p>
+                <a class="btn btn-xs" ng-init="discussShow=0" ng-click="discussShow = !discussShow; refreshQuestions(adX.id, 0)"><span class="glyphicon glyphicon-comment"></span> Discussion</a>
                 <div ng-show="adX.checked" class="well">
                     <p>Duration: {{adX.buy_duration}} {{adX.unit}}</p>
                     <rzslider
@@ -43,6 +45,24 @@
                             rz-slider-model="adX.buy_duration"
                             rz-slider-step="1"></rzslider>
                     Start time: <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="adX.buy_date_start" is-open="datePickerOpened" min-date="adX.date_start" max-date="adX.date_end" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                </div>
+
+                <div style="padding-top: 10px" ng-show="currentActiveDiscussion == adX.id" ng-controller="headerController">
+                    <table class="table table-striped table-condensed table-bordered">
+                        <tr>
+                            <td colspan="2">
+                                <input type="text" ng-model="messageText" style="width: 98%" placeholder="Message text"/>
+                            </td>
+                            <td style="text-align: center; width: 10%">
+                                <a class="btn btn-xs" style="width: 60%" ng-click="postQuestion(userID, adX.id, messageText)">Ask</a>
+                            </td>
+                        </tr>
+                        <tr ng-repeat="adQ in adQuestions">
+                            <td style="width: 5%;">{{adQ.user_id}}</td>
+                            <td>{{adQ.content}}</td>
+                            <td style="text-align: right; width: 15%;">{{adQ.created_at | date:'dd.mm.yyyy HH:mm'}}</td>
+                        </tr>
+                    </table>
                 </div>
                 <hr />
             </div>

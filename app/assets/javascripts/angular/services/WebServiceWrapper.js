@@ -40,6 +40,29 @@ App.factory('webServiceWrapper',['$resource','$http','$filter', function ($resou
             });
         },
 
+        getQuestions: function(adID, callback){
+            $http({method: 'GET', url: "/discussion/getAd/"+ adID + ".json"}).
+                success(function (data, status, headers, config) {
+                    callback(data);
+                }).
+                error (function (data, status, headers, config) {
+                console.log("Error: " + data);
+            });
+        },
+
+        sendQuestion: function(newQuestion){
+            $http({
+                url: '/discussion/add.json',
+                method: "POST",
+                data: $.param(newQuestion),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function (data, status, headers, config) {
+
+                }).error(function (data, status, headers, config) {
+
+                });
+        },
+
         sendReview: function(newReview){
             $http({
                 url: '/review/add.json',

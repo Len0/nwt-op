@@ -1,11 +1,10 @@
 class DiscussionController < ApplicationController
-  before_filter :is_logged
+  before_filter :is_logged, :except => [:getAdQuestions]
   protect_from_forgery :except => [:add, :update, :delete]
   def add
     respond_to do |format|
       format.json {
         discussionN = Discussion.create(discussion_params)
-        discussionN.user_id = 1 # POPRAVITI  da radi kada se user loginuje
         discussionN.save
         msg = { :status => "ok", :message => "Success!", :html => discussionN}
         render :json => msg
@@ -21,6 +20,11 @@ class DiscussionController < ApplicationController
   def get
     @discussion = Discussion.find(params[:id])
     render json: @discussion
+  end
+
+  def getAdQuestions
+    @question = Discussion.where(ad_offer_id: params[:id]).order(:created_at).reverse_order;
+    render json: @question
   end
   
   def update
