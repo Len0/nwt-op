@@ -1,4 +1,5 @@
-App.controller ('headerController', ['$scope','$http','$cookieStore', function($scope,$http, $cookieStore){
+App.controller ('headerController', ['$translate','$scope','$http','$cookieStore', function($translate,$scope,$http, $cookieStore){
+	$scope.kojiJezik=$translate.use().toUpperCase();
     $scope.currentUser = function(){
         $http.get('/user/current.json').success(function (data, status, headers, config) {
             $scope.data2 =  data;
@@ -67,5 +68,10 @@ App.controller ('headerController', ['$scope','$http','$cookieStore', function($
                          $scope.status = status;
                     });
 
+            };
+            $scope.prevedi=function(val){
+            	$translate.use(val);
+            	$scope.kojiJezik=val.toUpperCase();
+            	
             };
 }]);
