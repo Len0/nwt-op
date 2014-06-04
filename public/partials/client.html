@@ -4,12 +4,6 @@
 		<button class="btn-inverse next" ng-click="dalje()">
 			Dalje
 		</button>
-		    <rzslider
-            rz-slider-floor="priceSlider.floor"
-            rz-slider-ceil="priceSlider.ceil"
-            rz-slider-model="priceSlider.min"
-            rz-slider-high="priceSlider.max"
-            rz-slider-step="1"></rzslider>
 	</div>
 
 
@@ -42,12 +36,25 @@
                 <p>Date start: {{adX.date_start | date:'dd.MM.yyyy hh:mm'}}; end: {{adX.date_end | date:'dd.MM.yyyy hh:mm'}}</p>
                 <p>Duration left: {{adX.max_duration}} {{adX.unit}}</p>
                 <div ng-show="adX.checked" class="well">
-                    <p>Duration: </p>
+                    <p>Duration: {{adX.buy_duration}} {{adX.unit}}</p>
+                    <rzslider
+                            rz-slider-floor="0"
+                            rz-slider-ceil="adX.max_duration"
+                            rz-slider-model="adX.buy_duration"
+                            rz-slider-step="1"></rzslider>
                     Start time: <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="adX.buy_date_start" is-open="datePickerOpened" min-date="adX.date_start" max-date="adX.date_end" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
                 </div>
                 <hr />
             </div>
         </div>
+    </div>
+
+
+    <div ng-show="korak==3">
+        <h2>Upload materijala</h2>
+        <hr />
+
+
     </div>
 
 
@@ -63,6 +70,9 @@
         </button>
         <button class="btn btn-success" ng-click="dalje()" ng-show="korak<brKoraka">
             Dalje
+        </button>
+        <button class="btn btn-primary" ng-click="buyAllSelectedAds()" ng-show="korak==brKoraka">
+            Kupi sve označene reklame
         </button>
     </div>
 

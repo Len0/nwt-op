@@ -68,6 +68,12 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
     $scope.getAds = function(adTypeId) {
         webServiceWrapper.searchAds("undefined", "undefined", adTypeId, function(data) {
             $scope.ads = data;
+
+            for (var index = 0; index < $scope.ads.length; index++) {
+                $scope.ads[index].buy_duration = 0;
+                $scope.ads[index].buy_date_start = $scope.ads[index].date_start;
+            }
+
             console.log(data);
         });
     };
@@ -81,6 +87,23 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
         $scope.odabraniTip = tip;
     };
 
+    $scope.buyAd = function() {
+        console.log("Buy Ad Clicked");
+        console.log($scope.ad.id, $scope.units, $scope.ad.date_start);
+        webServiceWrapper.buyAd($scope.ad.id, $scope.units, $scope.ad.date_start, function (data) {
+            console.log(data);
+            $scope.flash = data.message;
+        });
+    }
+
+    $scope.buyAllSelectedAds = function() {
+        for (var index = 0; index < $scope.ads.length; index++) {
+            webServiceWrapper.buyAd($scope.ads[index].id, $scope.ads[index].buy_duration, $scope.ads[index].buy_date_start, function (data) {
+                console.log(data);
+                $scope.flash = data.message;
+            });
+        }
+    }
 
 
     // Date picker
