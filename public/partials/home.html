@@ -1,68 +1,66 @@
 <div class="container">
-    <div class="hero-unit">
-        <div class="page-header">
-            <h2>Marketing HUB <small>Mjesto za Vaš oglas</small></h2>
+    <div style="min-height: 100%;margin-top: 100px;  position:relative;">
+        <h2>Pretraga</h2>
+        <hr>
+    </div>
+
+    <form name="searchAdsForm">
+        <div class="well">
+            <h4 class="well-title">Pretraga oglasa</h4>
+
+            <div class="btn-group">
+                <label class="btn">
+                    <label class="radio">
+                        <input ng-model="search.type" type="radio" name="adType" value="1">TV</label>
+                </label>
+                <label class="btn">
+                    <label class="radio">
+                        <input ng-model="search.type" type="radio" name="adType" value="2">Radio</label>
+                </label>
+                <label class="btn">
+                    <label class="radio">
+                        <input ng-model="search.type" type="radio" name="adType" value="3">Novine</label>
+                </label>
+                <label class="btn">
+                    <label class="radio">
+                        <input ng-model="search.type" type="radio" name="adType" value="4">Plakat</label>
+                </label>
+                <label class="btn">
+                    <label class="radio">
+                        <input ng-model="search.type" type="radio" name="adType" value="5">Pano</label>
+                </label>
+                <label class="btn">
+                    <label class="radio">
+                        <input ng-model="search.type" type="radio" name="adType" value="6">Mobilna</label>
+                </label>
+
+            </div>
+            <br />
+            <div class="control-group">
+                <label class="control-label"> Cijena:</label>
+                <div class="controls">
+                    <input type="text" id="price" ng-model="search.price"/>
+                </div>
+            </div>
+
+            <div class="input-append">
+                <input type="text" ng-model="search.text" name="search" id="search" placeholder="Ključna riječ" style="width: 700px;" />
+                <button ng-click="searchAds(search)" class="btn btn-default" ng-disabled="searchAdsForm.$invalid">Traži</button>
+            </div>
         </div>
 
-        <form name="searchAdsForm">
-            <div class="well">
-                <h4 class="well-title">Pretraga oglasa</h4>
+    </form>
 
-                <div class="btn-group">
-                    <label class="btn">
-                        <label class="radio">
-                            <input ng-model="search.type" type="radio" name="adType" value="1">TV</label>
-                    </label>
-                    <label class="btn">
-                        <label class="radio">
-                            <input ng-model="search.type" type="radio" name="adType" value="2">Radio</label>
-                    </label>
-                    <label class="btn">
-                        <label class="radio">
-                            <input ng-model="search.type" type="radio" name="adType" value="3">Novine</label>
-                    </label>
-                    <label class="btn">
-                        <label class="radio">
-                            <input ng-model="search.type" type="radio" name="adType" value="4">Plakat</label>
-                    </label>
-                    <label class="btn">
-                        <label class="radio">
-                            <input ng-model="search.type" type="radio" name="adType" value="5">Pano</label>
-                    </label>
-                    <label class="btn">
-                        <label class="radio">
-                            <input ng-model="search.type" type="radio" name="adType" value="6">Mobilna</label>
-                    </label>
 
-                </div>
-                <br />
-                <div class="control-group">
-                    <label class="control-label"> Cijena:</label>
-                    <div class="controls">
-                        <input type="text" id="price" ng-model="search.price"/>
-                    </div>
-                </div>
 
-                <div class="input-append">
-                    <input type="text" ng-model="search.text" name="search" id="search" placeholder="Ključna riječ" style="width: 700px;" />
-                    <button ng-click="searchAds(search)" class="btn btn-default" ng-disabled="searchAdsForm.$invalid">Traži</button>
-                </div>
+    <form name="searchMarketersForm">
+        <div class="well">
+            <h4 class="well-title">Pretraga oglašivača</h4>
+            <div class="input-append">
+                <input type="text" ng-model="searchMarketerName" name="search" placeholder="Ključna riječ" style="width: 700px;" required="" />
+                <button ng-click="searchMarketers(searchMarketerName)" class="btn btn-default" ng-disabled="searchMarketersForm.$invalid">Traži</button>
             </div>
+        </div>
 
-        </form>
-
-
-
-        <form name="searchMarketersForm">
-            <div class="well">
-                <h4 class="well-title">Pretraga oglašivača</h4>
-                <div class="input-append">
-                    <input type="text" ng-model="searchMarketerName" name="search" placeholder="Ključna riječ" style="width: 700px;" required="" />
-                    <button ng-click="searchMarketers(searchMarketerName)" class="btn btn-default" ng-disabled="searchMarketersForm.$invalid">Traži</button>
-                </div>
-            </div>
-
-        </form>
-
-    </div>
+    </form>
 </div>
