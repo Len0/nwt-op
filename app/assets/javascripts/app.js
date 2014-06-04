@@ -1,4 +1,4 @@
-window.App = angular.module('App', ['angularFileUpload','ngRoute','ui.bootstrap','ngResource', 'ngCookies' ,'pascalprecht.translate'])
+window.App = angular.module('App', ['angularFileUpload','ngRoute','ui.bootstrap','ngResource', 'ngCookies' ,'pascalprecht.translate','rzModule'])
 .config(['$routeProvider', function($routeProvider)
 {
   $routeProvider.

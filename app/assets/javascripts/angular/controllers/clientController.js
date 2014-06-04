@@ -18,7 +18,12 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
 
 
 
-
+	$scope.priceSlider = {
+            min: 4,
+            max: 481,
+            ceil: 500,
+            floor: 0
+        };
 
 
 
@@ -65,7 +70,7 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
             $scope.ads = data;
             console.log(data);
         });
-    }
+    };
 
 
     $scope.nazad=function(){
@@ -74,7 +79,7 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
 
     $scope.tipClick = function(tip) {
         $scope.odabraniTip = tip;
-    }
+    };
 
 
 
