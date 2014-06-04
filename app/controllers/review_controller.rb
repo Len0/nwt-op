@@ -1,6 +1,6 @@
 class ReviewController < ApplicationController
   protect_from_forgery :except => [:add, :update, :delete]
-  before_filter :is_logged, :except => [:getUserReviews]
+  before_filter :is_logged
   def add
     respond_to do |format|
       format.json {
