@@ -3,25 +3,45 @@
         <div ng-controller="headerController">
         <h4>{{flash}}</h4>
 
-
+        <div position="absolute">
         <h4>{{marketer.name}}</h4>
         <hr />
         <h5>Username: {{marketer.username}}</h5>
         <p>Email: {{marketer.email}} </p>
         <p>{{marketer.description}} </p>
-        <p>{{marketer.id}}</p>
-        {{userID}}
+        <p>{{marketer.id}} </p>
+        </div>
+
+        <div style="padding-bottom: 10px">
         <a class="btn" data-no-turbolink="true" ng-show={{loggedIn}} ng-init="formVisibility=0" ng-click="formVisibility = !formVisibility" >Review<a>
+        <a class="btn"  data-no-turbolink="true" ng-show={{loggedIn}} ng-init="reviewsVisibility=1" ng-click="reviewsVisibility = !reviewsVisibility" >Show reviews<a>
+
+        </div>
         <div ng-show="formVisibility">
             <form>
-                <textarea ng-model="newReview" placeholder="Review text" ></textarea> <br/>
-                <a class="btn" ng-click="postReview(newReview, marketer.id, userID)">Submit</a>
+                <textarea ng-model="newReview" placeholder="Review text" ></textarea>
+                <a class="btn" ng-click="postReview(newReview,selectedOption.id, marketer.id, userID)">Submit</a><br/>
+                <select data-ng-options="o.name for o in options" data-ng-model="selectedOption"></select>
+         </form>
+         </div>
+         <div ng-hide="reviewsVisibility">
+            <div ng-repeat="review in userReviews">
+                <table class="table table-striped  table-bordered table-condensed">
 
+                    <tr style="font-weight: bold ">
+                        <td >Poster ID: {{review.poster_id}}</td>
+                        <td >Rating: {{review.rating}}</td>
+                    <tr>
+                    <td colspan="2">{{review.content}}</td>
+                    <tr>
+                    <td colspan="2" style="text-align: right">Date: {{review.created_at | date:'dd.mm.yyyy HH:mm'}}</td>
+                    </tr>
+               </table>
+             </div>
 
-            </form>
+        </div>
         </div>
 
-        </div>
 
     </div>
 </div>

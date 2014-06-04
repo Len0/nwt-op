@@ -30,6 +30,16 @@ App.factory('webServiceWrapper',['$resource','$http','$filter', function ($resou
                 });
         },
 
+        getReviews: function(userID, callback){
+            $http({method: 'GET', url: "/review/getUser/"+ userID + ".json"}).
+                success(function (data, status, headers, config) {
+                    callback(data);
+                }).
+                error (function (data, status, headers, config) {
+                console.log("Error: " + data);
+            });
+        },
+
         sendReview: function(newReview){
             $http({
                 url: '/review/add.json',

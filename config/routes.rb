@@ -7,6 +7,7 @@ NWTMarketinghub::Application.routes.draw do
 
   get 'ad/create', to: 'ad#create'
   get 'ad/get/(:id)', to: 'ad#get'
+
   get 'ad/update', to: 'ad#update'
   get 'ad/delete', to: 'ad#delete'
   get 'ad/buy', to: 'ad#buy'
@@ -33,8 +34,10 @@ NWTMarketinghub::Application.routes.draw do
   post 'review/update', to: 'review#update'
   post 'review/delete', to: 'review#delete'
   get 'review/getall', to: 'review#getall'
-  get 'review/get', to: 'review#get'
-  
+  get 'review/get/(:id)', to: 'review#get'
+  get 'review/getUser/(:id)', to: 'review#getUserReviews'
+
+
   post 'discussion/add', to: 'discussion#add'
   post 'discussion/update', to: 'discussion#update'
   post 'discussion/delete', to: 'discussion#delete'
