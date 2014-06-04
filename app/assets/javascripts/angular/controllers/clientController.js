@@ -1,7 +1,7 @@
 App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrapper',function($scope,AdAll,AdTypes, webServiceWrapper){
 	$scope.ads={};
 	$scope.korak=0;
-    $scope.brKoraka = 2;
+    $scope.brKoraka = 3;
 	$scope.ads=AdAll.query();
 	$scope.ads.$promise.then(function (result) {
     	$scope.ads = result;
@@ -26,6 +26,8 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
     $scope.odabraniTip;
     $scope.selectedAds = [];
     // ---------------
+
+
 
 
 
@@ -61,6 +63,7 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
     $scope.getAds = function(adTypeId) {
         webServiceWrapper.searchAds("undefined", "undefined", adTypeId, function(data) {
             $scope.ads = data;
+            console.log(data);
         });
     }
 
@@ -72,5 +75,21 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
     $scope.tipClick = function(tip) {
         $scope.odabraniTip = tip;
     }
+
+
+
+    // Date picker
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy HH:mm', 'shortDate'];
+    $scope.format = $scope.formats[2];
+    $scope.datePickerOpened = false;
+    $scope.dateOptions = {
+        formatYear : 'yy',
+        startingDay : 1
+    };
+    $scope.openSD = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+        $scope.datePickerOpened = !$scope.datePickerOpened;
+    };
 
 }]);

@@ -10,6 +10,7 @@
 
     <div ng-show="korak==1">
         <h2>Odaberite tip reklame</h2>
+        <hr />
         <div class="row">
             <div class="span4" ng-repeat="tip in tipovi">
                 <div ng-click="tipClick(tip)">
@@ -22,14 +23,23 @@
 
     <div ng-show="korak==2">
         <h2>Reklame</h2>
-        <div class="row">
-            <div class="span4" ng-repeat="adX in ads">
-                <div class="thumbnail">
-                    <input type="checkbox" style="float: right;" ng-checked="isSelected(adX)" ng-click="updateSelection($event, adX)">
-                    <h4>{{adX.title}}</h4>
-                    <strong>{{adX.subtitle}}</strong><br>
-                    <small>{{adX.ad_type}}</small>
+        <hr />
+        <div class="list-group">
+            <div class="list-group-item" ng-repeat="adX in ads">
+                <input type="checkbox" style="float: right;" ng-checked="isSelected(adX)" ng-click="updateSelection($event, adX)" ng-model="adX.checked"/>
+                <h4 class="list-group-item-heading">
+                    {{adX.title}}
+                </h4>
+                <p class="list-group-item-text">
+                    {{adX.subtitle}}
+                </p>
+                <p>Date start: {{adX.date_start | date:'dd.MM.yyyy hh:mm'}}; end: {{adX.date_end | date:'dd.MM.yyyy hh:mm'}}</p>
+                <p>Duration left: {{adX.max_duration}} {{adX.unit}}</p>
+                <div ng-show="adX.checked" class="well">
+                    <p>Duration: </p>
+                    Start time: <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="adX.buy_date_start" is-open="datePickerOpened" min-date="adX.date_start" max-date="adX.date_end" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
                 </div>
+                <hr />
             </div>
         </div>
     </div>
