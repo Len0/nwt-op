@@ -29,7 +29,9 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
 
     $scope.refreshQuestions = function(currentAdID, isAsk){
         if($scope.currentActiveDiscussion == currentAdID && isAsk == 0){
+            $scope.adQuestions = null;
             $scope.currentActiveDiscussion = 0;
+
         }
         else{
             $scope.currentActiveDiscussion = currentAdID;
@@ -144,4 +146,16 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
         $scope.datePickerOpened = !$scope.datePickerOpened;
     };
 
+
+
+
+
+
+
+
+    // Tek dodani oglasi
+    $scope.newAds = webServiceWrapper.getLatestAds(3, function(data) {
+        console.log(data);
+        $scope.newAds = data;
+    });
 }]);

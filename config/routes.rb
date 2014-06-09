@@ -15,6 +15,7 @@ NWTMarketinghub::Application.routes.draw do
   get 'ad/all_types', to: 'ad#all_types'
   get 'ads/all', to: 'ad#all'
   get 'ad/getadtype', to: 'ad#getadtype'
+  get 'ad/latest', to: 'ad#latest'
   get 'search/users', :to => 'search#users'
   get 'search/ads', :to => 'search#ads'
   get 'search/marketers', :to => 'search#marketers'

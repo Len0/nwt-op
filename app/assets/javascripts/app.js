@@ -33,6 +33,14 @@ window.App = angular.module('App', ['angularFileUpload','ngRoute','ui.bootstrap'
           templateUrl: 'partials/userRegister.html',
           controller: 'userRegistrationController'
     }).
+    when('/registerUserFormClient',{
+          templateUrl: 'partials/registerFormClient.html',
+          controller: 'userRegistrationController'
+    }).
+    when('/registerUserFormMarketer',{
+          templateUrl: 'partials/registerFormMarketer.html',
+          controller: 'userRegistrationController'
+    }).
     when('/cjenovnik',{
     	templateUrl: 'partials/userUsluga.html',
     	controller: 'userUslugaController'
