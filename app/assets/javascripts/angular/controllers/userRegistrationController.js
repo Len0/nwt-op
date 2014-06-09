@@ -1,6 +1,8 @@
 'use strict';
 
 App.controller ('userRegistrationController', ['$scope', '$http', '$location', function($scope, $http, $location){
+    $scope.userTypeOptions = [{ name: "Klijent", id: 2 }, { name: "Oglasivac", id: 3 }];
+
     $scope.registerUser = function(usertemp){
         var confuser = {"user": usertemp};
        $http({

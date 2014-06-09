@@ -29,7 +29,9 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
 
     $scope.refreshQuestions = function(currentAdID, isAsk){
         if($scope.currentActiveDiscussion == currentAdID && isAsk == 0){
+            $scope.adQuestions = null;
             $scope.currentActiveDiscussion = 0;
+
         }
         else{
             $scope.currentActiveDiscussion = currentAdID;

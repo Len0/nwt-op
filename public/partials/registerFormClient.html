@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="hero-unit">
+        <div class="row-fluid" >
+    <div class="control-group span12">
+        <div class="control-group span2">
+        </div>
+        <div class="control-group span2">
+
+        </div>
+        <div class="control-group span8">
+        </div>
+    </div>
+    <div ng-controller="userRegistrationController">
+
+        <div class="control-group span12">
+            <div class="control-group span2">
+                <div class="thumbnail" style="display: none">
+                    <img ng-src="bluebells_darker.jpg" ng-model="newUser.avatar">
+                </div>
+            </div>
+            <div class="control-group span2">
+
+            </div>
+            <script>
+                function readURL(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+
+                        reader.onload = function(e) {
+                            $('#slika').attr('src', e.target.result);
+                        }
+
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+
+
+                $("#slikaInput").change(function() {
+                    readURL(this);
+                });
+            </script>
+
+        </div>
+        <div class="control-group span4" ng-init="newUser.user_type_id = 2">
+            Name: <input name="input" ng-model="newUser.name" placeholder="Name" required>
+            Username: <input name="input" ng-model="newUser.username" placeholder="Username" required>
+            Password: <input name="input" type="password" ng-model="newUser.password" placeholder="Password" required>
+            Password confirm: <input name="input" type="password" ng-model="newUser.password_confirmation" placeholder="Password confirm" required>
+            Email: <input ng-model="newUser.email" placeholder="Email" required>
+
+        </div>
+        <div class="control-group span4">
+            <div>
+                Contact: <textarea ng-model="newUser.contact" placeholder="Contact" ></textarea>
+                Description: <textarea ng-model="newUser.description" placeholder="Description"></textarea>
+            </div>
+        </div>
+
+        <div class="control-group span8">
+            <div class="captcha">
+
+            </div>
+
+        </div>
+
+        <div class="control-group span8">
+            <div class="actions">
+                <button class="btn btn-primary btn-block" ng-click="registerUser(newUser)" data-no-turbolink="true">Prijavi</button>
+            </div>
+        </div>
+    </div>
+
+
+</div>
