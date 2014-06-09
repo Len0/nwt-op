@@ -146,4 +146,16 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
         $scope.datePickerOpened = !$scope.datePickerOpened;
     };
 
+
+
+
+
+
+
+
+    // Tek dodani oglasi
+    $scope.newAds = webServiceWrapper.getLatestAds(3, function(data) {
+        console.log(data);
+        $scope.newAds = data;
+    });
 }]);

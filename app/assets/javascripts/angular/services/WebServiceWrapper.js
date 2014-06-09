@@ -138,6 +138,18 @@ App.factory('webServiceWrapper',['$resource','$http','$filter', function ($resou
                 }).error(function (data, status, headers, config) {
                     $scope.status = status;
                 });
+        },
+
+
+        getLatestAds: function(count, callback) {
+            console.log("getLatestAds Call to WebService. Count: " + count);
+            $http({method: 'GET', url: 'ad/latest.json?count='+count}).
+                success(function (data, status, headers, config) {
+                    callback(data);
+                }).
+                error (function (data, status, headers, config) {
+                console.log("Error: " + data);
+            });
         }
 
     };

@@ -1,39 +1,37 @@
-<div class="container">
-    <div class="hero-unit">
-        <h4>{{flash}}</h4>
+<div style="min-height: 100%;margin-top: 100px;  position:relative;">
+    <h4>{{flash}}</h4>
 
 
-        <h4>{{ad.title}}</h4>
-        <hr />
-        <h5>{{ad.subtitle}}</h5>
-        <p> {{ad.description}} </p>
-        <p>Cijena: {{ad.price | currency : "KM "}}</p>
-        <p>Jed. mjere: {{ad.unit}} </p>
-        <p>Max. trajanje: {{ad.max_duration}} {{ad.unit}}</p>
+    <h4>{{ad.title}}</h4>
+    <hr />
+    <h5>{{ad.subtitle}}</h5>
+    <p> {{ad.description}} </p>
+    <p>Cijena: {{ad.price | currency : "KM "}}</p>
+    <p>Jed. mjere: {{ad.unit}} </p>
+    <p>Max. trajanje: {{ad.max_duration}} {{ad.unit}}</p>
 
-        <form name="buyAdForm">
-            <div class="well">
-                <h4 class="well-title">Predplati se na oglas</h4>
+    <form name="buyAdForm">
+        <div class="well">
+            <h4 class="well-title">Predplati se na oglas</h4>
 
-                <div>
-                    <label class="control-label">Početak oglasa:</label>
-                    <div class="controls">
-                        <div class="input-append">
-                            <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="ad.date_start" is-open="datePickerOpened" min-date="ad.date_start" max-date="ad.date_end" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
-							<button type="button" class="btn btn-default" ng-click="openSD($event)">
-                                <i class="glyphicon glyphicon-calendar"></i>
-                            </button>
-                        </div>
+            <div>
+                <label class="control-label">Početak oglasa:</label>
+                <div class="controls">
+                    <div class="input-append">
+                        <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="ad.date_start" is-open="datePickerOpened" min-date="ad.date_start" max-date="ad.date_end" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                        <button type="button" class="btn btn-default" ng-click="openSD($event)">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
                     </div>
                 </div>
-
-                <input type="text" ng-model="units" name="search" placeholder="Količina" required /> <br/>
-                <button ng-click="buyAd()" class="btn btn-default" ng-disabled="buyAdForm.$invalid">Kupi</button>
             </div>
 
-        </form>
-
-
+            <input type="text" ng-model="units" name="search" placeholder="Količina" required /> <br/>
+            <button ng-click="buyAd()" class="btn btn-default" ng-disabled="buyAdForm.$invalid">Kupi</button>
         </div>
+
+    </form>
+
+
     </div>
 </div>

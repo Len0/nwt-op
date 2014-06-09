@@ -1,5 +1,5 @@
 class AdController < ApplicationController
-  before_filter :is_logged, except: [:all,:getadtype,:all_types]
+  before_filter :is_logged, except: [:all,:getadtype,:all_types,:latest,:get]
   before_action :is_oglasivac, only: [:create]
   def create
     respond_to do |format|
@@ -152,6 +152,19 @@ class AdController < ApplicationController
           render :json => {:error => "true", :message => (t "ad.doesnt_exist")}
         else
           render :json => adT
+        end
+      }
+    end
+  end
+
+  def latest
+    ads = AdOffer.limit(params[:count]).order("created_at").all
+    respond_to do |format|
+      format.json {
+        if ads.nil?
+          render :json => {:error => "true", :message => (t "ad.doesnt_exist")}
+        else
+          render :json => ads
         end
       }
     end

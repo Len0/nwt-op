@@ -4,6 +4,16 @@
 		<button class="btn-inverse next" ng-click="dalje()">
 			Dalje
 		</button>
+        <h4>Tek dodani</h4>
+        <hr />
+        <div class="row">
+            <div class="span4" ng-repeat="ad in newAds">
+                <a class="thumbnail" href="#/oglas/{{ad.id}}">
+                    <h4>{{ad.title}}</h4>
+                    <p>{{ad.description}}</p>
+                </a>
+            </div>
+        </div>
 	</div>
 
 
@@ -36,7 +46,7 @@
                 </p>
 
                 <p>Date start: {{adX.date_start | date:'dd.MM.yyyy hh:mm'}}; end: {{adX.date_end | date:'dd.MM.yyyy hh:mm'}}</p>
-                <a class="btn btn-xs" ng-init="discussShow=0" ng-click="discussShow = !discussShow; refreshQuestions(adX.id, 0)"><span class="glyphicon glyphicon-comment"></span> Discussion</a>
+
                 <div ng-show="adX.checked" class="well">
                     <p>Duration: {{adX.buy_duration}} {{adX.unit}}</p>
                     <rzslider
@@ -47,6 +57,7 @@
                     Start time: <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="adX.buy_date_start" is-open="datePickerOpened" min-date="adX.date_start" max-date="adX.date_end" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
                 </div>
 
+                <a class="btn btn-xs" ng-init="discussShow=0" ng-click="discussShow = !discussShow; refreshQuestions(adX.id, 0)"><span class="glyphicon glyphicon-comment"></span> Discussion</a>
                 <div style="padding-top: 10px" ng-show="currentActiveDiscussion == adX.id" ng-controller="headerController">
                     <table class="table table-striped table-condensed table-bordered">
                         <tr>
