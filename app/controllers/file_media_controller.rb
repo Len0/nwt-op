@@ -8,7 +8,7 @@ class FileMediaController < ApplicationController
         if file_media.save
           render :json=>file_media.errors.messages
         else
-          render :json=>file_media
+          render :json=>file_media.id
        end
         
       }
