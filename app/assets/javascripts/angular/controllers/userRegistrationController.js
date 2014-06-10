@@ -19,8 +19,10 @@ App.controller ('userRegistrationController', ['$scope', '$http', '$location','$
     };
 	$scope.Progress=0;
 	$scope.error=-1;
-	$scope.onFileSelect = function($file) {
+	$scope.onFileSelect = function($files) {
     //$files: an array of files selected, each file has name, size, and type.
+    for (var i = 0; i < $files.length; i++) {
+      var $file = $files[i];
       $upload.upload({
         url: 'filemedia/create.json',
         file: $file,
@@ -41,6 +43,6 @@ App.controller ('userRegistrationController', ['$scope', '$http', '$location','$
       	$scope.error=1;
       	console.log(status);
       }); 
-    
+    }
   };
 }]);
