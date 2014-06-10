@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521142732) do
+ActiveRecord::Schema.define(version: 20140610160616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,8 +119,8 @@ ActiveRecord::Schema.define(version: 20140521142732) do
     t.integer  "user_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "avatar"
     t.boolean  "is_banned"
+    t.integer  "avatar",          default: 0
   end
 
   create_table "uslugas", force: true do |t|

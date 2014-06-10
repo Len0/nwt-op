@@ -2,8 +2,9 @@
 
 App.controller ('userRegistrationController', ['$scope', '$http', '$location','$upload', function($scope, $http, $location, $upload){
     $scope.userTypeOptions = [{ name: "Klijent", id: 2 }, { name: "Oglasivac", id: 3 }];
-
+	$scope.avatar="";
     $scope.registerUser = function(usertemp){
+    	usertemp.avatar=$scope.avatar;
         var confuser = {"user": usertemp};
        $http({
         url: '/user/create.json',
@@ -19,6 +20,7 @@ App.controller ('userRegistrationController', ['$scope', '$http', '$location','$
 	$scope.Progress=0;
 	$scope.error=-1;
 	$scope.onFileSelect = function($file) {
+    //$files: an array of files selected, each file has name, size, and type.
       $upload.upload({
         url: 'filemedia/create.json',
         file: $file,
@@ -32,6 +34,7 @@ App.controller ('userRegistrationController', ['$scope', '$http', '$location','$
         	}
       }).then(function(data, status, headers, config) {
         // file is uploaded successfully
+        $scope.$apply(function(){$scope.avatar=data;});
         $scope.error=0;
         console.log(status);
       },function(data, status, headers, config){
