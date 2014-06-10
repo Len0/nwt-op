@@ -50,20 +50,21 @@ function($scope, $http, $location, $upload) {
 				// file is uploaded successfully
 				$scope.avatar = data.data;
 				$scope.error = 0;
+				prikaziSliku(data.data);
 				console.log(status);
 			}, function(data, status, headers, config) {
 				$scope.error = 1;
 				console.log(status);
 			});
-			if ($scope.error == 0) {
-				$http.get('/file_media/get.json', {
+		}
+	};
+	$scope.prikaziSliku = function(nekiId){
+		$http.get('/filemedia/get.json', {
 					params : {
-						id : $scope.avatar
+						id : nekiId
 					}
 				}).success(function(data, status) {
 					$scope.realAvatar = data;
 				});
-			}
-		}
 	};
 }]);
