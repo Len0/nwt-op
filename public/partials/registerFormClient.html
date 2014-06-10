@@ -64,7 +64,7 @@
 				<div class="control-group span12">
 					<label for="avatar">Avatar:</label>
 					<input type="file" id="avatar" ng-file-select="onFileSelect($files)">
-					<div class="meter" ng-show="Progress>0">
+					<div class="meter" ng-show="Progress>0" style="width: 200px;">
 						<span style="width: {{Progress}}%">
 							<center style="margin-top: -5px;">
 								{{Progress}}
@@ -75,7 +75,7 @@
 						</div>
 						<div ng-show="error==0">
 							Uspješan upload!
-							<img src="{{realAvatar}}" />
+							<img src="{{realAvatar}}" width="120" height="120"/>
 						</div>
 					</div>
 				</div>
