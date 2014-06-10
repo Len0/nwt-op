@@ -64,7 +64,7 @@ function($scope, $http, $location, $upload) {
 						id : nekiId
 					}
 				}).success(function(data, status) {
-					$scope.realAvatar = data;
+					$scope.realAvatar = data.lokacija.url;
 				});
 	};
 }]);
