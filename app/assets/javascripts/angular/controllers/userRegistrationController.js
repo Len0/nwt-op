@@ -36,7 +36,7 @@ App.controller ('userRegistrationController', ['$scope', '$http', '$location','$
         	}
       }).then(function(data, status, headers, config) {
         // file is uploaded successfully
-        $scope.avatar=data;
+        $scope.avatar=data.data;
         $scope.error=0;
         console.log(status);
       },function(data, status, headers, config){
