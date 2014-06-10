@@ -3,12 +3,12 @@ class FileMediaController < ApplicationController
     respond_to do |format|
       format.json {
         
-        @file_media = FileMedia.new(:lokacija=>params[:file])
-        logger.debug @file_media
-        if @file_media.save
-          render :json=>@file_media.errors.messages
+        file_media = FileMedia.new(:lokacija=>params[:file])
+        logger.debug file_media
+        if file_media.save
+          render :json=>file_media.errors.messages
         else
-          render :json=>@file_media
+          render :json=>file_media
        end
         
       }
