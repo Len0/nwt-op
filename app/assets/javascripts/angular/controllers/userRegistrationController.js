@@ -1,7 +1,7 @@
 'use strict';
 
-App.controller('userRegistrationController', ['$scope', '$http', '$location', '$upload', 'Uploads',
-function($scope, $http, $location, $upload, Uploads) {
+App.controller('userRegistrationController', ['$scope', '$http', '$location', '$upload',
+function($scope, $http, $location, $upload) {
 	$scope.userTypeOptions = [{
 		name : "Klijent",
 		id : 2
