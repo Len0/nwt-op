@@ -50,7 +50,7 @@ function($scope, $http, $location, $upload) {
 				// file is uploaded successfully
 				$scope.avatar = data.data;
 				$scope.error = 0;
-				prikaziSliku(data.data);
+				$scope.prikaziSliku(data.data);
 				console.log(status);
 			}, function(data, status, headers, config) {
 				$scope.error = 1;
