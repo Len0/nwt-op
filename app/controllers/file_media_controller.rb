@@ -6,7 +6,7 @@ class FileMediaController < ApplicationController
         file_media = FileMedia.new(:lokacija=>params[:file])
         logger.debug file_media
         if file_media.save
-          render :json=>file_media.lokacija
+          render :json=>params[:file]
         else
           render :json=>file_media.id
        end
