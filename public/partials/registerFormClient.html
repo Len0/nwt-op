@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="hero-unit">
-		<div class="row-fluid" >
+		<div class="row-fluid" ng-init="newUser.user_type_id = 2" >
 			<div class="control-group span12">
 				<div class="control-group span2"></div>
 				<div class="control-group span2">
@@ -39,31 +39,31 @@
 					</script>
 
 				</div>
-				<div class="control-group span12" ng-init="newUser.user_type_id = 2">
-					Name:
-					<input name="input" ng-model="newUser.name" placeholder="Name" required>
-					Username:
-					<input name="input" ng-model="newUser.username" placeholder="Username" required>
-					Password:
-					<input name="input" type="password" ng-model="newUser.password" placeholder="Password" required>
-					Password confirm:
-					<input name="input" type="password" ng-model="newUser.password_confirmation" placeholder="Password confirm" required>
-					Email:
-					<input ng-model="newUser.email" placeholder="Email" required>
+				<div class="control-group span4">
+					<label for="name">Name:</label>
+					<input name="input" id="name" ng-model="newUser.name" placeholder="Name" required>
+					<label for="username">Username:</label>
+					<input name="input" id="username" ng-model="newUser.username" placeholder="Username" required>
+					<label for="email">Email:</label>
+					<input id="email" ng-model="newUser.email" placeholder="Email" required>
+
+					<label for="password">Password:</label>
+					<input name="input" id="password" type="password" ng-model="newUser.password" placeholder="Password" required>
+					<label for="passwordc">Password confirm:</label>
+					<input name="input" id="passswordc" type="password" ng-model="newUser.password_confirmation" placeholder="Password confirm" required>
 
 				</div>
 				<div >
 
 				</div>
-				<div class="control-group span12">
-					<div>
-						Contact: 						<textarea ng-model="newUser.contact" placeholder="Contact" ></textarea>
-						Description: 						<textarea ng-model="newUser.description" placeholder="Description"></textarea>
-					</div>
+				<div class="control-group span4">
+					<label for="contact">Contact:</label><textarea id="contact" ng-model="newUser.contact" placeholder="Contact" ></textarea>
+					<label for="description">Description:</label><textarea id="description" ng-model="newUser.description" placeholder="Description"></textarea>
 				</div>
-			
-				<input type="file" ng-file-select="onFileSelect($files)">
+				<div class="control-group span4">&nbsp;</div>
 				<div class="control-group span12">
+					<label for="avatar">Avatar:</label>
+					<input type="file" id="avatar" ng-file-select="onFileSelect($files)">
 					<div class="meter" ng-show="Progress>0">
 						<span style="width: {{Progress}}%">
 							<center style="margin-top: -5px;">
