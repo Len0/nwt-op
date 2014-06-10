@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   after_save :clear_password
   attr_accessor :password
   
-  mount_uploader :avatar, AvatarUploader
+  mount_uploader :avatar, FileMediaUploader
   
   has_one :password_recovery_token
   has_one :subscription

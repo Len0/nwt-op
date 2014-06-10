@@ -1,3 +1,15 @@
 <div class="hero-unit">
-  <input type="file" ng-file-select="onFileSelect($files)" multiple>
+	<input type="file" ng-file-select="onFileSelect($files)" multiple>
+
+	<div class="meter" ng-show="Progress>0">
+		<span style="width: {{Progress}}%"><center style="margin-top: -5px;">{{Progress}}</center></span>
+		<br>
+		<div ng-show="error==1">
+			Ima greška prilikom uploada!
+		</div>
+		<div ng-show="error==0">
+			Uspješan upload!
+		</div>
+	</div>
+
 </div>
