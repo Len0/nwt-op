@@ -26,7 +26,7 @@ NWTMarketinghub::Application.routes.draw do
 
   post 'filemedia/create', to: 'file_media#create'
   get 'filemedia/all', to: 'file_media#all'
-  
+  get 'filemedia/get', to: 'file_media#get'
   resources :users
   resources :password_recovery_tokens
 
