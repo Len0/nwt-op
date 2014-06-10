@@ -57,10 +57,12 @@
 
 				</div>
 				<div class="control-group span4">
-					<label for="contact">Contact:</label><textarea id="contact" ng-model="newUser.contact" placeholder="Contact" ></textarea>
-					<label for="description">Description:</label><textarea id="description" ng-model="newUser.description" placeholder="Description"></textarea>
+					<label for="contact">Contact:</label>					<textarea id="contact" ng-model="newUser.contact" placeholder="Contact" ></textarea>
+					<label for="description">Description:</label>					<textarea id="description" ng-model="newUser.description" placeholder="Description"></textarea>
 				</div>
-				<div class="control-group span4">&nbsp;</div>
+				<div class="control-group span4">
+					&nbsp;
+				</div>
 				<div class="control-group span12">
 					<label for="avatar">Avatar:</label>
 					<input type="file" id="avatar" ng-file-select="onFileSelect($files)">
@@ -73,15 +75,16 @@
 						<div ng-show="error==1">
 							Ima greška prilikom uploada!
 						</div>
-						<div ng-show="error==0">
-							Uspješan upload!
-							<img src="{{realAvatar}}" width="120" height="120"/>
-						</div>
+
 					</div>
 				</div>
 				<div class="control-group span8">
 					<div class="captcha">
 
+					</div>
+					<div ng-show="error==0">
+						Uspješan upload!
+						<img src="{{realAvatar}}" width="120" height="120"/>
 					</div>
 
 				</div>
