@@ -171,7 +171,7 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
                     //console.log(attachmentInfo);
                 });
             }
-           // console.log(data);
+           //console.log(data);
 
 
     };
