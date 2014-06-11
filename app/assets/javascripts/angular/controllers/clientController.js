@@ -109,6 +109,32 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
         $scope.korak--;
     };
 
+    $scope.getLastUploaded = function(userID, selectedAds, fileID){
+        alert("Kreiranje niza attachmenta za svaku reklamu");
+        var attachments = [];
+        for(var i = 0; i<selectedAds.length; i++){
+            var newAttachment = {"attachment":{
+                "path": "",
+                "ad_bought_id": selectedAds[i].id,
+                "user_id": userID
+            }};
+          attachments[i] = newAttachment;
+        }
+        alert("Pozivanje funkcije da se dobije url dodanog materijala");
+        webServiceWrapper.getFileLocationByID(fileID, function(data) {
+            for(var i = 0; i<selectedAds.length; i++){
+                attachments[i].attachment.path = data.lokacija.url;
+                alert("Postavljanje novog attachmenta sa updejtovanom path varijablom");
+                webServiceWrapper.attachFile(attachments, function(attachmentInfo){
+                    console.log(attachmentInfo);
+                });
+            }
+            console.log(data);
+        });
+
+
+    };
+
     $scope.tipClick = function(tip) {
         $scope.odabraniTip = tip;
     };

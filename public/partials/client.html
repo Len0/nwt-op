@@ -99,8 +99,12 @@
             </div>
             <div ng-show="error==0">
                 Uspješan upload!
+                <div ng-controller="headerController">
+                    <a class="btn" ng-click="getLastUploaded(userID, ads, info)">Attach media</a>
+                </div>
             </div>
         </div>
+
         </div>
         <hr />
 

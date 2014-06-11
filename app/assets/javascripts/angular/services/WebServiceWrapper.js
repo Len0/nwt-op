@@ -63,6 +63,30 @@ App.factory('webServiceWrapper',['$resource','$http','$filter', function ($resou
                 });
         },
 
+        getFileLocationByID: function(id, callback){
+            $http({method: 'GET', url: "/filemedia/get.json?id="+ id}).
+                success(function (data, status, headers, config) {
+                    callback(data);
+                }).
+                error (function (data, status, headers, config) {
+                console.log("Error: " + data);
+            });
+        },
+
+        attachFile: function(newAttachment){
+            alert("Dodavanje novog attachmenta");
+            $http({
+                url: '/attachment/add.json',
+                method: "POST",
+                data: $.param(newAttachment),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function (data, status, headers, config) {
+
+                }).error(function (data, status, headers, config) {
+
+                });
+        },
+
         sendReview: function(newReview){
             $http({
                 url: '/review/add.json',
