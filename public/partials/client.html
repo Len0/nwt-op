@@ -4,7 +4,7 @@
 		<button class="btn-inverse next" ng-click="dalje()">
 			Dalje
 		</button>
-        <h4>Tek dodani</h4>
+        <h4>Najnovije</h4>
         <hr />
         <div class="row">
             <div class="span4" ng-repeat="ad in newAds">
@@ -83,6 +83,18 @@
 
     <div ng-show="korak==3">
         <h2>Upload materijala</h2>
+        <input type="file" ng-file-select="onFileSelect($files)" multiple>
+
+        <div class="meter" ng-show="Progress>0">
+            <span style="width: {{Progress}}%"><center style="margin-top: -5px;">{{Progress}}</center></span>
+            <br>
+            <div ng-show="error==1">
+                Ima greška prilikom uploada!
+            </div>
+            <div ng-show="error==0">
+                Uspješan upload!
+            </div>
+        </div>
         <hr />
 
 
