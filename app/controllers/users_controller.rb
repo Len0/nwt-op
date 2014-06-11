@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
-  before_filter :is_logged, :except => [:login, :new, :create, :activation]
+  before_filter :is_logged, :except => [:login, :new, :create, :activation,:basic]
 
   def ban
     admin = User.where(id: session[:user_id]).first
@@ -168,6 +168,21 @@ class UsersController < ApplicationController
         end
       }
     end
+  end
+  
+  def basic
+        @user = User.find(params[:id],:select => 'name, username, email, description, avatar')
+        
+    respond_to do |format|
+      format.json {
+        if @user.nil?
+          render :json => {:error => "true", :message => (t "user.does_not_exist")}
+        else
+          render :json => @user
+        end
+      }
+    end
+    
   end
 
 

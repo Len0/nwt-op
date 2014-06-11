@@ -102,7 +102,14 @@ App.factory('webServiceWrapper',['$resource','$http','$filter', function ($resou
                 console.log("Error: " + data);
             });
         },
-
+		
+		getUserBasic: function(id,callback){
+			$http.get('/user/basic/' + id + '.json'
+				).success(function(data, status) {
+					callback(data);
+				});
+			
+		},
         getAd: function(id, callback) {
             console.log("getAd Call to WebService. ID: " + id);
             $http({method: 'GET', url: 'ad/get/' + id + '.json'}).
@@ -150,6 +157,17 @@ App.factory('webServiceWrapper',['$resource','$http','$filter', function ($resou
                 error (function (data, status, headers, config) {
                 console.log("Error: " + data);
             });
+        },
+        
+        getUsersAds: function(userid,callback){
+        	console.log("getUsersAds: " + userid);
+        	$http.get('/ad/usersads.json', {
+					params : {
+						user_id : userid
+					}
+				}).success(function(data, status) {
+					callback(data);
+				});        	
         }
 
     };

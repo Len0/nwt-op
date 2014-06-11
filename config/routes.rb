@@ -16,6 +16,8 @@ NWTMarketinghub::Application.routes.draw do
   get 'ads/all', to: 'ad#all'
   get 'ad/getadtype', to: 'ad#getadtype'
   get 'ad/latest', to: 'ad#latest'
+  get 'ad/usersads', to: 'ad#usersads'
+  
   get 'search/users', :to => 'search#users'
   get 'search/ads', :to => 'search#ads'
   get 'search/marketers', :to => 'search#marketers'
@@ -59,6 +61,7 @@ NWTMarketinghub::Application.routes.draw do
   post 'user/reset', to: 'users#reset'
   get 'user/all', to: 'users#all'
   get 'user/get/(:id)', to: 'users#get'
+  get 'user/basic/(:id)', to: 'users#basic' 
   get 'user/logout', to: 'users#logout'
   get 'user/activate/:act_hash', to: 'users#activation', :as => :activation
   get 'user/current', to: 'users#current'

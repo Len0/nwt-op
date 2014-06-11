@@ -1,5 +1,5 @@
 class AdController < ApplicationController
-  before_filter :is_logged, except: [:all,:getadtype,:all_types,:latest,:get]
+  before_filter :is_logged, except: [:all,:getadtype,:all_types,:latest,:get,:usersads]
   before_action :is_oglasivac, only: [:create]
   def create
     respond_to do |format|
@@ -168,6 +168,19 @@ class AdController < ApplicationController
         end
       }
     end
+  end
+  
+  def usersads
+    ads = AdOffer.where(:user_id=> params[:user_id])
+        respond_to do |format|
+      format.json {
+        if ads.nil?
+          render :json => {:error => "true", :message => (t "ad.doesnt_exist")}
+        else
+          render :json => ads
+        end
+      }
+    end    
   end
 
 end
