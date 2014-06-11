@@ -163,7 +163,7 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
         }
         alert("Pozivanje funkcije da se dobije url dodanog materijala");
             for(var i = 0; i<selectedAds.length; i++){
-                attachments[i].attachment.path = realAvatar;
+                attachments[i].attachment.path =$scope.realAvatar;
                 alert("Postavljanje novog attachmenta sa updejtovanom path varijablom");
                 webServiceWrapper.attachFile(attachments, function(attachmentInfo){
                     console.log(attachmentInfo);
