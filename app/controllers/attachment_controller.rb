@@ -1,5 +1,5 @@
 class AttachmentController < ApplicationController
-  before_filter :is_logged
+  before_filter :is_logged, except: [:add]
   protect_from_forgery :except => [:add, :update, :delete]
   def add
     respond_to do |format|
