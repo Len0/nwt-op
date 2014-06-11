@@ -151,22 +151,24 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
 	};
 	
     $scope.getLastUploaded = function(userID, selectedAds){
-        alert("Kreiranje niza attachmenta za svaku reklamu");
+        //alert("Kreiranje niza attachmenta za svaku reklamu");
         var attachments = [];
         for(var i = 0; i<selectedAds.length; i++){
+        	if(selectedAds[i].checked){
             var newAttachment = {"attachment":{
                 "path": "",
                 "ad_bought_id": selectedAds[i].id,
                 "user_id": userID
             }};
-          attachments[i] = newAttachment;
+          attachments.push(newAttachment);
+          }
         }
         alert("Pozivanje funkcije da se dobije url dodanog materijala");
             for(var i = 0; i<selectedAds.length; i++){
                 attachments[i].attachment.path =$scope.realAvatar;
-                alert("Postavljanje novog attachmenta sa updejtovanom path varijablom");
+                //alert("Postavljanje novog attachmenta sa updejtovanom path varijablom");
                 webServiceWrapper.attachFile(attachments[i], function(attachmentInfo){
-                    console.log(attachmentInfo);
+                    //console.log(attachmentInfo);
                 });
             }
            // console.log(data);
