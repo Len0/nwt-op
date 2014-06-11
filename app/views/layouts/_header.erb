@@ -10,7 +10,7 @@
 			<div class="nav-collapse collapse">
 				<ul class="nav">
 					<li>
-						<div class="btn-group" dropdown is-open="status.isopen">
+						<div class="btn-group" dropdown is-open="status.isopen" ng-show="loggedIn&&isMarketer()">
 							<button type="button" class="btn btn-inverse dropdown-toggle" ng-disabled="disabled">
 								{{'MARKETER' | translate}}<span class="caret"></span>
 							</button>

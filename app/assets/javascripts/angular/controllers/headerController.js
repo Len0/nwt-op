@@ -4,6 +4,7 @@ App.controller ('headerController', ['$translate','$scope','$http','$cookieStore
         $http.get('/user/current.json').success(function (data, status, headers, config) {
             $scope.data2 =  data;
             $scope.userType = data.userType;
+            $cookieStore.put('tipkorisnika',$scope.userType);
             $scope.userName = data.username;
             $scope.userID = data.userID;
 
@@ -16,6 +17,10 @@ App.controller ('headerController', ['$translate','$scope','$http','$cookieStore
         $scope.updateInfo = function(){
         $scope.currentUser();
         $scope.loggedIn = $cookieStore.get('loggedin');
+        $scope.isMarketer=function(){
+        	if($cookieStore.get('tipkorisnika')=='oglasivac') return true;
+        	return false;
+        };
 
         if ($scope.loggedIn == "true") {
             $scope.loggedOut = "false";
@@ -35,6 +40,7 @@ App.controller ('headerController', ['$translate','$scope','$http','$cookieStore
         $scope.userLogout = function(){
             $http.get('/user/logout').success(function(){
                 $cookieStore.put('loggedin', "false");
+                $cookieStore.put('tipkorisnika',"");
                 $scope.updateInfo();
                 location.reload(true);
             }); };
@@ -53,6 +59,7 @@ App.controller ('headerController', ['$translate','$scope','$http','$cookieStore
                             $("#loginForm").hide;
                             $("#logoutForm").show(500);
                             $cookieStore.put('loggedin',"true")
+                            
                             $scope.updateInfo();
                             if(data.type == 1){
                                 $scope.adminLog = "true";
