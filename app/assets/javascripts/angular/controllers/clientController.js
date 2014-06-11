@@ -1,4 +1,4 @@
-App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrapper','$upload',function($scope,AdAll,AdTypes, webServiceWrapper,$upload){
+App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrapper','$upload','$http',function($scope,AdAll,AdTypes, webServiceWrapper,$upload,$http){
 	$scope.ads={};
     $scope.currentActiveDiscussion=0;
 	$scope.korak=0;
