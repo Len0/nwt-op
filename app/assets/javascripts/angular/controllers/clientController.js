@@ -1,4 +1,4 @@
-App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrapper',function($scope,AdAll,AdTypes, webServiceWrapper){
+App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrapper','$upload',function($scope,AdAll,AdTypes, webServiceWrapper,$upload){
 	$scope.ads={};
     $scope.currentActiveDiscussion=0;
 	$scope.korak=0;
@@ -108,8 +108,49 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
     $scope.nazad=function(){
         $scope.korak--;
     };
+	
+	$scope.Progress = 0;
+	$scope.error = -1;
+	$scope.avatar = {};
+	$scope.realAvatar = {};
+	$scope.onFileSelect = function($files) {
+		//$files: an array of files selected, each file has name, size, and type.
+		for (var i = 0; i < $files.length; i++) {
+			var $file = $files[i];
+			$upload.upload({
+				url : 'filemedia/create.json',
+				file : $file,
+				progress : function(e) {
+					$scope.$apply(function() {
+						$scope.Progress = parseInt(100.0 * e.loaded / e.total);
+						console.log('percent: ' + parseInt(100.0 * e.loaded / e.total));
 
-    $scope.getLastUploaded = function(userID, selectedAds, fileID){
+					});
+
+				}
+			}).then(function(data, status, headers, config) {
+				// file is uploaded successfully
+				$scope.avatar = data.data;
+				$scope.error = 0;
+				$scope.prikaziSliku(data.data);
+				console.log(status);
+			}, function(data, status, headers, config) {
+				$scope.error = 1;
+				console.log(status);
+			});
+		}
+	};
+	$scope.prikaziSliku = function(nekiId){
+		$http.get('/filemedia/get.json', {
+					params : {
+						id : nekiId
+					}
+				}).success(function(data, status) {
+					$scope.realAvatar = data.lokacija.url;
+				});
+	};
+	
+    $scope.getLastUploaded = function(userID, selectedAds){
         alert("Kreiranje niza attachmenta za svaku reklamu");
         var attachments = [];
         for(var i = 0; i<selectedAds.length; i++){
@@ -121,16 +162,14 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
           attachments[i] = newAttachment;
         }
         alert("Pozivanje funkcije da se dobije url dodanog materijala");
-        webServiceWrapper.getFileLocationByID(fileID, function(data) {
             for(var i = 0; i<selectedAds.length; i++){
-                attachments[i].attachment.path = data.lokacija.url;
+                attachments[i].attachment.path = realAvatar;
                 alert("Postavljanje novog attachmenta sa updejtovanom path varijablom");
                 webServiceWrapper.attachFile(attachments, function(attachmentInfo){
                     console.log(attachmentInfo);
                 });
             }
             console.log(data);
-        });
 
 
     };
@@ -171,13 +210,6 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
         $event.stopPropagation();
         $scope.datePickerOpened = !$scope.datePickerOpened;
     };
-
-
-
-
-
-
-
 
     // Tek dodani oglasi
     $scope.newAds = webServiceWrapper.getLatestAds(3, function(data) {
