@@ -165,7 +165,7 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
             for(var i = 0; i<selectedAds.length; i++){
                 attachments[i].attachment.path =$scope.realAvatar;
                 alert("Postavljanje novog attachmenta sa updejtovanom path varijablom");
-                webServiceWrapper.attachFile(attachments[i].attachment, function(attachmentInfo){
+                webServiceWrapper.attachFile(attachments[i], function(attachmentInfo){
                     console.log(attachmentInfo);
                 });
             }
