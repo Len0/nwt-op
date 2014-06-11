@@ -73,7 +73,7 @@ App.factory('webServiceWrapper',['$resource','$http','$filter', function ($resou
             });
         },
 
-        attachFile: function(newAttachment){
+        attachFile: function(newAttachment,callback){
             alert("Dodavanje novog attachmenta");
             $http({
                 url: '/attachment/add.json',
@@ -81,7 +81,7 @@ App.factory('webServiceWrapper',['$resource','$http','$filter', function ($resou
                 data: $.param(newAttachment),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data, status, headers, config) {
-
+					callback(data);
                 }).error(function (data, status, headers, config) {
 
                 });
