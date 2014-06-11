@@ -74,7 +74,7 @@ App.factory('webServiceWrapper',['$resource','$http','$filter', function ($resou
         },
 
         attachFile: function(newAttachment,callback){
-            alert("Dodavanje novog attachmenta");
+            
             $http({
                 url: '/attachment/add.json',
                 method: "POST",

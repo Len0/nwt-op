@@ -151,10 +151,10 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
 	};
 	
     $scope.getLastUploaded = function(userID, selectedAds){
-        //alert("Kreiranje niza attachmenta za svaku reklamu");
         var attachments = [];
         for(var i = 0; i<selectedAds.length; i++){
         	if(selectedAds[i].checked){
+        	alert(i);
             var newAttachment = {"attachment":{
                 "path": "",
                 "ad_bought_id": selectedAds[i].id,
@@ -163,15 +163,15 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
           attachments.push(newAttachment);
           }
         }
-        alert("Pozivanje funkcije da se dobije url dodanog materijala");
-            for(var i = 0; i<selectedAds.length; i++){
+        
+            for(var i = 0; i<attachments.length; i++){
                 attachments[i].attachment.path =$scope.realAvatar;
-                //alert("Postavljanje novog attachmenta sa updejtovanom path varijablom");
+                
                 webServiceWrapper.attachFile(attachments[i], function(attachmentInfo){
-                    //console.log(attachmentInfo);
+                    console.log(attachmentInfo);
                 });
             }
-           //console.log(data);
+           
 
 
     };
