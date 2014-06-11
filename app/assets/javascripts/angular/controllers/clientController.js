@@ -176,6 +176,7 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
 
     $scope.tipClick = function(tip) {
         $scope.odabraniTip = tip;
+
     };
 
     $scope.buyAd = function() {

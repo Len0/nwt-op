@@ -1,6 +1,6 @@
 <div style="min-height: 100%;margin-top: 100px;  position:relative;">
 	<div ng-show="korak==0">
-		<img class="banner" src="mhub.png" />
+		<img class="banner" src="mhub.png" style="float: none; margin: 0 auto;" />
 		<button class="btn-inverse next" ng-click="dalje()">
 			Dalje
 		</button>
@@ -21,12 +21,20 @@
     <div ng-show="korak==1">
         <h2>Odaberite tip reklame</h2>
         <hr />
+
         <div class="row">
             <div class="span4" ng-repeat="tip in tipovi">
-                <div ng-click="tipClick(tip)" >
-                    <a class="span4 thumbnail" ng-show="tip != odabraniTip">{{tip.ad_type}}</a>
-                    <a class="span4 thumbnail" ng-show="tip == odabraniTip">{{tip.ad_type}}</a>
+                <div ng-click="tipClick(tip)"  >
+                    <a class="span4 btn" style="margin-bottom: 4px;" ng-show="tip != odabraniTip">
+                        <img src="{{tip.ad_type}}.png " alt="{{tip.ad_type}}.png">
+                        <p>{{tip.ad_type | uppercase}}</p>
+                    </a>
+                    <a class="span4 btn btn-info" style="margin-bottom: 4px; " ng-show="tip == odabraniTip">
+                        <img src="{{tip.ad_type}}.png " alt="{{tip.ad_type}}.png">
+                        <p>{{tip.ad_type | uppercase}}</p>
+                    </a>
                 </div>
+
             </div>
         </div>
     </div>
