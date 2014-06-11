@@ -23,7 +23,7 @@
         <hr />
         <div class="row">
             <div class="span4" ng-repeat="tip in tipovi">
-                <div ng-click="tipClick(tip)">
+                <div ng-click="tipClick(tip)" >
                     <button class="btn btn-default span4" ng-show="tip != odabraniTip">{{tip.ad_type}}</button>
                     <button class="btn btn-primary span4" ng-show="tip == odabraniTip">{{tip.ad_type}}</button>
                 </div>
@@ -83,6 +83,12 @@
 
     <div ng-show="korak==3">
         <h2>Upload materijala</h2>
+        <div>
+            <p>Odabrane reklame: </p>
+            <span class="label label-info" style="margin-bottom: 3px; margin-right: 5px;" ng-repeat="x in ads" ng-if="x.checked">{{x.title}}</span>
+            <p> Upload-ovani materijala će biti iskorišten za kreiranje reklame na izabranom medijskom prostoru</p>
+        </div>
+
         <input type="file" ng-file-select="onFileSelect($files)" multiple>
 
         <div class="meter" ng-show="Progress>0">
