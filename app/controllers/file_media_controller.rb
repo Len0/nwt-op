@@ -18,7 +18,7 @@ class FileMediaController < ApplicationController
   def all
     respond_to do |format|
       format.json{
-        files = FileMedia.all
+        files = FileMedia.find(:all, :order => "id desc", :limit => 5)
         render :json=>files
       }
     end

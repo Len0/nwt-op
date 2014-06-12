@@ -52,7 +52,11 @@ window.App = angular.module('App', ['angularFileUpload','ngRoute','ui.bootstrap'
       when('/search',{
           templateUrl: 'partials/home.html',
           controller: 'homeController'
-      }).otherwise({
+      }).
+    when('/clientBought',{
+    	templateUrl: 'partials/clientBought.html',
+    	controller: 'clientBoughtController'
+    }).otherwise({
         redirectTo: '/client'
         //,
         //templateUrl: 'partials/home.html',

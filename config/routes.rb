@@ -17,6 +17,7 @@ NWTMarketinghub::Application.routes.draw do
   get 'ad/getadtype', to: 'ad#getadtype'
   get 'ad/latest', to: 'ad#latest'
   get 'ad/usersads', to: 'ad#usersads'
+  get 'ad/clientbought', to: 'ad#clientbought'
   
   get 'search/users', :to => 'search#users'
   get 'search/ads', :to => 'search#ads'

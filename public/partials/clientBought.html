@@ -1,0 +1,12 @@
+<div class="hero-unit" ng-controller="headerController">
+	{{userName}}
+	<div class="row" ng-init="loadAds(userID)">
+            <div class="span4" ng-repeat="ad in myAds">
+                <a class="thumbnail" href="#/oglas/{{ad.id}}">
+                    <h4>{{ad.title}}</h4>
+                    <p>{{ad.description}}</p>
+                    <p>{{ad.duration}}{{ad.unit}}</p>
+                </a>
+            </div>
+        </div>
+</div>

@@ -182,5 +182,18 @@ class AdController < ApplicationController
       }
     end    
   end
+  
+  def clientbought
+        ads = AdBought.where(:user_id=> params[:user_id])
+        respond_to do |format|
+      format.json {
+        if ads.nil?
+          render :json => {:error => "true", :message => (t "ad.doesnt_exist")}
+        else
+          render :json => ads
+        end
+      }
+    end
+  end
 
 end

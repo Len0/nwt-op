@@ -10,7 +10,9 @@ App.config(function($translateProvider) {
 		MARKETER : 'Marketer',
 		AUTHFAIL : 'Authentication failed!',
 		USERNAME : 'Username',
-		PASSWORD : 'Password'
+		PASSWORD : 'Password',
+		MYADS:	'My ads',
+		BUY: 'Buy ad'
 	}).translations('ba', {
 		LOGIN : 'Prijava',
 		REGISTER : 'Registracija',
@@ -21,7 +23,9 @@ App.config(function($translateProvider) {
 		MARKETER : 'Oglašivač',
 		AUTHFAIL : 'Pogrešni pristupni podaci!',
 		USERNAME : 'Korisničko ime',
-		PASSWORD : 'Šifra'
+		PASSWORD : 'Šifra',
+		MYADS: 'Moje reklame',
+		BUY: 'Kupi reklamu'
 	});
 	$translateProvider.preferredLanguage('en');
 });

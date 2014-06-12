@@ -188,16 +188,17 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
             console.log(data);
             $scope.flash = data.message;
         });
-    }
+    };
 
     $scope.buyAllSelectedAds = function() {
         for (var index = 0; index < $scope.ads.length; index++) {
+        	if($scope.ads[index].checked)
             webServiceWrapper.buyAd($scope.ads[index].id, $scope.ads[index].buy_duration, $scope.ads[index].buy_date_start, function (data) {
                 console.log(data);
                 $scope.flash = data.message;
             });
         }
-    }
+    };
 
 
     // Date picker

@@ -192,6 +192,16 @@ App.factory('webServiceWrapper',['$resource','$http','$filter', function ($resou
 				}).success(function(data, status) {
 					callback(data);
 				});        	
+        },
+        getBoughtAds: function(userid,callback){
+        	console.log("getUsersAds: " + userid);
+        	$http.get('/ad/clientbought.json', {
+					params : {
+						user_id : userid
+					}
+				}).success(function(data, status) {
+					callback(data);
+				});        	
         }
 
     };
