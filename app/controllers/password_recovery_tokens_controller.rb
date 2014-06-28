@@ -9,12 +9,15 @@ class PasswordRecoveryTokensController < ApplicationController
   end
 
   def pwd_recovery_post
-    user_email = params[:request_reset_email]
+    user_email = params[:email]
+    logger.info user_email
     user = User.where(email: user_email).first
     respond_to do |format|
       format.json{
+        logger.info "user"
         if user.nil?
-          render :notice => (t "Ne postoji korisnik sa zadatom email adresom.")
+          logger.info "nema user-a"
+          render :json=>{:notice => (t "Ne postoji korisnik sa zadatom email adresom.")}
           return
         else
           @prt =  PasswordRecoveryToken.where(user_id: user.id).first
@@ -27,8 +30,11 @@ class PasswordRecoveryTokensController < ApplicationController
             if @prt.valid?
               @prt.save
               UserMailer.password_recovery(user, @prt).deliver
+              logger.info "Validan"
+              render :json => {:nothing => true}
+                return
             else
-              render :notice => (t "Nije kreiran ispravan aktivacijski token.")
+              render :json => {:notice => (t "Nije kreiran ispravan aktivacijski token.")}
               return
             end
           else
@@ -39,15 +45,18 @@ class PasswordRecoveryTokensController < ApplicationController
               if @prt.valid?
                 @prt.save
                 UserMailer.password_recovery(user, @prt).deliver
+                render :json => {:nothing => true}
+                return
               else
-                render :notice => (t "Nije kreiran ispravan aktivacijski token. Update!")
+                render :json => {:notice => (t "Nije kreiran ispravan aktivacijski token. Update!")}
                 return
               end
             else
-               render :notice => (t "Vec ste poslali jedan zahtjev za zaboravljenu lozinku u proteklih sat vremena, provjerite Vas postanski sanducic ili pokusajte malo kasnije.")
+               render :json => {:notice => (t "Vec ste poslali jedan zahtjev za zaboravljenu lozinku u proteklih sat vremena, provjerite Vas postanski sanducic ili pokusajte malo kasnije.")}
               return
             end
           end
+          render :json => {:nothing => true} 
         end
       }
     end
