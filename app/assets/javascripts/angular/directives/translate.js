@@ -12,6 +12,7 @@ App.config(function($translateProvider) {
 		USERNAME : 'Username',
 		PASSWORD : 'Password',
 		MYADS:	'My ads',
+        RECOVER: 'Forgotten password retrival',
 		BUY: 'Buy ad'
 	}).translations('ba', {
 		LOGIN : 'Prijava',
@@ -25,6 +26,7 @@ App.config(function($translateProvider) {
 		USERNAME : 'Korisničko ime',
 		PASSWORD : 'Šifra',
 		MYADS: 'Moje reklame',
+        RECOVER: 'Povratak zaboravljene lozinke',
 		BUY: 'Kupi reklamu'
 	});
 	$translateProvider.preferredLanguage('en');
