@@ -12,9 +12,9 @@ class PasswordRecoveryTokensController < ApplicationController
     user_email = params[:request_reset_email]
     user = User.where(email: user_email).first
     respond_to do |format|
-      format.json{
+      format.html{
         if user.nil?
-          render :notice => (t "Ne postoji korisnik sa zadatom email adresom.")
+          redirect_to root_path, :notice => (t "Ne postoji korisnik sa zadatom email adresom.")
           return
         else
           @prt =  PasswordRecoveryToken.where(user_id: user.id).first
@@ -28,7 +28,7 @@ class PasswordRecoveryTokensController < ApplicationController
               @prt.save
               UserMailer.password_recovery(user, @prt).deliver
             else
-              render :notice => (t "Nije kreiran ispravan aktivacijski token.")
+              redirect_to root_path, :notice => (t "Nije kreiran ispravan aktivacijski token.")
               return
             end
           else
@@ -40,11 +40,11 @@ class PasswordRecoveryTokensController < ApplicationController
                 @prt.save
                 UserMailer.password_recovery(user, @prt).deliver
               else
-                render :notice => (t "Nije kreiran ispravan aktivacijski token. Update!")
+                redirect_to root_path, :notice => (t "Nije kreiran ispravan aktivacijski token. Update!")
                 return
               end
             else
-               render :notice => (t "Vec ste poslali jedan zahtjev za zaboravljenu lozinku u proteklih sat vremena, provjerite Vas postanski sanducic ili pokusajte malo kasnije.")
+              redirect_to root_path, :notice => (t "Vec ste poslali jedan zahtjev za zaboravljenu lozinku u proteklih sat vremena, provjerite Vas postanski sanducic ili pokusajte malo kasnije.")
               return
             end
           end
