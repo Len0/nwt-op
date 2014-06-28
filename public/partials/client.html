@@ -1,8 +1,8 @@
 <div style="min-height: 100%;margin-top: 100px;  position:relative;">
 	<div ng-show="korak==0" ng-controller="headerController">
-		<img class="banner" src="mhub.png" style="float: none; margin: 0 auto;" />
-		<button class="btn-inverse next" ng-click="dalje()" ng-show="isClient()">
-			Dalje
+		<div class="banner"></div>
+		<button class="btn-inverse next" ng-click="dalje()" ng-show="isClient()" style="position: center;">
+			{{'BUY' | translate}}
 		</button>
         <h4>Najnovije</h4>
         <hr />

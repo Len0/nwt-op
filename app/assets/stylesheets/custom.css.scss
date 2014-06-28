@@ -74,7 +74,14 @@ overflow:hidden;
   background-color: #F4F7D9;
 }
 .banner{
-  position:relative
+  background-image: url('/mhub.png');
+    height: 320px;
+  background-repeat: no-repeat;
+  
+  background-position: 
+  center center;
+  width: 70%;
+  position: relative;
 }
 
 .next{
