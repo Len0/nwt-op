@@ -100,7 +100,7 @@
             <input type="file" ng-file-select="onFileSelect($files)" multiple>
 
         <div class="meter" ng-show="Progress>0">
-            <span style="width: {{Progress}}%"><center style="margin-top: -5px;">{{Progress}}</center></span>
+            <span style="width: {{Progress}}%">{{Progress}}</span>
             <br>
             <div ng-show="error==1">
                 Ima greška prilikom uploada!
@@ -115,16 +115,7 @@
 
         </div>
         <hr />
-
-
     </div>
-
-
-
-
-
-
-
 
     <div ng-show="korak>0" style="margin: 20px 0;">
         <button class="btn btn-default" ng-click="nazad()">

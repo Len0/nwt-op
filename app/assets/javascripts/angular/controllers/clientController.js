@@ -154,7 +154,6 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
         var attachments = [];
         for(var i = 0; i<selectedAds.length; i++){
         	if(selectedAds[i].checked){
-        	alert(i);
             var newAttachment = {"attachment":{
                 "path": "",
                 "ad_bought_id": selectedAds[i].id,

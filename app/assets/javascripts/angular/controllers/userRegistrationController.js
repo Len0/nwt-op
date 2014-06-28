@@ -58,6 +58,20 @@ function($scope, $http, $location, $upload) {
 			});
 		}
 	};
+    $scope.sendRecovery = function(x){
+        $http({
+            url : '/user/recovery.json',
+            method : "POST",
+            data : $.param(x),
+            headers : {
+                'Content-Type' : 'application/x-www-form-urlencoded'
+            }
+        }).success(function(data, status, headers, config) {
+                $scope.data = data;
+            }).error(function(data, status, headers, config) {
+                $scope.status = status;
+            });
+    };
 	$scope.prikaziSliku = function(nekiId){
 		$http.get('/filemedia/get.json', {
 					params : {
