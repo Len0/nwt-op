@@ -13,7 +13,9 @@ App.config(function($translateProvider) {
 		PASSWORD : 'Password',
 		MYADS:	'My ads',
         RECOVER: 'Forgotten password retrival',
-		BUY: 'Buy ad'
+		BUY: 'Buy ad',
+		NEWAD: 'New ad',
+		PRICELIST: 'Pricelist'
 	}).translations('ba', {
 		LOGIN : 'Prijava',
 		REGISTER : 'Registracija',
@@ -27,7 +29,9 @@ App.config(function($translateProvider) {
 		PASSWORD : 'Šifra',
 		MYADS: 'Moje reklame',
         RECOVER: 'Povratak zaboravljene lozinke',
-		BUY: 'Kupi reklamu'
+		BUY: 'Kupi reklamu',
+		NEWAD: 'Nova reklama',
+		PRICELIST: 'Cjenovnik'
 	});
 	$translateProvider.preferredLanguage('en');
 });

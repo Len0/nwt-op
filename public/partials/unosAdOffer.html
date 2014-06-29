@@ -2,24 +2,39 @@
 	<div class="hero-unit">
 		<h1>Unos novog oglasa</h1>
 		<br>
-		<form class="form-horizontal">
+		<form class="form-horizontal" name="adForma">
 			<div class="control-group">
 				<label class="control-label" for="naslov"> Naslov:</label>
 				<div class="controls">
-					<input type="text" id="naslov" ng-model="ad.title" required=""/>
+					<input type="text" name="title" id="naslov" ng-model="ad.title" ng-minlength="4" ng-maxlength="50" required=""/>
+					<p ng-show="adForma.title.$error.minlength" class="help-block">
+						Naslov je prekratak.
+					</p>
+					<p ng-show="userForm.title.$error.maxlength" class="help-block">
+						Naslov je predug.
+					</p>
 				</div>
+
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="naslov"> Podlaslov:</label>
 				<div class="controls">
-					<input type="text" id="podnaslov" ng-model="ad.subtitle" required=""/>
+					<input type="text" name="subtitle" id="podnaslov" ng-model="ad.subtitle" ng-maxlength="200" required=""/>
+				<p ng-show="userForm.subtitle.$error.maxlength" class="help-block">
+					Podnaslov je predug.
+				</p>
 				</div>
+
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="opis">Opis:</label>
 				<div class="controls">
-					<textarea id="opis" ng-model="ad.description" required></textarea>
+					<textarea id="opis" name="description" ng-model="ad.description" ng-maxlength="10000" required></textarea>
+				<p ng-show="userForm.description.$error.maxlength" class="help-block">
+					Opis je predug.
+				</p>
 				</div>
+
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="cijena">Cijena:</label>
@@ -86,12 +101,14 @@
 			{{poruka}}
 			<div class="control-group">
 				<div class="controls">
-					<button class="btn-primary" ng-click="posalji()">
+					<button class="btn-primary" ng-click="posalji()" ng-disabled="adForma.$invalid">
 						Unesi
 					</button>
 				</div>
 			</div>
-			<div ng-show="uspjesno==1">Uspješno ste dodali novu reklamu!</div>
+			<div ng-show="uspjesno==1">
+				Uspješno ste dodali novu reklamu!
+			</div>
 		</form>
 	</div>
 </div>

@@ -10,13 +10,16 @@
 			<div class="nav-collapse collapse">
 				<ul class="nav">
 					<li>
-						<div class="btn-group" dropdown is-open="status.isopen" ng-show="loggedIn&&isMarketer()">
+						<div class="btn-group" dropdown is-open="status.isopen" ng-show="isMarketer()">
+							<button type="button" class="btn btn-inverse dropdown-toggle" ng-disabled="disabled">
+								{{'MARKETER' | translate}}<span class="caret"></span>
+							</button>
 							<ul class="dropdown-menu" role="menu">
 								<li>
-									<a href="/#/createAdOffer">Nova reklama</a>
+									<a href="/#/createAdOffer">{{'NEWAD' | translate}}</a>
 								</li>
 								<li>
-									<a href="/#/cjenovnik">Cjenovnik</a>
+									<a href="/#/cjenovnik">{{'PRICELIST' | translate}}</a>
 								</li>
 							</ul>
 						</div>
