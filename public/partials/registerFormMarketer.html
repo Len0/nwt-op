@@ -39,18 +39,43 @@
                     </script>
 
                 </div>
+                <form class="form-horizontal" name="userForma">
                 <div class="control-group span4">
                     <label for="name">Name:</label>
-                    <input name="input" id="name" ng-model="newUser.name" placeholder="Name" required>
+                    <input name="name" id="name" ng-model="newUser.name" placeholder="Name" ng-minlength="5" ng-maxlength="20" required>
+						<p ng-show="userForma.name.$error.minlength" class="help-block">
+							Ime je prekratako.
+						</p>
+						<p ng-show="userForma.name.$error.maxlength" class="help-block">
+							Ime je predugo.
+						</p>
                     <label for="username">Username:</label>
-                    <input name="input" id="username" ng-model="newUser.username" placeholder="Username" required>
+                    <h4 style="color: red;">{{rezultat.username[0]}}</h4>
+						<input name="username" id="username" ng-model="newUser.username" placeholder="Username" ng-minlength="5" ng-maxlength="20" required>
+						<p ng-show="userForma.username.$error.minlength" class="help-block">
+							Username je prekratak.
+						</p>
+						<p ng-show="userForma.username.$error.maxlength" class="help-block">
+							Username je predug.
+						</p>
                     <label for="email">Email:</label>
-                    <input id="email" ng-model="newUser.email" placeholder="Email" required>
+						<h4 style="color: red;">{{rezultat.email[0]}}</h4>
+						<input name="email" id="email" type="email" ng-model="newUser.email" placeholder="Email" required>
+						<p ng-show="userForma.email.$invalid && !userForm.email.$pristine" class="help-block">Unesite validan email.</p>
 
                     <label for="password">Password:</label>
-                    <input name="input" id="password" type="password" ng-model="newUser.password" placeholder="Password" required>
-                    <label for="passwordc">Password confirm:</label>
-                    <input name="input" id="passswordc" type="password" ng-model="newUser.password_confirmation" placeholder="Password confirm" required>
+                    <input name="password" id="password" type="password" ng-model="newUser.password" placeholder="Password" ng-minlength="5" ng-maxlength="20" required>
+						<p ng-show="userForma.password.$error.minlength" class="help-block">
+							Šifra je prekratka.
+						</p>
+						<p ng-show="userForma.name.$error.maxlength" class="help-block">
+							Šifra je preduga.
+						</p>
+						<label for="passwordc">Password confirm:</label>
+						<input name="input" id="passswordc" type="password" ng-model="newUser.password_confirmation" placeholder="Password confirm" required>
+						<p ng-show="newUser.password_confirmation!=newUser.password" class="help-block">
+							Šifre se ne slažu.
+						</p>
 
                 </div>
                 <div >
@@ -91,11 +116,12 @@
 
                 <div class="control-group span8">
                     <div class="actions">
-                        <button class="btn btn-primary btn-block" ng-click="registerUser(newUser)" data-no-turbolink="true">
+                        <button class="btn btn-primary btn-block" ng-click="registerUser(newUser)" data-no-turbolink="true" ng-disabled="userForma.$invalid">
                             Prijavi
                         </button>
                     </div>
                 </div>
+                </form>
             </div>
 
         </div>

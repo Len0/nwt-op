@@ -69,7 +69,7 @@
 								{{'AUTHFAIL' | translate}}
 							</p>
 
-							<div class="span1">
+							<div class="span2">
 								<a style="color:Gainsboro;" href="/#/register">{{'REGISTER' | translate}}</a>
 							</div>
 							<div class="span2" style="margin-left: 5px;">
@@ -84,16 +84,16 @@
 					</form>
 				</div>
 
-				<div class="navbar-form pull-right" id="logoutForm" ng-show="loggedIn"  >
+				<div class="nav navbar-form pull-right" id="logoutForm" ng-show="loggedIn"  >
 
-					<div class="navbar-inner">
+					
 						<p class="nav navbar-text">
 							{{userName}}
 						</p>
-						<button class="btn-inverse" ng-click="userLogout()" data-no-turbolink="true">
+						<button class="btn-inverse" ng-click="userLogout()" data-no-turbolink="true" style="margin-top: 10px;">
 							{{'LOGOUT' | translate}}
 						</button>
-					</div>
+					
 
 				</div>
 
