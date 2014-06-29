@@ -10,6 +10,7 @@ function($scope, $http, $location, $upload) {
 		id : 3
 	}];
 	$scope.avatar = "";
+	$scope.rezultat ={};
 	$scope.realAvatar = "";
 	$scope.registerUser = function(usertemp) {
 		usertemp.avatar = $scope.avatar;
@@ -25,7 +26,10 @@ function($scope, $http, $location, $upload) {
 			}
 		}).success(function(data, status, headers, config) {
 			$scope.data = data;
+			$scope.rezultat = data;
+			alert("Uspješno ste se registrovali! Provjerite vaš email inbox!");
 		}).error(function(data, status, headers, config) {
+			$scope.rezultat = data;
 			$scope.status = status;
 		});
 	};
