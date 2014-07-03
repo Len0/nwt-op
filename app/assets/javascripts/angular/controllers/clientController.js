@@ -1,4 +1,4 @@
-App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrapper','$upload','$http', '$routeParams',function($scope,AdAll,AdTypes, webServiceWrapper,$upload,$http, $routeParams){
+App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrapper','$upload','$http', '$routeParams', '$location',function($scope,AdAll,AdTypes, webServiceWrapper,$upload,$http, $routeParams, $location){
     $scope.successMessage = $routeParams.success;
 	$scope.ads={};
     $scope.currentActiveDiscussion=0;
