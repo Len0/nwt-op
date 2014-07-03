@@ -5,10 +5,15 @@ window.App = angular.module('App', ['angularFileUpload','ngRoute','ui.bootstrap'
     when('/marketer',{
         templateUrl: 'partials/marketer.html'
     }).
-    when('/client',{
+      when('/client/:success',{
+          templateUrl: 'partials/client.html',
+          controller: 'clientController'
+      }).
+    when('/client/',{
         templateUrl: 'partials/client.html',
         controller: 'clientController'
     }).
+
     when('/searchAds/:text/:price/:type',{
         templateUrl: 'partials/searchAds.html',
         controller: 'searchAdsController'

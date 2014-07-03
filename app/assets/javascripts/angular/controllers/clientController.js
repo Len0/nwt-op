@@ -1,4 +1,5 @@
-App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrapper','$upload','$http',function($scope,AdAll,AdTypes, webServiceWrapper,$upload,$http){
+App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrapper','$upload','$http', '$routeParams',function($scope,AdAll,AdTypes, webServiceWrapper,$upload,$http, $routeParams){
+    $scope.successMessage = $routeParams.success;
 	$scope.ads={};
     $scope.currentActiveDiscussion=0;
 	$scope.korak=0;
@@ -197,6 +198,8 @@ App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrappe
                 $scope.flash = data.message;
             });
         }
+        var message = "All ads succefully bought";
+        $location.path("/client").search({success: message});
     };
 
 

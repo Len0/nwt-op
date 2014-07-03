@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(version: 20140611190420) do
     t.integer  "rating"
     t.text     "content"
     t.integer  "user_id"
-    t.integer  "poster_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

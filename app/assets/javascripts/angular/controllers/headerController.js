@@ -24,7 +24,7 @@ function($translate, $scope, $http, $cookieStore) {
 			return false;
 		};
 		$scope.isClient = function() {
-			if ($cookieStore.get('tipkorisnika') == 'klijent')
+			if ($cookieStore.get('tipkorisnika') == 'klijent'    ||   $cookieStore.get('tipkorisnika') == 'admin')
 				return true;
 			return false;
 		};

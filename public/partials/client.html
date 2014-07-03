@@ -1,5 +1,6 @@
 <div style="min-height: 100%;margin-top: 100px;  position:relative;">
 	<div ng-show="korak==0" ng-controller="headerController">
+        <div class="alert alert-success" ng-show="successMessage != undefined">{{successMessage}}</div>
 		<div class="banner"></div>
 		<button class="btn-inverse next" ng-click="dalje()" ng-show="isClient()" style="position: center;">
 			{{'BUY' | translate}}
@@ -54,6 +55,7 @@
                 </p>
 
                 <p>Date start: {{adX.date_start | date:'dd.MM.yyyy hh:mm'}}; end: {{adX.date_end | date:'dd.MM.yyyy hh:mm'}}</p>
+                <p>Available: {{adX.max_duration}} {{adX.unit}}</p>
 
                 <div ng-show="adX.checked" class="well">
                     <p>Duration: {{adX.buy_duration}} {{adX.unit}}</p>
@@ -102,10 +104,10 @@
         <div class="meter" ng-show="Progress>0">
             <span style="width: {{Progress}}%">{{Progress}}</span>
             <br>
-            <div ng-show="error==1">
+            <div ng-show="error==1" class="alert alert-warning">
                 Ima greška prilikom uploada!
             </div>
-            <div ng-show="error==0">
+            <div ng-show="error==0" class="alert alert-success">
                 Uspješan upload!
                 <div ng-controller="headerController">
                     <a class="btn" ng-click="getLastUploaded(userID, ads, info)">Attach media</a>

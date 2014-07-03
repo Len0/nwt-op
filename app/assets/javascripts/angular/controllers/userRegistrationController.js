@@ -27,7 +27,8 @@ function($scope, $http, $location, $upload) {
 		}).success(function(data, status, headers, config) {
 			$scope.data = data;
 			$scope.rezultat = data;
-			alert("Uspješno ste se registrovali! Provjerite vaš email inbox!");
+            var message = "Uspješno ste se registrovali! Provjerite vaš email inbox!";
+            $location.path("/client").search({success: message});
 		}).error(function(data, status, headers, config) {
 			$scope.rezultat = data;
 			$scope.status = status;
