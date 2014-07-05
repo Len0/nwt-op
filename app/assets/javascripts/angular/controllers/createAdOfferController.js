@@ -1,5 +1,5 @@
-App.controller('createAdOfferController', ['$scope', '$filter', 'AdOffer','AdTypes',
-function($scope, $filter, AdOffer,AdTypes) {
+App.controller('createAdOfferController', ['$scope', '$filter', 'AdOffer','AdTypes', '$location',
+function($scope, $filter, AdOffer,AdTypes, $location) {
 	$scope.ad = {};
 	$scope.tipovi = AdTypes.query();
 	$scope.poruka='';
@@ -57,12 +57,14 @@ function($scope, $filter, AdOffer,AdTypes) {
 
 		};
 		var odgovor=AdOffer.get(data,function(){
+            var message = "";
 			$scope.poruka=JSON.stringify(odgovor.errors);
 			if($scope.poruka=="{}"){
-				$scope.uspjesno=1;
-				$scope.poruka='';
-			}else
-			$scope.poruka=JSON.stringify(odgovor.errors);
+				message='Reklama uspješno kreirana';
+			}else {
+                message=JSON.stringify(odgovor.errors);
+            }
+            $location.path("/client").search({success: message});
 		});
 
 	};

@@ -1,5 +1,6 @@
 //@import "bootstrap";
 
+body { padding-top: 70px; }
 
 #logo {
   float: left;
@@ -33,20 +34,6 @@ height:100px;
 overflow:hidden;
 }
 
-.btn-primary:visited{
-  color:white;
-}
-.btn-danger:visited{
-  color:white;
-}
-.thumbnails li{
-  background: linear-gradient(to bottom, #EEEEEE, #DDDDDD);
-  padding-bottom:5px;
-  padding-left:3px;
-  padding-right:3px;
-  border:2px solid white;
-  border-radius: 10px;
-}
 .captcha{
   width: 400px;
       display: block;
@@ -57,21 +44,6 @@ overflow:hidden;
 #IDKorisnikDugme{
     margin-right: 40px;
     margin-top: 10px;
-}
-.navbar-inverse .navbar-inner{
-  background-color: #6C6E58;
-  background-image: linear-gradient(to bottom, #3E423A, #6C6E58);
-}
-.navbar-inverse .brand{
-    color: #F4F7D9;
-}
-.btn-inverse{
-  background-image: linear-gradient(to bottom, #3E423A, #6C6E58);
-  color: #F4F4F4;
-  border: none;
-}
-.hero-unit{
-  background-color: #F4F7D9;
 }
 .banner{
   background-image: url('/mhub.png');
@@ -166,3 +138,4 @@ overflow:hidden;
 .help-block{
   color: red;
 }
+

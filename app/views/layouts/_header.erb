@@ -1,3 +1,4 @@
+<!--
 <div class="navbar navbar-inverse navbar-fixed-top"  ng-controller="headerController" >
 	<div class="navbar-inner" ng-cloak>
 		<div class="container">
@@ -9,50 +10,13 @@
 			<a class="brand" href="#" style="text-shadow: 0 2px 1px rgba(0, 0, 0, 0.75); font-size: 27px;">mHub</a>
 			<div class="nav-collapse collapse">
 				<ul class="nav">
-					<li>
-						<div class="btn-group" dropdown is-open="status.isopen" ng-show="isMarketer()">
-							<button type="button" class="btn btn-inverse dropdown-toggle" ng-disabled="disabled">
-								{{'MARKETER' | translate}}<span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu" role="menu">
-								<li>
-									<a href="/#/createAdOffer">{{'NEWAD' | translate}}</a>
-								</li>
-								<li>
-									<a href="/#/cjenovnik">{{'PRICELIST' | translate}}</a>
-								</li>
-							</ul>
-						</div>
-					</li>
-					<li >
-						<div class="btn-group" ng-show='isClient()' dropdown is-open="status.isopen">
-							<button type="button" class="btn btn-inverse dropdown-toggle" ng-disabled="disabled">
-								{{'CLIENT' | translate}}<span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="/#/client">{{'BUY' | translate}}</a></li>
-								<li><a href="/#/clientBought">{{'MYADS' | translate}}</a></li>
-							</ul>
-						</div>
-					</li>
 
-					<li>
-						<a href="/#/search">{{'SEARCH' | translate}}</a>
-					</li>
 
-					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown"  data-no-turbolink="true"> {{kojiJezik}} <span class="caret"></span> </a>
-						<ul class="dropdown-menu" role="menu">
-							<li>
-								<a href="#" ng-click="prevedi('ba')" data-no-turbolink="true">BA</a>
-								<a href="#" ng-click="prevedi('en')" data-no-turbolink="true">EN</a>
-							</li>
-						</ul>
-					</li>
 
-					<li ng-show="adminLog">
-						<a href="/admin_panel/dashboard"><%= t "nav.admin" %></a>
-					</li>
+
+
+
+
 
 				</ul>
 
@@ -86,19 +50,110 @@
 
 				<div class="nav pull-right" id="logoutForm" ng-show="loggedIn"  >
 
-					
+
 						<p class="nav navbar-text">
 							{{userName}}
 						</p>
 						<button class="btn-inverse pull-right" ng-click="userLogout()" data-no-turbolink="true" style="margin-top: 10px;">
 							{{'LOGOUT' | translate}}
 						</button>
-					
+
 
 				</div>
 
-			</div><!--/.nav-collapse -->
+			</div><
 		</div>
 	</div>
 </div>
+          -->
 
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="headerController">
+  <div class="container" ng-cloak>
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">mHub</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <li class="dropdown" is-open="status.isopen" ng-show="isMarketer()">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-no-turbolink="true">{{'MARKETER' | translate}}<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/#/createAdOffer" data-no-turbolink="true">{{'NEWAD' | translate}}</a></li>
+            <li><a href="/#/cjenovnik" data-no-turbolink="true">{{'PRICELIST' | translate}}</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown" is-open="status.isopen" ng-show="isClient()">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-no-turbolink="true">{{'CLIENT' | translate}}<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/#/client" data-no-turbolink="true">{{'BUY' | translate}}</a></li>
+              <li><a href="/#/clientBought" data-no-turbolink="true">{{'MYADS' | translate}}</a></li>
+            </ul>
+        </li>
+
+        <li>
+          <a href="/#/search">{{'SEARCH' | translate}}</a>
+        </li>
+
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown"  data-no-turbolink="true"> {{kojiJezik}} <span class="caret"></span> </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#" ng-click="prevedi('ba')" data-no-turbolink="true">BA</a></li>
+            <li><a href="#" ng-click="prevedi('en')" data-no-turbolink="true">EN</a></li>
+          </ul>
+        </li>
+
+
+        <li ng-show="adminLog">
+          <a href="/admin_panel/dashboard"><%= t "nav.admin" %></a>
+        </li>
+
+      </ul>
+
+
+
+
+      <ul class="nav navbar-nav navbar-right" id="loginForm" ng-show="loggedOut">
+        <!--
+        <p style="color: red" ng-show="userCredsError">
+          {{'AUTHFAIL' | translate}}
+        </p>-->
+
+        <li><a href="/#/register">{{'REGISTER' | translate}}</a></li>
+        <li><a href="/#/recovery">{{'FORGOT' | translate}}</a></li>
+      </ul>
+
+
+      <ul class="nav navbar-nav navbar-right" id="logoutForm" ng-show="loggedIn">
+        <li class="nav navbar-text">{{userName}}</li>
+        <li><a href="#" ng-click="userLogout()">{{'LOGOUT' | translate}}</a></li>
+      </ul>
+
+
+      <form accept-charset="UTF-8" class="navbar-form navbar-right formclass" id="loginForm" ng-show="loggedOut" >
+        <div class="form-group">
+          <input class="form-control" type="text" name="username"  ng-model="user.username" placeholder="{{'USERNAME' | translate}}">
+          <input class="form-control" type="password" name="password"  ng-model="user.password" placeholder="{{'PASSWORD' | translate}}">
+          <button class="btn btn-default" ng-click="userLogin(user)">
+            {{'LOGIN' | translate}}
+          </button>
+        </div>
+      </form>
+
+
+
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

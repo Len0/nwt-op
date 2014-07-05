@@ -1,19 +1,26 @@
-<div style="min-height: 100%;margin-top: 100px;  position:relative;">
+<div style="position:relative;">
 	<div ng-show="korak==0" ng-controller="headerController">
 		<div class="banner"></div>
-		<button class="btn-inverse next" ng-click="dalje()" ng-show="isClient()" style="position: center;">
+		<button class="btn btn-inverse next" ng-click="dalje()" ng-show="isClient()" style="position: center;">
 			{{'BUY' | translate}}
 		</button>
+
 		<div class="alert alert-success" ng-show="successMessage != undefined">{{successMessage}}</div>
+        <div class="alert alert-error" ng-show="successMessage != undefined">{{errorMessage}}</div>
+
+
         <h4>Najnovije</h4>
         <hr />
-        <div class="row">
-            <div class="span4" ng-repeat="ad in newAds">
-                <a class="thumbnail" href="#/oglas/{{ad.id}}">
-                    <h4>{{ad.title}}</h4>
-                    <p>{{ad.description}}</p>
-                </a>
-            </div>
+
+        <div class="list-group">
+            <a href="#/oglas/{{ad.id}}" class="list-group-item" ng-repeat="ad in newAds">
+                <h4 class="list-group-item-heading">
+                    {{ad.title}}
+                </h4>
+                <p class="list-group-item-text">
+                    {{ad.subtitle}}
+                </p>
+            </a>
         </div>
 	</div>
 
@@ -24,13 +31,13 @@
         <hr />
 
         <div class="row">
-            <div class="span4" ng-repeat="tip in tipovi">
-                <div ng-click="tipClick(tip)"  >
-                    <a class="span4 btn" style="margin-bottom: 4px;" ng-show="tip != odabraniTip">
+            <div class="col-md-4" ng-repeat="tip in tipovi">
+                <div ng-click="tipClick(tip)" >
+                    <a class="btn" ng-show="tip != odabraniTip">
                         <img src="{{tip.ad_type}}.png " alt="{{tip.ad_type}}.png">
                         <p>{{tip.ad_type | uppercase}}</p>
                     </a>
-                    <a class="span4 btn btn-info" style="margin-bottom: 4px; " ng-show="tip == odabraniTip">
+                    <a class="btn btn-primary"  ng-show="tip == odabraniTip">
                         <img src="{{tip.ad_type}}.png " alt="{{tip.ad_type}}.png">
                         <p>{{tip.ad_type | uppercase}}</p>
                     </a>
@@ -67,7 +74,7 @@
                     Start time: <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="adX.buy_date_start" is-open="datePickerOpened" min-date="adX.date_start" max-date="adX.date_end" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
                 </div>
 
-                <a class="btn btn-xs" ng-init="discussShow=0" ng-click="discussShow = !discussShow; refreshQuestions(adX.id, 0)"><span class="glyphicon glyphicon-comment"></span> Discussion</a>
+                <a class="btn btn-default btn-xs" ng-init="discussShow=0" ng-click="discussShow = !discussShow; refreshQuestions(adX.id, 0)"><span class="glyphicon glyphicon-comment"></span> Discussion</a>
                 <div style="padding-top: 10px" ng-show="currentActiveDiscussion == adX.id" ng-controller="headerController">
                     <table class="table table-striped table-condensed table-bordered">
                         <tr>
@@ -85,7 +92,6 @@
                         </tr>
                     </table>
                 </div>
-                <hr />
             </div>
         </div>
     </div>
@@ -119,7 +125,8 @@
         <hr />
     </div>
 
-    <div ng-show="korak>0" style="margin: 80px 0;">
+
+    <div ng-show="korak>0" style="margin: 80px 0; float: right ">
         <button class="btn btn-default" ng-click="nazad()">
             Nazad
         </button>

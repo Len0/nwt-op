@@ -17,8 +17,8 @@ App.controller ('searchAdsController', ['$scope', '$routeParams', 'webServiceWra
     });
 
     $scope.searchAds = function() {
-        console.log("Search Ads Clicked");
-        $location.url("/searchAds/" + $scope.searchText);
+        console.log("Search Ads Clicked:" + $scope.searchText);
+        $location.url("/searchAds/" + $scope.searchText + "/undefined/undefined");
         $scope.searchText = "";
     }
 

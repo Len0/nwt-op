@@ -158,7 +158,7 @@ class AdController < ApplicationController
   end
 
   def latest
-    ads = AdOffer.limit(params[:count]).order("created_at").all
+    ads = AdOffer.limit(params[:count]).order("created_at").reverse_order
     respond_to do |format|
       format.json {
         if ads.nil?

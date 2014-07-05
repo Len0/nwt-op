@@ -2,11 +2,20 @@
 	<div class="hero-unit">
 		<h1>Unos novog oglasa</h1>
 		<br>
-		<form class="form-horizontal" name="adForma">
+		<form class="form-horizontal" name="adForma" style="width: 400px;">
+            <div class="control-group">
+                <label class="control-label" for="tip">Tip reklame:</label>
+                <div class="controls">
+                    <select class="form-control" id="tip" ng-model="ad.ad_type" ng-options="type.id as type.ad_type for type in tipovi">
+
+                    </select>
+                </div>
+            </div>
+
 			<div class="control-group">
 				<label class="control-label" for="naslov"> Naslov:</label>
 				<div class="controls">
-					<input type="text" name="title" id="naslov" ng-model="ad.title" ng-minlength="4" ng-maxlength="50" required=""/>
+					<input type="text" class="form-control" name="title" id="naslov" ng-model="ad.title" ng-minlength="4" ng-maxlength="50" required=""/>
 					<p ng-show="adForma.title.$error.minlength" class="help-block">
 						Naslov je prekratak.
 					</p>
@@ -19,40 +28,40 @@
 			<div class="control-group">
 				<label class="control-label" for="naslov"> Podlaslov:</label>
 				<div class="controls">
-					<input type="text" name="subtitle" id="podnaslov" ng-model="ad.subtitle" ng-maxlength="200" required=""/>
-				<p ng-show="userForm.subtitle.$error.maxlength" class="help-block">
-					Podnaslov je predug.
-				</p>
+					<input type="text" class="form-control" name="subtitle" id="podnaslov" ng-model="ad.subtitle" ng-maxlength="200" required=""/>
+                    <p ng-show="userForm.subtitle.$error.maxlength" class="help-block">
+                        Podnaslov je predug.
+                    </p>
 				</div>
 
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="opis">Opis:</label>
 				<div class="controls">
-					<textarea id="opis" name="description" ng-model="ad.description" ng-maxlength="10000" required></textarea>
-				<p ng-show="userForm.description.$error.maxlength" class="help-block">
-					Opis je predug.
-				</p>
+					<textarea id="opis" class="form-control" name="description" ng-model="ad.description" ng-maxlength="10000" required></textarea>
+                    <p ng-show="userForm.description.$error.maxlength" class="help-block">
+                        Opis je predug.
+                    </p>
 				</div>
 
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="cijena">Cijena:</label>
 				<div class="controls">
-					<input id="cijena" type="number" ng-model="ad.price" required=""/>
-
+					<input class="form-control" id="cijena" type="number" ng-model="ad.price" required=""/>
 				</div>
-				<label class="control-label" for="jedinica">po:</label>
+
+				<label class="control-label" for="jedinica">Po:</label>
 				<div class="controls">
-					<select id="jedinica" ng-model="ad.unit">
-						<option value="s">Sekundi</option>
-						<option value="min">Minuti</option>
-						<option value="h">Satu</option>
-						<option value="d">Danu</option>
-						<option value="mon">Mjesecu</option>
-					</select>
+                    <input class="form-control" id="jedinica" type="text" ng-model="ad.unit" required=""/>
 				</div>
 			</div>
+            <div class="control-group">
+                <label class="control-label" for="trajanje">Količinskih jedinica:</label>
+                <div class="controls">
+                    <input class="form-control" id="vidljivost" type="number" ng-model="ad.max_duration" />
+                </div>
+            </div>
 			<div class="control-group">
 				<label class="control-label" for="pocetak">Početak oglasa:</label>
 				<div class="controls">
@@ -80,35 +89,13 @@
 			<div class="control-group">
 				<label class="control-label" for="vidljivost">Objava oglasa:</label>
 				<div class="controls">
-					<input id="vidljivost" type="checkbox" ng-model="ad.visibility"/>
+					<input  id="vidljivost" type="checkbox" ng-model="ad.visibility"/>
 				</div>
 			</div>
-			<div class="control-group">
-				<label class="control-label" for="tip">Tip reklame:</label>
-				<div class="controls">
-					<select id="tip" ng-model="ad.ad_type" ng-options="type.id as type.ad_type for type in tipovi">
 
-					</select>
-				</div>
-			</div>
-			<div class="control-group" ng-show="ad.ad_type==1 || ad.ad_type==2">
-
-				<label class="control-label" for="trajanje">Trajanje:</label>
-				<div class="controls">
-					<input id="vidljivost" type="number" ng-model="ad.max_duration" placeholder="maksimalno trajanje u sekundama"/>
-				</div>
-			</div>
-			{{poruka}}
-			<div class="control-group">
-				<div class="controls">
-					<button class="btn-primary" ng-click="posalji()" ng-disabled="adForma.$invalid">
-						Unesi
-					</button>
-				</div>
-			</div>
-			<div ng-show="uspjesno==1">
-				Uspješno ste dodali novu reklamu!
-			</div>
+            <button class="btn btn-primary" ng-click="posalji()" ng-disabled="adForma.$invalid">
+                Kreiraj reklamu
+            </button>
 		</form>
 	</div>
 </div>

@@ -1,5 +1,8 @@
 App.controller('clientController',['$scope','AdAll','AdTypes', 'webServiceWrapper','$upload','$http', '$routeParams', '$location',function($scope,AdAll,AdTypes, webServiceWrapper,$upload,$http, $routeParams, $location){
     $scope.successMessage = $routeParams.success;
+    $scope.errorMessage = $routeParams.error;
+
+
 	$scope.ads={};
     $scope.currentActiveDiscussion=0;
 	$scope.korak=0;

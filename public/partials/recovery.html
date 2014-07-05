@@ -2,20 +2,20 @@
     <!-- Main hero unit for a primary marketing message or call to action -->
     <div class="hero-unit">
         <h3>{{'RECOVER' | translate}}</h3>
-        <table align="left">
-            <tr>
-                <td>
+        <p>Enter your e-mail bellow and a reset password link will be send into your inbox.</p>
 
-                    <input id="email" ng-model="recovery.email" placeholder="Email" required>
-                </td>
-                <td >
-                    <button class="btn" ng-click="sendRecovery(recovery)">
-                        Send
-                    </button>
-                </td>
-            </tr>
 
-        </table>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="input-group">
+                    <input class="form-control" id="email" ng-model="recovery.email" placeholder="Email" required >
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" ng-click="sendRecovery(recovery)">Send</button>
+                      </span>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 </div>
