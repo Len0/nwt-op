@@ -63,6 +63,8 @@ function($translate, $scope, $http, $cookieStore) {
 			}
 		}).success(function(data, status, headers, config) {
 			$scope.data = data;
+            user.username = "";
+            user.password = "";
 			if (data.error == "false") {
 				$("#loginForm").hide
 				$("#logoutForm").show(500);
