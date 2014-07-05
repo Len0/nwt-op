@@ -144,10 +144,10 @@
 
 
       <form accept-charset="UTF-8" class="navbar-form navbar-right formclass" id="loginForm" ng-show="loggedOut" >
-        <div class="form-group">
-          <input class="form-control" type="text" name="username"  ng-model="user.username" placeholder="{{'USERNAME' | translate}}">
-          <input class="form-control" type="password" name="password"  ng-model="user.password" placeholder="{{'PASSWORD' | translate}}">
-          <button class="btn btn-default" ng-click="userLogin(user)">
+        <div class="form-group" >
+          <input class="form-control" style="font-size:small;" type="text" name="username"  ng-model="user.username" placeholder="{{'USERNAME' | translate}}">
+          <input class="form-control" style="font-size:small;" type="password" name="password"  ng-model="user.password" placeholder="{{'PASSWORD' | translate}}">
+          <button class="btn btn-default" style="font-size:small;" ng-click="userLogin(user)">
             {{'LOGIN' | translate}}
           </button>
         </div>
