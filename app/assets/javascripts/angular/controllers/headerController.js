@@ -40,15 +40,15 @@ function($translate, $scope, $http, $cookieStore) {
 
 	$scope.loadLok = function(lok) {
 		$http.get(lok).success(function() {
-			location.reload(true);
+            //location.reload(true);
 		});
 	};
 	$scope.userLogout = function() {
+        $scope.adminLog = "false";
 		$http.get('/user/logout').success(function() {
 			$cookieStore.put('loggedin', "false");
 			$cookieStore.put('tipkorisnika', "");
 			$scope.updateInfo();
-			location.reload(true);
 		});
 	};
 
@@ -69,6 +69,7 @@ function($translate, $scope, $http, $cookieStore) {
 				$cookieStore.put('loggedin', "true")
 
 				$scope.updateInfo();
+                console.log("User type: " + data.type);
 				if (data.type == 1) {
 					$scope.adminLog = "true";
 				} else {
