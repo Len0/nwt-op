@@ -2,7 +2,11 @@
 	<input type="file" ng-file-select="onFileSelect($files)" multiple>
 
 	<div class="meter" ng-show="Progress>0">
-		<span style="width: {{Progress}}%"><center style="margin-top: -5px;">{{Progress}}</center></span>
+		<div class="progress">
+			<div class="progress-bar" role="progressbar" aria-valuenow="{{Progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{Progress}}%;">
+				{{Progress}}%
+			</div>
+		</div>
 		<br>
 		<div ng-show="error==1">
 			Ima greška prilikom uploada!
